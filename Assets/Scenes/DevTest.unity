@@ -1111,10 +1111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef48f5400ebce349b44c9af4718e1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVelocity: 0
-  bonusVelocity: 0
-  cooldownTime: 0
-  runDuaration: 0
+  defaultVelocity: 1
+  bonusVelocity: 3
+  cooldownTime: 2
+  runDuaration: 2
 --- !u!1 &2019504791
 GameObject:
   m_ObjectHideFlags: 0

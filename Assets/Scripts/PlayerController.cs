@@ -25,19 +25,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            // transform.position += new Vector3(0, 0, 0.1f);
+            _rb.velocity = new Vector3(0, 0, defaultVelocity);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            // transform.position += new Vector3(0, 0, -0.1f);
+            _rb.velocity = new Vector3(0, 0, -defaultVelocity);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            // transform.position += new Vector3(-0.1f, 0, 0);
+            _rb.velocity = new Vector3(-defaultVelocity, 0, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            // transform.position += new Vector3(0.1f, 0, 0);
+            _rb.velocity = new Vector3(defaultVelocity, 0, 0);
         }
         //检测到按下左shift键，在合适的状态下进入跑步状态
         if (Input.GetKeyDown(KeyCode.LeftShift)&&_canRun)
