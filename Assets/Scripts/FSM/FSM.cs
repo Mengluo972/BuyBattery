@@ -20,6 +20,7 @@ public class FSM : MonoBehaviour
     public Parameter parameter;
     private IState _currentState;
     private Dictionary<StateType,IState> _states = new Dictionary<StateType, IState>();
+    private MeshCollider _meshCollider;//疑似无用
     void Start()
     {
         _states.Add(StateType.Idle,new IdleState(this));
@@ -29,6 +30,7 @@ public class FSM : MonoBehaviour
         TransitionState(StateType.Idle);
         
         parameter.animator = GetComponent<Animator>();
+        _meshCollider = transform.GetChild(0).GetComponent<MeshCollider>();//疑似无用
     }
 
     void Update()
@@ -45,4 +47,5 @@ public class FSM : MonoBehaviour
         _currentState = _states[type];
         _currentState.OnEnter();
     }
+    
 }

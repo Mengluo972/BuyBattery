@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]private float defaultVelocity;
     [SerializeField]private float bonusVelocity;
-    [SerializeField] private float curMaxVelocity;
     [SerializeField]private float acceleration;
     [SerializeField]private float cooldownTime;
     [SerializeField]private float runDuaration;
     
+    private float _curMaxVelocity;
     private bool _canRun = true;
     private float _cooldownTimer;
     private float _runTimer;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         _cameraDirectionTransform = transform.GetChild(0).transform;
         _cameraLeft = Vector3.Cross(_cameraDirectionTransform.forward, new Vector3(0f, 1f, 0f)).normalized;
         _cameraRight = -Vector3.Cross(_cameraDirectionTransform.forward, new Vector3(0f, 1f, 0f)).normalized;
-        curMaxVelocity = defaultVelocity;
+        _curMaxVelocity = defaultVelocity;
     }
     //镜头移动时需要进行调用来更新移动方向
     public void OnChangedCameraDirection()
@@ -48,36 +48,40 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (!(_rb.velocity.sqrMagnitude>=_curMaxVelocity))
         {
-            if (_rb.velocity != _cameraDirectionTransform.forward.normalized * curMaxVelocity)
-                _rb.velocity += _cameraDirectionTransform.forward.normalized * acceleration;
+            if (Input.GetKey(KeyCode.W))
+            {
+                if (_rb.velocity != _cameraDirectionTransform.forward.normalized * _curMaxVelocity)
+                    _rb.velocity += _cameraDirectionTransform.forward.normalized * acceleration;
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                if (_rb.velocity != -_cameraDirectionTransform.forward.normalized * _curMaxVelocity)
+                    _rb.velocity -= _cameraDirectionTransform.forward.normalized * acceleration;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                if (_rb.velocity != _cameraLeft * _curMaxVelocity)
+                    _rb.velocity += _cameraLeft * acceleration;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                if (_rb.velocity != _cameraRight * _curMaxVelocity)
+                    _rb.velocity += _cameraRight * acceleration;
+            }
         }
-        
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (_rb.velocity != -_cameraDirectionTransform.forward.normalized * curMaxVelocity)
-                _rb.velocity -= _cameraDirectionTransform.forward.normalized * acceleration;
-        }
-        
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (_rb.velocity != _cameraLeft * curMaxVelocity)
-                _rb.velocity += _cameraLeft * acceleration;
-        }
-        
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (_rb.velocity != _cameraRight * curMaxVelocity)
-                _rb.velocity += _cameraRight * acceleration;
-        }
+
         //检测到按下左shift键，在合适的状态下进入跑步状态
         if (Input.GetKeyDown(KeyCode.LeftShift)&&_canRun)
         {
             //移动速度变化
             
             //todo...
-            curMaxVelocity += bonusVelocity;
+            _curMaxVelocity += bonusVelocity;
             _canRun = false;
             _runTimer = runDuaration;
             _isRunning = true;
@@ -91,7 +95,7 @@ public class PlayerController : MonoBehaviour
                 //移动速度变化
                 
                 //todo...
-                curMaxVelocity = defaultVelocity;
+                _curMaxVelocity = defaultVelocity;
                 _isRunning = false;
                 _cooldownTimer = cooldownTime;
                 _isCoolingDown = true;
