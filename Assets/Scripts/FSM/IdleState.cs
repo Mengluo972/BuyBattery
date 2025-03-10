@@ -14,6 +14,7 @@ public class IdleState : IState
     }
     public void OnEnter()
     {
+        Debug.Log(_manager.gameObject.name + "正处于Idle状态，这是一个未设定的状态");
     }
 
     public void OnUpdate()

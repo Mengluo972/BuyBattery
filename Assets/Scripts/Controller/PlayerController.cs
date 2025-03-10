@@ -79,8 +79,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift)&&_canRun)
         {
             //移动速度变化
-            
-            //todo...
             _curMaxVelocity += bonusVelocity;
             _canRun = false;
             _runTimer = runDuaration;
@@ -93,8 +91,6 @@ public class PlayerController : MonoBehaviour
             if(_runTimer<=0)
             {
                 //移动速度变化
-                
-                //todo...
                 _curMaxVelocity = defaultVelocity;
                 _isRunning = false;
                 _cooldownTimer = cooldownTime;
