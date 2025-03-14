@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum StateType
 {
-    Idle,Patrol,Chase
+    Idle,Patrol,Chase,Flip,EndingChase
 }
 [Serializable]
 public class Parameter//敌人信息
@@ -14,12 +14,17 @@ public class Parameter//敌人信息
     public float chaseSpeed;
     public Transform[] partrolPoints;
     public Animator animator;
+    public int patrolIndex;
+    public Transform lastPatrolPoint;
 
+    public float flipTime;//转向使用的时间
+    public float flipWaitTimeBefore;//转向前停留时间
+    public float flipWaitTimeAfter;//转向后停留时间
     public float alarmValue;//敌人警戒值
     public float alarmAccelerationSpeed;//警戒值增加速度
     public float alarmMaxValue;//警戒值最大值
 }
-public class FSM : MonoBehaviour
+public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有一个FSM组件
 {
     public Parameter parameter;
     private IState _currentState;
@@ -35,6 +40,8 @@ public class FSM : MonoBehaviour
         _states.Add(StateType.Idle,new IdleState(this));
         _states.Add(StateType.Chase,new ChaseState(this));
         _states.Add(StateType.Patrol,new PartrolState(this));
+        _states.Add(StateType.Flip,new FlipState(this));
+        _states.Add(StateType.EndingChase,new EndingChaseState(this));
         
         // TransitionState(StateType.Idle);
         TransitionState(StateType.Patrol);
