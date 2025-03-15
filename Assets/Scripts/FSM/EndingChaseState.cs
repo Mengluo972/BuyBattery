@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class EndingChaseState : IState
@@ -9,6 +10,7 @@ public class EndingChaseState : IState
     private Parameter _parameter;
     private Transform _getBackTarget;
     private bool _startFakePatrol;
+    private float _lookAtTime = 0.3f;
     
     public EndingChaseState(FSM manager)
     {
@@ -46,8 +48,6 @@ public class EndingChaseState : IState
         {
             if (Vector3.Distance(_manager.transform.position,_getBackTarget.position)<0.5f)//是否到达假巡逻点
             {
-                //这边记得加上转向
-                
                 
                 if (!_getBackTarget.TryGetComponent(out FakePatrolNodes fakePatrolNodes))//是否回到了真巡逻点
                 {
@@ -61,13 +61,16 @@ public class EndingChaseState : IState
                             _parameter.PatrolIndex = i;
                         }
                     }
+                    _manager.transform.DOLookAt(_parameter.partrolPoints[_parameter.PatrolIndex].position,_lookAtTime);
                     _manager.TransitionState(StateType.Patrol);
                 }
                 else
                 {
                     _getBackTarget = _getBackTarget.GetComponent<FakePatrolNodes>().parentNode;
+                    _manager.transform.DOLookAt(_getBackTarget.position, _lookAtTime);
                 }
             }
+            // _manager.transform.LookAt(FlipState.DirectionCaculate(_manager.transform.position, _getBackTarget.position));
             _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _getBackTarget.position,
                 _parameter.moveSpeed * Time.deltaTime);
         }
@@ -82,6 +85,8 @@ public class EndingChaseState : IState
                     _parameter.PatrolIndex = i;
                 }
             }
+
+            _manager.transform.DOLookAt(_parameter.partrolPoints[_parameter.PatrolIndex].position,_lookAtTime);
             _manager.TransitionState(StateType.Patrol);
         }
     }

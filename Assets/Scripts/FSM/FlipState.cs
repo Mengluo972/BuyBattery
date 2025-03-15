@@ -40,12 +40,9 @@ public class FlipState : IState
                 break;
             case 1:
                 _flipWaitStage = 2;
-                // Sequence sequence = DOTween.Sequence();
-                Vector3 direction = DirectionCaculate(_manager.transform.position,
-                    _parameter.partrolPoints[_parameter.PatrolIndex].position);
-                // sequence.Append(_manager.transform.DORotate(direction, _parameter.flipTime, RotateMode.Fast))
-                //     .AppendCallback(() => { _flipWaitStage = 3; });
-                _manager.transform.DORotate(direction, _parameter.flipTime, RotateMode.Fast).OnComplete(() => { _flipWaitStage = 3; });
+                _manager.transform
+                    .DOLookAt(_parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.flipTime)
+                    .OnComplete(() => _flipWaitStage = 3);
                 break;
             case 2://该阶段只等待回调
                 break;
@@ -72,7 +69,7 @@ public class FlipState : IState
         _parameter.alarmValue += _parameter.alarmAccelerationSpeed*Time.deltaTime;
     }
     
-    private Vector3 DirectionCaculate(Vector3 startPos,Vector3 endPos)
+    public static Vector3 DirectionCaculate(Vector3 startPos,Vector3 endPos)
     {
         Vector3 direction = endPos - startPos;
         return direction.normalized;

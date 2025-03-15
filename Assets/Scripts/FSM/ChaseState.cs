@@ -27,6 +27,7 @@ public class ChaseState : IState
             _manager.TransitionState(StateType.EndingChase);
         }
         _parameter.alarmValue-= _parameter.alarmDecreaseSpeed*Time.deltaTime;
+        _manager.transform.LookAt(_parameter.playerTarget.position);
         _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _parameter.playerTarget.position,
             _parameter.chaseSpeed * Time.deltaTime);
     }
