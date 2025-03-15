@@ -8,8 +8,10 @@ public class RayCastTest : MonoBehaviour
     [SerializeField] private byte raycount = 10;//不建议条数在10以下
     [SerializeField] private float fieldOfView = 90f;
     [SerializeField] private float viewDistance = 25f;
-    // [SerializeField] private Transform target;
-    [SerializeField] private float rayRadius;
+    [SerializeField] private float rayRadius = 10f;
+    [NonSerialized] public bool IsTracing;//是否开启射线追踪
+    [NonSerialized] public bool IsPlayerDetected;//是否检测到玩家
+    private bool _singleScanDetected;//单次扫描是否检测到玩家
 
     void Start()
     {
@@ -18,7 +20,9 @@ public class RayCastTest : MonoBehaviour
 
     void Update()
     {
-        // return;
+        if (!IsTracing) return;
+        _singleScanDetected = false;
+        IsPlayerDetected = false;
         switch (raycount%2)
         {
             case 0://偶数条射线
@@ -32,9 +36,11 @@ public class RayCastTest : MonoBehaviour
                     RaycastHit raycastHit = new RaycastHit();
                     if (Physics.Raycast(ray, out raycastHit, rayRadius))
                     {
+                        if (_singleScanDetected) break;
                         if (raycastHit.collider.gameObject.CompareTag("Player"))
                         {
-                            Debug.Log("发现玩家");
+                            IsPlayerDetected = true;
+                            _singleScanDetected = true;
                         }
                     }
                     //左侧
@@ -45,9 +51,11 @@ public class RayCastTest : MonoBehaviour
                     RaycastHit raycastHit1 = new RaycastHit();
                     if (Physics.Raycast(ray1, out raycastHit1, rayRadius))
                     {
+                        if (_singleScanDetected) break;
                         if (raycastHit1.collider.gameObject.CompareTag("Player"))
                         {
-                            Debug.Log("发现玩家");
+                            IsPlayerDetected = true;
+                            _singleScanDetected = true;
                         }
                     }
                 }
@@ -63,9 +71,11 @@ public class RayCastTest : MonoBehaviour
                     RaycastHit raycastHit = new RaycastHit();
                     if (Physics.Raycast(ray,out raycastHit,rayRadius))
                     {
+                        if (_singleScanDetected) break;
                         if (raycastHit.collider.gameObject.CompareTag("Player"))
                         {
-                            Debug.Log("发现玩家");
+                            IsPlayerDetected = true;
+                            _singleScanDetected = true;
                         }
                     }
                     //左侧
@@ -76,9 +86,11 @@ public class RayCastTest : MonoBehaviour
                     RaycastHit raycastHit1 = new RaycastHit();
                     if (Physics.Raycast(ray1,out raycastHit1,rayRadius))
                     {
+                        if (_singleScanDetected) break;
                         if (raycastHit1.collider.gameObject.CompareTag("Player"))
                         {
-                            Debug.Log("发现玩家");
+                            IsPlayerDetected = true;
+                            _singleScanDetected = true;
                         }
                     }
                 }
@@ -86,9 +98,11 @@ public class RayCastTest : MonoBehaviour
                 RaycastHit raycastHit0 = new RaycastHit();
                 if (Physics.Raycast(ray0,out raycastHit0,rayRadius))
                 {
+                    if (_singleScanDetected) break;
                     if (raycastHit0.collider.gameObject.CompareTag("Player"))
                     {
-                        Debug.Log("发现玩家");
+                        IsPlayerDetected = true;
+                        _singleScanDetected = true;
                     }
                 }
                 break;
