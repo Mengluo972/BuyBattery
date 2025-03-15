@@ -18,22 +18,22 @@ public class PartrolState : IState
     public void OnEnter()
     {
         _rayCastTest.IsTracing = true;
-        Debug.Log("进入巡逻状态");
+        // Debug.Log("进入巡逻状态");
     }
 
     public void OnUpdate()
     {
-        if(Vector3.Distance(_manager.transform.position,_parameter.partrolPoints[_parameter.patrolIndex].position)<0.5f)
+        if(Vector3.Distance(_manager.transform.position,_parameter.partrolPoints[_parameter.PatrolIndex].position)<0.5f)
         {
-            _parameter.patrolIndex++;//一旦到达就立刻增加索引值，在转向状态中不再额外增加
-            if(_parameter.patrolIndex>=_parameter.partrolPoints.Length)//越界检测
+            _parameter.PatrolIndex++;//一旦到达就立刻增加索引值，在转向状态中不再额外增加
+            if(_parameter.PatrolIndex>=_parameter.partrolPoints.Length)//越界检测
             {
-                _parameter.patrolIndex = 0;
+                _parameter.PatrolIndex = 0;
             }
             _manager.TransitionState(StateType.Flip);
         }
         _manager.transform.position = Vector3.MoveTowards(_manager.transform.position,
-            _parameter.partrolPoints[_parameter.patrolIndex].position, _parameter.moveSpeed * Time.deltaTime);
+            _parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.moveSpeed * Time.deltaTime);
         if (!_rayCastTest.IsPlayerDetected)return;
         if(_parameter.alarmValue>=_parameter.alarmMaxValue)
         {
@@ -47,6 +47,14 @@ public class PartrolState : IState
     public void OnExit()
     {
         _rayCastTest.IsTracing = false;
-        Debug.Log("退出巡逻状态");
+        // Debug.Log("退出巡逻状态");
+    }
+
+    public void TriggerCheck()
+    {
+        if (_parameter.TriggerListener.IsCaughtPlayer)
+        {
+            _manager.TransitionState(StateType.Attack);
+        }
     }
 }

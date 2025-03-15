@@ -23,7 +23,7 @@ public class FlipState : IState
     {
         _flipWaitStage = 0;
         _rayCastTest.IsTracing = true;
-        Debug.Log("进入转向状态");
+        // Debug.Log("进入转向状态");
     }
 
     public void OnUpdate()
@@ -40,11 +40,12 @@ public class FlipState : IState
                 break;
             case 1:
                 _flipWaitStage = 2;
-                Sequence sequence = DOTween.Sequence();
+                // Sequence sequence = DOTween.Sequence();
                 Vector3 direction = DirectionCaculate(_manager.transform.position,
-                    _parameter.partrolPoints[_parameter.patrolIndex].position);
-                sequence.Append(_manager.transform.DORotate(direction, _parameter.flipTime, RotateMode.Fast));
-                sequence.AppendCallback(() => { _flipWaitStage = 3; });
+                    _parameter.partrolPoints[_parameter.PatrolIndex].position);
+                // sequence.Append(_manager.transform.DORotate(direction, _parameter.flipTime, RotateMode.Fast))
+                //     .AppendCallback(() => { _flipWaitStage = 3; });
+                _manager.transform.DORotate(direction, _parameter.flipTime, RotateMode.Fast).OnComplete(() => { _flipWaitStage = 3; });
                 break;
             case 2://该阶段只等待回调
                 break;
@@ -80,6 +81,14 @@ public class FlipState : IState
     public void OnExit()
     {
         _rayCastTest.IsTracing = false;
-        Debug.Log("退出转向状态");
+        // Debug.Log("退出转向状态");
+    }
+
+    public void TriggerCheck()
+    {
+        if (_parameter.TriggerListener.IsCaughtPlayer)
+        {
+            _manager.TransitionState(StateType.Attack);
+        }
     }
 }

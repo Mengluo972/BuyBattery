@@ -2,27 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : IState
+public class AttackState : IState
 {
     private FSM _manager;
     private Parameter _parameter;
 
-    public IdleState(FSM manager)
+    public AttackState(FSM manager)
     {
         _manager = manager;
         _parameter = manager.parameter;
     }
     public void OnEnter()
     {
-        Debug.Log(_manager.gameObject.name + "正处于Idle状态，这是一个未设定的状态");
+        Debug.Log("进入攻击状态");
     }
 
     public void OnUpdate()
     {
+        
     }
 
     public void OnExit()
     {
+        
     }
 
     public void TriggerCheck()
