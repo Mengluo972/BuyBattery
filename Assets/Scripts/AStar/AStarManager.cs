@@ -19,32 +19,32 @@ public class AStarManager
         } 
     }
     //格子对象容器
-    public AStarNode.AstarNode[,] Nodes;
+    public AStarNode[,] Nodes;
     //地图宽高
     private int mapW;
     private int mapH;
     //开启列表、关闭列表
-    private List<AStarNode.AstarNode> openList = new List<AStarNode.AstarNode>();
-    private List<AStarNode.AstarNode> closeList = new List<AStarNode.AstarNode>();
+    private List<AStarNode> openList = new List<AStarNode>();
+    private List<AStarNode> closeList = new List<AStarNode>();
 
     public void InitMapInfor(int w, int h)
     {
         mapH = h;
         mapW = w;
         //数组初始化
-        Nodes = new AStarNode.AstarNode[w, h];
+        Nodes = new AStarNode[w, h];
         //格子声明
         for (int i = 0; i < w; i++)
         {
             for (int j = 0; j < h; j++)
             {
-                AStarNode.AstarNode node = new AStarNode.AstarNode(i, j, Random.Range(0, 100) < 20 ? AStarNode.Node_Type.Stop : AStarNode.Node_Type.Walk);
+                AStarNode node = new AStarNode(i, j, Random.Range(0, 100) < 20 ? Node_Type.Stop : Node_Type.Walk);
                 Nodes[i, j] = node;
             }
         }
     }
 
-    public List<AStarNode.AstarNode> FindPath(Vector2 startPos, Vector2 endPos)
+    public List<AStarNode> FindPath(Vector2 startPos, Vector2 endPos)
     {
         if (startPos.x<0||startPos.x>=mapW||endPos.x<0||endPos.x>=mapW||
             startPos.y<0||startPos.x>=mapH||endPos.y<0||endPos.y>=mapH)
@@ -53,10 +53,10 @@ public class AStarManager
             return null;
         }
 
-        AStarNode.AstarNode start = Nodes[(int)startPos.x, (int)startPos.y];
-        AStarNode.AstarNode end = Nodes[(int)endPos.x, (int)endPos.y];
+        AStarNode start = Nodes[(int)startPos.x, (int)startPos.y];
+        AStarNode end = Nodes[(int)endPos.x, (int)endPos.y];
         //起点或终点是否有阻挡
-        if (start.Type==AStarNode.Node_Type.Stop||end.Type==AStarNode.Node_Type.Stop)   
+        if (start.Type==Node_Type.Stop||end.Type==Node_Type.Stop)   
         {
             Debug.Log("起点或者终点有阻挡");
             return null;
@@ -107,7 +107,7 @@ public class AStarManager
             if (start.x==end.x&&start.y==end.y)
             {
                 //该点为终点，寻路结束
-                List<AStarNode.AstarNode> path = new List<AStarNode.AstarNode>();
+                List<AStarNode> path = new List<AStarNode>();
                 path.Add(end);
                 while (end.father!=null)
                 {
@@ -121,7 +121,7 @@ public class AStarManager
         }
     }
 
-    private int SortOpenList(AStarNode.AstarNode a, AStarNode.AstarNode b)
+    private int SortOpenList(AStarNode a, AStarNode b)
     {
         if (a.f>b.f)
         {
@@ -133,13 +133,13 @@ public class AStarManager
         }
     }
 
-    private void AddToOpenList(int x, int y, int g, AStarNode.AstarNode father, AStarNode.AstarNode end)
+    private void AddToOpenList(int x, int y, int g, AStarNode father, AStarNode end)
     {
         //节点在地图外
         if(x<0||x>=mapW||y<0||y>mapH) return;
-        AStarNode.AstarNode node = Nodes[x, y];
+        AStarNode node = Nodes[x, y];
         //可能的情况：节点为空，节点为障碍物，节点已添加到开启列表或者关闭列表中
-        if (node == null || node.Type == AStarNode.Node_Type.Stop || closeList.Contains(node) || openList.Contains(node)) return;
+        if (node == null || node.Type == Node_Type.Stop || closeList.Contains(node) || openList.Contains(node)) return;
 
         //对节点的f g h 进行计算
         node.father = father;

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private Transform _cameraDirectionTransform;
     private Vector3 _cameraLeft;
     private Vector3 _cameraRight;
+    private Transform _playerModel;
     private void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody>();
@@ -30,14 +31,13 @@ public class PlayerController : MonoBehaviour
         _cameraLeft = Vector3.Cross(_cameraDirectionTransform.forward, new Vector3(0f, 1f, 0f)).normalized;
         _cameraRight = -Vector3.Cross(_cameraDirectionTransform.forward, new Vector3(0f, 1f, 0f)).normalized;
         _curMaxVelocity = defaultVelocity;
+        _playerModel = transform.GetChild(1);
     }
     //镜头移动时需要进行调用来更新移动方向
     public void OnChangedCameraDirection()
     {
         _cameraLeft = Vector3.Cross(_cameraDirectionTransform.forward, new Vector3(0f, 1f, 0f)).normalized;
         _cameraRight = -Vector3.Cross(_cameraDirectionTransform.forward, new Vector3(0f, 1f, 0f)).normalized;
-        // Debug.Log("Left向量:"+_cameraLeft);
-        // Debug.Log("Right向量:"+_cameraRight);
     }
 
     public void Broadcast()
@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
+                // Vector3 vec = new Vector3(_playerModel.rotation.x,Vector3.Angle(_playerModel.forward, _cameraLeft),_playerModel.rotation.z);
+                // Quaternion quaternion =
+                //     Quaternion.Slerp(_playerModel.rotation, Quaternion.Euler(vec), 0.5f);
+                // _playerModel.rotation = quaternion;
                 if (_rb.velocity != _cameraDirectionTransform.forward.normalized * _curMaxVelocity)
                     _rb.velocity += _cameraDirectionTransform.forward.normalized * acceleration;
             }
