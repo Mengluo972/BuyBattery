@@ -15,7 +15,6 @@ public class RayCastTest : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -39,6 +38,7 @@ public class RayCastTest : MonoBehaviour
                         if (_singleScanDetected) break;
                         if (raycastHit.collider.gameObject.CompareTag("Player"))
                         {
+                            print("检测到玩家");
                             IsPlayerDetected = true;
                             _singleScanDetected = true;
                         }
