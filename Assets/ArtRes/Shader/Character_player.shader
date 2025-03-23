@@ -1,4 +1,4 @@
-Shader "Unlit/shader_player"
+Shader "Character/player"
 {
     Properties
     {
