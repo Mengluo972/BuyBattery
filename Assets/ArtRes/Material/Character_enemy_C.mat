@@ -27,7 +27,17 @@ Material:
         m_Texture: {fileID: 2800000, guid: 94df0f91b5affcf4eb124517e9b21bb9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _rampTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _OutlineWidth: 0.42
+    - _ShadowRange: 0.382
+    - _ShadowSmooth: 0.2
+    m_Colors:
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 0.08929625, g: 0.15822364, b: 0.27044016, a: 1}
+    - _ShadowColor: {r: 0.7, g: 0.7, b: 0.8, a: 1}
   m_BuildTextureStacks: []
