@@ -31,4 +31,13 @@ public class AStarNode
         this.y = y;
         this.Type = type;
     }
+    /// <summary>
+    /// 无参构造，尽量避免调用
+    /// </summary>
+    public AStarNode()
+    {
+        x = -1;
+        y = -1;
+        Type = Node_Type.Stop;
+    }
 }
