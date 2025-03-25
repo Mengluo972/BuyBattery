@@ -13,6 +13,7 @@ public class NodeButton : MonoBehaviour,IPointerClickHandler
     [NonSerialized]public TMP_Text Text;
     [NonSerialized]public Node_Type Type = Node_Type.Walk;
     [NonSerialized]public Image Image;
+    [NonSerialized]public UIPanel UIPanel;
     private readonly Color _white = new(255, 255, 255, 1f);
     private readonly Color _red =  new(255,0,0,1f);
     void Awake()
@@ -55,6 +56,7 @@ public class NodeButton : MonoBehaviour,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Type = Type == Node_Type.Walk ? Node_Type.Stop : Node_Type.Walk;
+        UIPanel.ChangeSingleNodeInfo(X,Y,Type);
         UIUpdate();
     }
 }

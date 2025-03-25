@@ -6,17 +6,20 @@ using UnityEngine;
 public class Nodes : MonoBehaviour
 {
     private List<List<NodeButton>> _nodeButtons;
+    public UIPanel UIPanel;//引擎中初始化
 
-    private void Start()
+    private void Start()   
     {
         //获取所有节点的索引
-        _nodeButtons = new List<List<NodeButton>>(){};
+        _nodeButtons = new List<List<NodeButton>>();
         for (int i = 0; i < transform.childCount; i++)
         {
             List<NodeButton> list = new List<NodeButton>();
             for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
-                list.Add(transform.GetChild(i).GetChild(j).GetComponent<NodeButton>());
+                NodeButton nodeButton = transform.GetChild(i).GetChild(j).GetComponent<NodeButton>();
+                nodeButton.UIPanel = UIPanel;
+                list.Add(nodeButton);
             }
             _nodeButtons.Add(list);
         }
@@ -37,16 +40,24 @@ public class Nodes : MonoBehaviour
     /// <param name="endY">末端Y下标</param>
     public void UpdateNodes(List<List<AStarNode>> nodes,int startX,int startY,int endX,int endY)
     {
-        print("1");
-        for (int i = startX; i <= endX; i++)
+        // print("1");
+        if (endX>nodes.Count-1)
         {
-            for (int j = startY; j <= endY; j++)
+            print("X轴超出范围");
+            return;
+        }
+        if (endY>nodes[0].Count-1)
+        {
+            print("Y轴超出范围");
+            return;
+        }
+        for (int i = startX%10; i <= endX%10; i++)
+        {
+            for (int j = startY%10; j <= endY%10; j++)
             {
-                _nodeButtons[i][j].Type = nodes[i][j].Type;
-                _nodeButtons[i][j].X = nodes[i][j].x;
-                _nodeButtons[i][j].Y = nodes[i][j].y;
-                _nodeButtons[i][j].UIUpdate();
-                print($"{i}行{j}列的节点信息：{_nodeButtons[i][j].X},{_nodeButtons[i][j].Y},{_nodeButtons[i][j].Type}");
+                print($"正在更改{startX + i},{startY + j}节点,更改为{nodes[startX + i][startY + j].Type}");
+                _nodeButtons[i][j].SetNodeInfo(nodes[startX + i][startY + j].x, nodes[startX + i][startY + j].y,
+                    nodes[startX + i][startY + j].Type);
             }
         }
     }
