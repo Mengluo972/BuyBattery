@@ -15,7 +15,7 @@ public class ChaseState : IState
     }
     public void OnEnter()
     {
-        Debug.Log("进入追逐状态");
+        // Debug.Log("进入追逐状态");
     }
 
     public void OnUpdate()
