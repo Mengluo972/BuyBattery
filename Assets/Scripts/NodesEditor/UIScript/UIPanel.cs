@@ -82,7 +82,7 @@ public class UIPanel : MonoBehaviour
         _startY = 0;
         _endX = 9; //X至少为9，所以不做检查
         _endY = 9;
-        print($"最大X下标:{_operatingNodesData.Count - 1},最大Y下标:{_operatingNodesData[0].Count - 1}");
+        // print($"最大X下标:{_operatingNodesData.Count - 1},最大Y下标:{_operatingNodesData[0].Count - 1}");
         UpdateListDataToDisplay();
     }
 

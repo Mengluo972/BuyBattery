@@ -55,8 +55,8 @@ public class Nodes : MonoBehaviour
         {
             for (int j = startY%10; j <= endY%10; j++)
             {
-                print($"正在更改{startX + i},{startY + j}节点");
-                print($"更改为{nodes[startX + i][startY + j].Type}");
+                // print($"正在更改{startX + i},{startY + j}节点");
+                // print($"更改为{nodes[startX + i][startY + j].Type}");
                 _nodeButtons[i][j].SetNodeInfo(nodes[startX + i][startY + j].x, nodes[startX + i][startY + j].y,
                     nodes[startX + i][startY + j].Type);
             }
