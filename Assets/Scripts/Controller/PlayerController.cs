@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Transform _playerModel;
     
     //道具类相关信号量
-    private bool _isMoveAble = true;
+    [NonSerialized]public bool IsMoveAble = true;
     [NonSerialized]public bool IsRunable = true;
     
     private void Start()
@@ -119,4 +119,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
 }
