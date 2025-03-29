@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 787b606f8933beb4da1d9297c698e8ba
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_BuyBattery_DeathB
+      rect:
+        serializedVersion: 2
+        x: 1517
+        y: 1018
+        width: 297
+        height: 265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9a14baee42e6b49969d72ee45bd19a
+      internalID: -498481133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_DeathC
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 749
+        width: 297
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 284a06bc1e10f7540b9d84cab52151b0
+      internalID: 2008677400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_DeathI
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 746
+        width: 297
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a74a7552ae478d498decf25a69dbc59
+      internalID: 1154040880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_DeathM
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 500
+        width: 297
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3996e0d638142541830b5de42323b00
+      internalID: 1898838387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_MenuB
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 436
+        width: 234
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1793e39825d1ada488d8912d49266958
+      internalID: 945104827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_MenuC
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 717
+        width: 281
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb310e72e29de324d80f40bff6d1e606
+      internalID: 381098148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_MenuI
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 782
+        width: 232
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a2feaf35535354bb2346ad43e4ff76
+      internalID: -660835654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_MenuM
+      rect:
+        serializedVersion: 2
+        x: 1517
+        y: 1752
+        width: 443
+        height: 273
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e523eb52a64e5e44ab510c2ee01f8d74
+      internalID: 1743691840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_NewGameBTN
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 995
+        width: 523
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44da0610494517f4ca72f3e56d2152ae
+      internalID: -930250614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_QuitGameBTN
+      rect:
+        serializedVersion: 2
+        x: 1833
+        y: 1024
+        width: 174
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8927a171a06488a48a6f6c8ed0c87c9f
+      internalID: 1935964215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_SaveDataBTN
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 867
+        width: 521
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c84c73274644d841883edf09e64bc53
+      internalID: -1869652284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_SaveDataIcon
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 1988
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58eb14a5f864b8e4c976de8f6df9103d
+      internalID: -422912204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_SaveDataPanel
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1157
+        width: 1475
+        height: 868
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479d0b6d6de6e1a49bf57e5d9aefd0a0
+      internalID: -115323458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_SettingsBTN
+      rect:
+        serializedVersion: 2
+        x: 1517
+        y: 1302
+        width: 331
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df640bcfd36f7d94abf896050f9170f7
+      internalID: 1805576230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_Slider0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1080
+        width: 771
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 22, y: 16, z: 23, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650f37782999a8841bc67ae6cb01bbd6
+      internalID: -60136651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_Slider1
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1022
+        width: 751
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 10, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b2c2e0755db114e8e2aa7d4ea38d1c
+      internalID: 1104105516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_SliderHandle
+      rect:
+        serializedVersion: 2
+        x: 1833
+        y: 1212
+        width: 181
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899439bf879d1e6448b14424da3adeac
+      internalID: 1586141657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_StopIcon
+      rect:
+        serializedVersion: 2
+        x: 1517
+        y: 1490
+        width: 379
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6dae8baf55e1847ba34577b50eb5e1
+      internalID: 1993528482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyBattery_UsingPhoneIcon
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 1393
+        width: 128
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3eb4a2d5b0086048bfcbe270227487e
+      internalID: 315236583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5bae8ccc0d46c4940a5b54cb66993a9d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      UI_BuyBattery_DeathB: -498481133
+      UI_BuyBattery_DeathC: 2008677400
+      UI_BuyBattery_DeathI: 1154040880
+      UI_BuyBattery_DeathM: 1898838387
+      UI_BuyBattery_MenuB: 945104827
+      UI_BuyBattery_MenuC: 381098148
+      UI_BuyBattery_MenuI: -660835654
+      UI_BuyBattery_MenuM: 1743691840
+      UI_BuyBattery_NewGameBTN: -930250614
+      UI_BuyBattery_QuitGameBTN: 1935964215
+      UI_BuyBattery_SaveDataBTN: -1869652284
+      UI_BuyBattery_SaveDataIcon: -422912204
+      UI_BuyBattery_SaveDataPanel: -115323458
+      UI_BuyBattery_SettingsBTN: 1805576230
+      UI_BuyBattery_Slider0: -60136651
+      UI_BuyBattery_Slider1: 1104105516
+      UI_BuyBattery_SliderHandle: 1586141657
+      UI_BuyBattery_StopIcon: 1993528482
+      UI_BuyBattery_UsingPhoneIcon: 315236583
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
