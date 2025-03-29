@@ -21,13 +21,18 @@ public class AStarManager
     //格子对象容器
     public AStarNode[,] Nodes;
     //地图宽高
-    private int mapW;
-    private int mapH;
+    private int mapW;//从1开始，有几个格子就填几
+    private int mapH;//从1开始，有几个格子就填几
     //开启列表、关闭列表
     private List<AStarNode> openList = new List<AStarNode>();
     private List<AStarNode> closeList = new List<AStarNode>();
-
-    public void InitMapInfo(int w, int h)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="w">横向格子数量</param>
+    /// <param name="h">纵向格子数量</param>
+    /// <param name="nodes"></param>
+    public void InitMapInfoWithLength(int w, int h,List<List<AStarNode>> nodes)
     {
         mapH = h;
         mapW = w;
@@ -38,11 +43,28 @@ public class AStarManager
         {
             for (int j = 0; j < h; j++)
             {
-                AStarNode node = new AStarNode(i, j, Random.Range(0, 100) < 20 ? Node_Type.Stop : Node_Type.Walk);
-                Nodes[i, j] = node;
+                Nodes[i, j] = nodes[i][j];
             }
         }
     }
+
+    public void InitMapInfoWithPosition(int maxX, int maxY, List<List<AStarNode>> nodes)
+    {
+        mapH = maxY+1;
+        mapW = maxX+1;
+        //数组初始化
+        Nodes = new AStarNode[maxX+1, maxY+1];
+        //格子声明
+        for (int i = 0; i <= maxX; i++)
+        {
+            for (int j = 0; j <= maxY; j++)
+            {
+                Nodes[i, j] = nodes[i][j];
+            }
+        }
+    }
+    
+    
 
     public List<AStarNode> FindPath(Vector2 startPos, Vector2 endPos)
     {
