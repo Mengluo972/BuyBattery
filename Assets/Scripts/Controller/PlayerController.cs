@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float acceleration;
     [SerializeField]private float cooldownTime;
     [SerializeField]private float runDuaration;
+    //道具类相关参数
+    [SerializeField]private float reduceVelocity;
     
     private float _curMaxVelocity;
     private bool _canRun = true;
@@ -24,6 +26,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 _cameraLeft;
     private Vector3 _cameraRight;
     private Transform _playerModel;
+    
+    //道具类相关信号量
+    [NonSerialized]public bool IsMoveAble = true;
+    [NonSerialized]public bool IsRunable = true;
+    
     private void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody>();
@@ -112,4 +119,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
 }
