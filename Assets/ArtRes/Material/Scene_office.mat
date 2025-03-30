@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _OutlineWidth: 0.24
-    - _ShadowRange: 0.674
+    - _ShadowRange: 0.823
     m_Colors:
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutLineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
