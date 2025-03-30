@@ -4,12 +4,10 @@ Shader "Scene/office"
     {
         _MainTex ("MainTex", 2D) = "white" {}
         _MainColor("Main Color", Color) = (1,1,1)
-		_ShadowColor ("Shadow Color", Color) = (0.7, 0.7, 0.8)
-		_ShadowRange ("Shadow Range", Range(0, 1)) = 0.5
-
-        [Space(10)]
-		_OutlineWidth ("Outline Width", Range(0.01, 2)) = 0.24
-        _OutLineColor ("OutLine Color", Color) = (0.5,0.5,0.5,1)
+		_ShadowColor1 ("Shadow Color", Color) = (0.7, 0.7, 0.8)
+		_ShadowColor2 ("Shadow Color", Color) = (0.7, 0.7, 0.8)
+		_ShadowRange1 ("Shadow Range", Range(0, 1)) = 0.5
+		_ShadowRange2 ("Shadow Range", Range(0, 1)) = 0.2
     }
     SubShader
     {
@@ -29,13 +27,12 @@ Shader "Scene/office"
 		    #include "Lighting.cginc"
             #include "AutoLight.cginc"
 
-            sampler2D _MainTex; 
-            sampler2D _rampTex; 
-			float4 _MainTex_ST;
+            sampler2D _MainTex; float4 _MainTex_ST;
             half3 _MainColor;
-			half3 _ShadowColor;
-            half _ShadowRange;
-            half _ShadowSmooth;
+			half3 _ShadowColor1;
+			half3 _ShadowColor2;
+            half _ShadowRange1;
+            half _ShadowRange2;
 
             struct a2v 
 			{
@@ -72,8 +69,11 @@ Shader "Scene/office"
                 half3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
 				
 				half halfLambert = dot(worldNormal, worldLightDir) * 0.5 + 0.5;
-				half3 diffuse = halfLambert > _ShadowRange ? _MainColor : _ShadowColor;
-				diffuse *= mainTex;
+				// half3 diffuse = halfLambert > _ShadowRange ? _MainColor : _ShadowColor;
+				//将上一行改成多层
+				half3 diffuse1 = halfLambert > _ShadowRange1 ? _MainColor : _ShadowColor1;
+				half3 diffuse2 = halfLambert > _ShadowRange2 ? diffuse1 : _ShadowColor2;
+				half3 diffuse = diffuse2 * mainTex;
 
 				col.rgb = _LightColor0 * diffuse;
                 return col;

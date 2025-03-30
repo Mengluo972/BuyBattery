@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scene_office
+  m_Name: Scene_0_Tex
   m_Shader: {fileID: 4800000, guid: 92f4bf63966c39f47b22043fc164c42f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,15 +24,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a41b694795cc9274aac043053eb8f3d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineWidth: 0.24
-    - _ShadowRange: 0.823
+    - _OutlineWidth: 0.81
+    - _ShadowRange: 0.573
+    - _ShadowRange1: 0.7
+    - _ShadowRange2: 0.43
     m_Colors:
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutLineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _ShadowColor: {r: 0.7, g: 0.7, b: 0.8, a: 1}
+    - _ShadowColor: {r: 0.74213827, g: 0.74213827, b: 0.74213827, a: 1}
+    - _ShadowColor1: {r: 0.7769668, g: 0.7769668, b: 0.8490566, a: 1}
+    - _ShadowColor2: {r: 0.44966567, g: 0.5569233, b: 0.70440245, a: 1}
   m_BuildTextureStacks: []
