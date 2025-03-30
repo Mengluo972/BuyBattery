@@ -3,7 +3,22 @@ guid: 8e6af597bbb98a24784d3ceb3a11820e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cloth
+    second: {fileID: 2100000, guid: 465d0328f6a5fba499df22bf9976030e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron
+    second: {fileID: 2100000, guid: b586cf85c8394e047b4e9b4be5452983, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wheel
+    second: {fileID: 2100000, guid: 91db9476477f8c64090d7acb723e2d75, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
