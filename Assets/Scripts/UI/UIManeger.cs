@@ -21,7 +21,7 @@ public class UIManeger : MonoBehaviour
     public string gameSceneName;
     public string mainMenuSceneName;
 
-    private static UIManeger instance;
+    private static GameObject instance;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,14 @@ public class UIManeger : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != gameObject)
+        {
+            Destroy(instance);
+
+        }
+        instance = gameObject;
         DontDestroyOnLoad(gameObject);
+
     }
 
     // Update is called once per frame
@@ -71,7 +78,7 @@ public class UIManeger : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("暂停");
+        Debug.Log("先等一下，我问你个事");
         Time.timeScale = Convert.ToInt32(paused);
         paused = !paused;
         stopMenu.SetActive(paused);
@@ -87,8 +94,7 @@ public class UIManeger : MonoBehaviour
     {
         deathMenu.SetActive(false);
         BG.SetActive(true);
-        mainMenu.SetActive(true);
-        SceneManager.LoadScene(mainMenuSceneName);
+        StartCoroutine(LoadScene(mainMenuSceneName));
     }
 
 
