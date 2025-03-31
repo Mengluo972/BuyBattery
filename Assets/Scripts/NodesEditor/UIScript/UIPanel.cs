@@ -58,6 +58,17 @@ public class UIPanel : MonoBehaviour
         }
     }
 
+    
+    // //测试用
+    // private static T ParseXML<T>(string xmlContent)
+    // {
+    //     XmlSerializer serializer = new XmlSerializer(typeof(T));
+    //     using StringReader reader = new StringReader(xmlContent);
+    //     return (T)serializer.Deserialize(reader);
+    // }
+
+    
+    
     public void OnClickRead()
     {
         _fileName = inputFileNameField.text;
@@ -73,7 +84,20 @@ public class UIPanel : MonoBehaviour
             XmlSerializer s = new XmlSerializer(typeof(List<List<AStarNode>>));
             _operatingNodesData = s.Deserialize(reader) as List<List<AStarNode>>;
         }
-
+        
+        // //测试用
+        // TextAsset xmlFile = Resources.Load<TextAsset>($"MapInfo/{_fileName}");
+        // if (xmlFile!=null)
+        // {
+        //     _operatingNodesData = ParseXML<List<List<AStarNode>>>(xmlFile.text);
+        //     print("读取成功");
+        // }
+        // else
+        // {
+        //     print("数据文件不存在");
+        //     return;
+        // }
+        
         fileNameDisplay.text = _fileName + ".xml";
         inputXField.text = (_operatingNodesData.Count - 1).ToString();
         inputYField.text = (_operatingNodesData[0].Count - 1).ToString();

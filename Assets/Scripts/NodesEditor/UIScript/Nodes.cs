@@ -11,6 +11,7 @@ public class Nodes : MonoBehaviour
     private void Start()   
     {
         //获取所有节点的索引
+        //行优先存储
         _nodeButtons = new List<List<NodeButton>>();
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -39,7 +40,7 @@ public class Nodes : MonoBehaviour
     /// <param name="endX">末端X下标</param>
     /// <param name="endY">末端Y下标</param>
     public void UpdateNodes(List<List<AStarNode>> nodes,int startX,int startY,int endX,int endY)
-    {
+    {   
         // print("1");
         if (endX>nodes.Count-1)
         {
