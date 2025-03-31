@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+/// <summary>
+/// 弃用
+/// </summary>
 public class RoomNodeManager : MonoBehaviour
 {
     //使用须知：格子与格子之间的collider请保持一个角色collider的距离，防止重复检测玩家，否则会产生不可预知的bug

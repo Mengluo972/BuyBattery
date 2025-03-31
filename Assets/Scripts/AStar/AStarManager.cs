@@ -98,21 +98,21 @@ public class AStarManager
         {
             //节点添加
             //左上方
-            AddToOpenList(start.x-1,start.y+1,14,start,end);
+            // AddToOpenList(start.x-1,start.y+1,14,start,end);
             //正上方
             AddToOpenList(start.x,start.y+1,10,start,end);
             //右上方
-            AddToOpenList(start.x+1,start.y+1,14,start,end);
+            // AddToOpenList(start.x+1,start.y+1,14,start,end);
             //左方
             AddToOpenList(start.x-1,start.y,10,start,end);
             //右方
             AddToOpenList(start.x+1,start.y,10,start,end);
             //左下方
-            AddToOpenList(start.x-1,start.y-1,14,start,end);
+            // AddToOpenList(start.x-1,start.y-1,14,start,end);
             //正下方
             AddToOpenList(start.x,start.y-1,10,start,end);
             //右下方
-            AddToOpenList(start.x+1,start.y-1,14,start,end);
+            // AddToOpenList(start.x+1,start.y-1,14,start,end);
             
             //是否为死路
             if (openList.Count == 0)
