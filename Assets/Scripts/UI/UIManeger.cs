@@ -10,7 +10,7 @@ public class UIManeger : MonoBehaviour
 {
     private bool InBack;
     private bool paused;
-    private GameObject mainMenu;
+    [SerializeField] private GameObject mainMenu;
     private GameObject saveData;
     private GameObject settings;
     private GameObject loading;

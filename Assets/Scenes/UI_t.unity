@@ -1921,7 +1921,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 263614754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1976094416}
+        m_TargetAssemblyTypeName: UIManeger, Assembly-CSharp
+        m_MethodName: BackMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &263614754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2693,7 +2705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &438268107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3802,7 +3814,7 @@ GameObject:
   - component: {fileID: 562533103}
   - component: {fileID: 562533102}
   m_Layer: 5
-  m_Name: BackGameBTN
+  m_Name: BackLoadBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3871,7 +3883,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 562533103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1976094416}
+        m_TargetAssemblyTypeName: UIManeger, Assembly-CSharp
+        m_MethodName: OpenSaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &562533103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5037,7 +5061,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 965663852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1976094416}
+        m_TargetAssemblyTypeName: UIManeger, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &965663852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9976,6 +10012,7 @@ GameObject:
   - component: {fileID: 1976094414}
   - component: {fileID: 1976094413}
   - component: {fileID: 1976094412}
+  - component: {fileID: 1976094417}
   - component: {fileID: 1976094416}
   m_Layer: 5
   m_Name: MainPanel
@@ -10060,13 +10097,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 910723703}
+  - {fileID: 1706423272}
   - {fileID: 986401060}
   - {fileID: 1578530838}
+  - {fileID: 1256020351}
+  - {fileID: 1602394312}
   - {fileID: 1573121187}
   - {fileID: 2075836218}
-  - {fileID: 1602394312}
-  - {fileID: 1256020351}
-  - {fileID: 1706423272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10086,8 +10123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf0e8de5ad2c954982cf2990e71f588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
   gameSceneName: LevelTest
   mainMenuSceneName: UI_t
+--- !u!114 &1976094417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976094410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d183273a25145174a9cf7f01da0db151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976182829
 GameObject:
   m_ObjectHideFlags: 0
