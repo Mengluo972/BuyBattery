@@ -1,11 +1,14 @@
 version: 2
 tpsheetFileNames:
+- Assets/ArtRes/Fx/Fx_Stars.tpsheet
 - Assets/ArtRes/UI/UI_BuyButtery.tpsheet
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
 textureFileNames:
+- Assets/ArtRes/Fx/Fx_Stars.png
 - Assets/ArtRes/UI/UI_BuyButtery.png
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
 normalmapFileNames:
+- 
 - 
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
 enableDebugOutput: 0

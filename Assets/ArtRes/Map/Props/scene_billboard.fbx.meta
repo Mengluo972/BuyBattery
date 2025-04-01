@@ -8,7 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: billboard
-    second: {fileID: 2100000, guid: 69e4afa5ba4a5bc43882fea3a583ea20, type: 2}
+    second: {fileID: 2100000, guid: 2f4907f9217b3bf4092f615c9d9a7d60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prop0
+    second: {fileID: 2100000, guid: 2f4907f9217b3bf4092f615c9d9a7d60, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
