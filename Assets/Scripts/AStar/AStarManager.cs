@@ -86,6 +86,12 @@ public class AStarManager
         if (start.Type==Node_Type.Stop||end.Type==Node_Type.Stop)   
         {
             Debug.Log("起点或者终点有阻挡");
+            Debug.Log($"起点坐标：{start.x},{start.y} 终点坐标：{end.x},{end.y}");
+            if(start.Type==Node_Type.Stop)
+                Debug.Log("起点有阻挡");
+            if(end.Type==Node_Type.Stop)
+                Debug.Log("终点有阻挡");
+            Time.timeScale = 0;
             return null;
         }
         //清空开启和关闭列表

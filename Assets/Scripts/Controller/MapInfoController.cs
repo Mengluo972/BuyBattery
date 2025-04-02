@@ -111,7 +111,7 @@ public class MapInfoController : MonoBehaviour
                 GameObject nodeGameObject = Instantiate(prefab,position,Quaternion.identity);
                 list.Add(nodeGameObject.transform);
                 Node node = nodeGameObject.GetComponent<Node>();
-                node.AStarNode = mapNodes[j][i];
+                node.AStarNode = mapNodes[i][j];
                 if (node.AStarNode.Type==Node_Type.Stop)
                 {
                     Instantiate(cube, position, Quaternion.identity);

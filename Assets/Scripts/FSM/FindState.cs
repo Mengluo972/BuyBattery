@@ -11,6 +11,8 @@ public class FindState : IState
     private Queue<Vector3> _chaseQueue = new Queue<Vector3>();
     private Vector3 _chaseTarget = Vector3.zero;//如果出现卡顿就自定义向量类型
     private RayCastTest _rayCastTest;
+    [SerializeField]private float chaseCooldownTime = 0.5f;//追逐冷却时间
+    private float chaseCooldownTimer = 0f;
 
     public FindState(FSM manager)
     {
@@ -21,6 +23,7 @@ public class FindState : IState
 
     public void OnEnter()
     {
+        Debug.Log("进入找人状态");
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
         ReloadChaseList();
@@ -31,11 +34,13 @@ public class FindState : IState
         if (Vector3.Distance(_manager.transform.position,_chaseTarget)<0.5f)
         {
             NextChaseTarget();
+            Debug.Log("进入下一个寻找点");
         }
         //做玩家是否进入逮人距离的判断
 
         if (ChaseDistanceCheck())
         {
+            Debug.Log("通过ChaseDistanceCheck进入逮人状态");
             _manager.TransitionState(StateType.Chase);
         }
         
@@ -48,8 +53,14 @@ public class FindState : IState
         _manager.transform.LookAt(_chaseTarget);
         _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _chaseTarget,
             _parameter.chaseSpeed * Time.deltaTime);
+        chaseCooldownTimer += Time.deltaTime;
+        if (chaseCooldownTimer >= chaseCooldownTime)
+        {
+            chaseCooldownTimer = 0f;
+            ReloadChaseList();
+        }
     }
-    //
+    
     private bool ChaseDistanceCheck()
     {
         if (!_rayCastTest.IsPlayerDetected) return false;
@@ -78,7 +89,7 @@ public class FindState : IState
         Queue<Vector3> newTargetQueue = new Queue<Vector3>();
         foreach (var transform in newTransformList)
         {
-            newTargetQueue.Enqueue(new Vector3(transform.position.x, _manager.transform.position.y, transform.position.z));
+            newTargetQueue.Enqueue(new Vector3(transform.position.x, _manager.transform.position.y, transform.position.y));
             
         }
         _chaseQueue = newTargetQueue;

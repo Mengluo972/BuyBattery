@@ -2255,7 +2255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameter:
     moveSpeed: 3
-    chaseSpeed: 7
+    chaseSpeed: 1
     partrolPoints:
     - {fileID: 50022630}
     - {fileID: 539232677}
@@ -2273,7 +2273,7 @@ MonoBehaviour:
     flipWaitTimeAfter: 1
     alarmValue: 0
     alarmAccelerationSpeed: 100
-    alarmDecreaseSpeed: 30
+    alarmDecreaseSpeed: 1
     alarmMaxValue: 100
 --- !u!114 &724177384
 MonoBehaviour:
@@ -2287,9 +2287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57855f7fcbba9da4da4a6da868e5b6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycount: 10
+  rayCount: 10
   fieldOfView: 90
-  viewDistance: 25
+  viewDistance: 1
   rayRadius: 10
 --- !u!4 &724177385 stripped
 Transform:
@@ -2834,7 +2834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57855f7fcbba9da4da4a6da868e5b6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycount: 10
+  rayCount: 10
   fieldOfView: 90
   viewDistance: 25
   rayRadius: 10
@@ -4803,7 +4803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000095367, y: 0.000011444}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -548.4646, y: -304.3176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1815164637
