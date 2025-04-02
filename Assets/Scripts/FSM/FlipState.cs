@@ -64,8 +64,8 @@ public class FlipState : IState
         if (!_rayCastTest.IsPlayerDetected) return;//如果没有发现玩家，就不去执行增长警戒值的操作
         if(_parameter.alarmValue>=_parameter.alarmMaxValue)
         {
-            _manager.TransitionState(StateType.Chase);
             Debug.Log(_manager.gameObject.name + "发现玩家，进入追逐状态");
+            _manager.TransitionState(StateType.Chase);
             return;
         }
         _parameter.alarmValue += _parameter.alarmAccelerationSpeed*Time.deltaTime;

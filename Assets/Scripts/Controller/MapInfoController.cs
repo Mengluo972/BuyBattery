@@ -14,6 +14,7 @@ public class MapInfoController : MonoBehaviour
 {
     private static List<List<AStarNode>> mapNodes = new List<List<AStarNode>>();//不会随着脚本的销毁而销毁
     private static List<List<Transform>> mapTransforms = new List<List<Transform>>();//不会随着脚本的销毁而销毁
+    private static Transform _originPosition;
     
     public string mapName;
     private static int _mapX;
@@ -89,6 +90,7 @@ public class MapInfoController : MonoBehaviour
         mapTransforms.Clear();
         
         Transform originPos = GameObject.Find("OriginPosition").transform;//应放在地图左下角格子处并且是格子的中心点(x.5,0,z.5)，名字为OriginPosition
+        _originPosition = originPos;
         GameObject prefab = Resources.Load<GameObject>("MapInfo/NodePrefab/NodePrefab");//预制体放在Resources/MapInfo/NodePrefab文件夹下，名字为NodePrefab
         //测试用,障碍标记
         GameObject cube = Resources.Load<GameObject>("MapInfo/NodePrefab/Cube");
@@ -101,7 +103,7 @@ public class MapInfoController : MonoBehaviour
 
         AStarManager.Instance.InitMapInfoWithPosition(_mapX,_mapY,mapNodes);
         
-        //与数据存储同步,行优先读取
+        //与数据存储同步,列优先读取
         for (int i = 0; i <= _mapX; i++)
         {
             List<Transform> list = new List<Transform>();
@@ -121,6 +123,7 @@ public class MapInfoController : MonoBehaviour
         }
     }
     
+    //进行坐标转换，将网格坐标转换为世界坐标
     public static List<Transform> AStarNodeToTransforms(List<AStarNode> path)
     {
         List<Transform> transforms = new List<Transform>();

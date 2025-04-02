@@ -11,7 +11,7 @@ public class FindState : IState
     private Queue<Vector3> _chaseQueue = new Queue<Vector3>();
     private Vector3 _chaseTarget = Vector3.zero;//如果出现卡顿就自定义向量类型
     private RayCastTest _rayCastTest;
-    [SerializeField]private float chaseCooldownTime = 0.5f;//追逐冷却时间
+    [SerializeField]private float chaseCooldownTime = 2f;//追逐冷却时间
     private float chaseCooldownTimer = 0f;
 
     public FindState(FSM manager)
@@ -27,14 +27,27 @@ public class FindState : IState
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
         ReloadChaseList();
+        NextChaseTarget();
+        Debug.Log("当前的追逐点数量为" + _chaseQueue.Count+"当前的追逐点为" + _chaseTarget);
+        // foreach (var vector3 in _chaseQueue)
+        // {
+        //     Debug.Log(vector3);
+        // }
     }
 
     public void OnUpdate()
     {
+        if (chaseCooldownTimer >= chaseCooldownTime)
+        {
+            chaseCooldownTimer = 0f;
+            ReloadChaseList();
+            Debug.Log("重新加载追逐点");
+        }
         if (Vector3.Distance(_manager.transform.position,_chaseTarget)<0.5f)
         {
             NextChaseTarget();
             Debug.Log("进入下一个寻找点");
+            Debug.Log($"当前追逐点为{_chaseTarget}");
         }
         //做玩家是否进入逮人距离的判断
 
@@ -50,15 +63,11 @@ public class FindState : IState
             _manager.TransitionState(StateType.EndingChase);
         }
         _parameter.alarmValue-= _parameter.alarmDecreaseSpeed*Time.deltaTime;
-        _manager.transform.LookAt(_chaseTarget);
+        _manager.transform.LookAt(_parameter.playerTarget);
         _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _chaseTarget,
             _parameter.chaseSpeed * Time.deltaTime);
         chaseCooldownTimer += Time.deltaTime;
-        if (chaseCooldownTimer >= chaseCooldownTime)
-        {
-            chaseCooldownTimer = 0f;
-            ReloadChaseList();
-        }
+        
     }
     
     private bool ChaseDistanceCheck()
@@ -73,25 +82,25 @@ public class FindState : IState
     {
         // Debug.Log($"玩家位置:{_manager.parameter.playerTarget.position}");
         //如果寻路出了问题，就回来看看这里
-        // _targetPosition = MapInfoController.AStarNodeToTransforms(AStarManager.Instance.FindPath(
-        //     new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
-        //     new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
-        //         Floor(_manager.parameter.playerTarget.transform.position.z))))[1];
-        //
-        // _targetPosition.position = new Vector3(_targetPosition.position.x, _manager.transform.position.y,
-        //     _targetPosition.position.z);
-
+        Debug.Log($"敌人的位置:{Floor(_manager.transform.position.x)},{Floor(_manager.transform.position.z)}");
+        Debug.Log($"玩家的位置:{Floor(_manager.parameter.playerTarget.transform.position.x)},{Floor(_manager.parameter.playerTarget.transform.position.z)}");
         List<AStarNode> newList = AStarManager.Instance.FindPath(
             new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
             new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
                 Floor(_manager.parameter.playerTarget.transform.position.z)));
+        for (int i=0;i<newList.Count;i++)
+        {
+            Debug.Log($"第{i}个节点信息 x:{newList[i].x},y:{newList[i].y}");
+        }
         List<Transform> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
         Queue<Vector3> newTargetQueue = new Queue<Vector3>();
         foreach (var transform in newTransformList)
         {
-            newTargetQueue.Enqueue(new Vector3(transform.position.x, _manager.transform.position.y, transform.position.y));
+            newTargetQueue.Enqueue(new Vector3(transform.position.x, _manager.transform.position.y, transform.position.z));
             
         }
+        // _chaseQueue.Clear();
+        newTargetQueue.Dequeue();//出掉一个队列节点试图减少回头的情况
         _chaseQueue = newTargetQueue;
     }
 
@@ -102,12 +111,22 @@ public class FindState : IState
             _manager.TransitionState(StateType.EndingChase);
             Debug.Log("失去目标,进入结束追逐状态");
         }
-        _chaseTarget = _chaseQueue.Dequeue();
+
+        Vector3 rawData = new();
+        if (!_chaseQueue.TryDequeue(out rawData))
+        {
+            Debug.Log("队列为空");
+            return;
+        }
+        Debug.Log($"节点的信息:x:{rawData.x},y:{rawData.y},z:{rawData.z}");
+        _chaseTarget = new Vector3(rawData.x, rawData.y, rawData.z);
     }
     private float Floor(float num)
     {
-        if (num > 0) return (int)num + 0.5f;
-        return (int)num - 0.5f;
+        // if (num > 0) return (int)num + 0.5f;
+        // return (int)num - 0.5f;
+        if (num > 0) return (int)num;
+        return (int)num - 1;
     }
 
     public void OnExit()

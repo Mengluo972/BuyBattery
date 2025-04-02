@@ -59,7 +59,7 @@ public class ChaseState : IState
         //     _manager.TransitionState(StateType.Find);
         //     Debug.Log("通过MapInfoController.BarrierCheck进入追人状态");
         // }
-        
+
         _parameter.alarmValue-= _parameter.alarmDecreaseSpeed*Time.deltaTime;
         _manager.transform.LookAt(_parameter.playerTarget);
         _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _parameter.playerTarget.position,
@@ -74,21 +74,14 @@ public class ChaseState : IState
     //寻路逻辑:发现玩家后，获取玩家坐标，在玩家与该敌人之间进行一次寻路，将最近的一个寻路点添加到下一个寻路目标点，每隔一段时间再次获取玩家坐标，进行一次寻路
     //直到接触到玩家跳出状态才会停止寻路
     
-    
-    
     //需要做将AStarNode转换为坐标的工作,大概在MapInfoController中实现
     //进入状态时调用，只调用一次
     //如果状态更改记得取消
     //不能直接传坐标
-    
-    private float Floor(float num)
-    {
-        if (num > 0) return (int)num + 0.5f;
-        return (int)num - 0.5f;
-    }
  
     public void OnExit()
     {
+        Debug.Log("退出逮人状态");
         _rayCastTest.IsChaseTracing = false;
     }
 
