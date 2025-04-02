@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scene_iron1
-  m_Shader: {fileID: 4800000, guid: 4c1e9e16b44dd4147bc77ede70a3bc6c, type: 3}
+  m_Name: Character_enemy_G
+  m_Shader: {fileID: 4800000, guid: 71ff0a198d60cea4389eb301306867b8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,16 +23,21 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _ScreenTex:
-        m_Texture: {fileID: 2800000, guid: a600c17017efc5f46afba8a71b99f2e6, type: 3}
-        m_Scale: {x: 1.5, y: 1.5}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 1328b18f21bd3374a999b160efb05b2e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _rampTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ScreenPower: 0.72
-    - _ShadowRange: 0.56
-    - _ShadowSmooth: 0.19
+    - _OutlineWidth: 0.42
+    - _ShadowRange: 0.382
+    - _ShadowSmooth: 0.2
     m_Colors:
-    - _BaseColor: {r: 0.84276724, g: 0.84276724, b: 0.84276724, a: 1}
-    - _ShadowColor: {r: 0.68094605, g: 0.69078785, b: 0.69182384, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 0.021557644, g: 0.036833756, b: 0.06289297, a: 1}
+    - _ShadowColor: {r: 0.69803923, g: 0.72922343, b: 0.8, a: 1}
   m_BuildTextureStacks: []
