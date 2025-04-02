@@ -1,7 +1,8 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,10 +17,13 @@ public class UIManeger : MonoBehaviour
     private GameObject loading;
     private GameObject deathMenu;
     private GameObject stopMenu;
-    private GameObject BG;//BGÍ¬Ê±ÓÃÓÚÅÐ¶ÏÊÇ·ñ´¦ÓÚÓÎÏ·ÖÐ
+    private GameObject saveTip;
+    private GameObject BG;//BGåŒæ—¶ç”¨äºŽåˆ¤æ–­æ˜¯å¦å¤„äºŽæ¸¸æˆä¸­
 
     public string gameSceneName;
     public string mainMenuSceneName;
+
+    public float saveTipsTime;
 
     private static GameObject instance;
 
@@ -43,6 +47,17 @@ public class UIManeger : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        CoffeeMachine.CoffeeSave += () => ShowSaveTip();
+    }
+
+    private void OnDisable()
+    {
+        CoffeeMachine.CoffeeSave -= () => ShowSaveTip();  
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -57,6 +72,7 @@ public class UIManeger : MonoBehaviour
         loading = transform.Find("Loading").gameObject;
         stopMenu = transform.Find("Stop").gameObject;
         deathMenu = transform.Find("Death").gameObject;
+        saveTip = transform.Find("SaveTips").gameObject;
         BG = transform.Find("BG").gameObject;
     }
 
@@ -78,7 +94,7 @@ public class UIManeger : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("ÏÈµÈÒ»ÏÂ£¬ÎÒÎÊÄã¸öÊÂ");
+        Debug.Log("å…ˆç­‰ä¸€ä¸‹ï¼Œæˆ‘é—®ä½ ä¸ªäº‹");
         Time.timeScale = Convert.ToInt32(paused);
         paused = !paused;
         stopMenu.SetActive(paused);
@@ -120,7 +136,7 @@ public class UIManeger : MonoBehaviour
     {
         Slider slider = loading.GetComponentInChildren<Slider>();
 
-        Debug.Log("±í¹ø¿ªÊ¼¼ÓÔØÁËà¸");
+        Debug.Log("è¡¨é”…å¼€å§‹åŠ è½½äº†å–”");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;
 
@@ -133,7 +149,7 @@ public class UIManeger : MonoBehaviour
 
             if (persent >= 1f)
             {
-                Debug.Log("±í¹ø¼ÓÔØ³É¹¦ÁËà¸");
+                Debug.Log("è¡¨é”…åŠ è½½æˆåŠŸäº†å–”");
                 asyncLoad.allowSceneActivation = true;
                 loading.SetActive(false);
                 BG.SetActive(false);
@@ -142,6 +158,17 @@ public class UIManeger : MonoBehaviour
 
             yield return null;
         }
+
+    }
+
+    private async UniTaskVoid ShowSaveTip()
+    {
+        saveTip.SetActive(true);
+        float t = Time.time;
+
+        await UniTask.WaitUntil(()=>(Time.time-t>saveTipsTime));
+
+        saveTip.SetActive(false);
 
     }
 
