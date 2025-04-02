@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.Serialization;
 /// <summary>
-/// 实现地图信息的读取和寻路管理
+/// 实现地图信息的读取和寻路管理,所有地图信息也存在该类中，AStarManager只提供FindPath方法
 /// </summary>
 public class MapInfoController : MonoBehaviour
 {
@@ -81,7 +82,11 @@ public class MapInfoController : MonoBehaviour
             print("数据文件不存在");
             return;
         }
-
+        
+        //考虑到使用了Add方法做信息清理
+        mapTransforms.Clear();
+        mapNodes.Clear();
+        
         Transform originPos = GameObject.Find("OriginPosition").transform;//应放在地图左下角格子处并且是格子的中心点(x.5,0,z.5)，名字为OriginPosition
         GameObject prefab = Resources.Load<GameObject>("MapInfo/NodePrefab/NodePrefab");//预制体放在Resources/MapInfo/NodePrefab文件夹下，名字为NodePrefab
         //测试用,障碍标记
@@ -126,7 +131,11 @@ public class MapInfoController : MonoBehaviour
 
         return transforms;
     }
-    
+
+    public static bool BarrierCheck(List<AStarNode> path)
+    {
+        return path.All(node => node.Type != Node_Type.Stop);
+    }
     void Update()
     {
         

@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-
+/// <summary>
+/// 逮人状态
+/// </summary>
 public class ChaseState : IState
 {
     private FSM _manager;
     private Parameter _parameter;
     private TriggerListener _triggerListener;
     private Transform _targetPosition;
+
+    private float _chaseCooldownTime = 0.5f;//追逐冷却时间
+    private float _chaseTimer = 0f;//追逐冷却计时器
     // private CancellationTokenSource _cts;
     
     public ChaseState(FSM manager)
@@ -38,8 +43,11 @@ public class ChaseState : IState
         _manager.transform.LookAt(_targetPosition);
         _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _targetPosition.position,
             _parameter.chaseSpeed * Time.deltaTime);
-        if (Vector3.Distance(_manager.transform.position,_targetPosition.position)<0.5f)
+        
+        _chaseTimer += Time.deltaTime;
+        if (Vector3.Distance(_manager.transform.position,_targetPosition.position)<0.5f&&_chaseTimer >= _chaseCooldownTime)
         {
+            _chaseTimer = 0f;
             ChangeChaseTarget();
         }
     }
@@ -54,7 +62,7 @@ public class ChaseState : IState
     //不能直接传坐标
     private void ChangeChaseTarget()
     {
-        Debug.Log($"玩家位置:{_manager.parameter.playerTarget.position}");
+        // Debug.Log($"玩家位置:{_manager.parameter.playerTarget.position}");
         //如果寻路出了问题，就回来看看这里
         _targetPosition = MapInfoController.AStarNodeToTransforms(AStarManager.Instance.FindPath(
             new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),

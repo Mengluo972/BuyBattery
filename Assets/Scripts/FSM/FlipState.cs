@@ -22,7 +22,8 @@ public class FlipState : IState
     public void OnEnter()
     {
         _flipWaitStage = 0;
-        _rayCastTest.IsTracing = true;
+        _rayCastTest.IsPatrolTracing = true;
+        _rayCastTest.IsChaseTracing = false;
         // Debug.Log("进入转向状态");
     }
 
@@ -59,7 +60,8 @@ public class FlipState : IState
                 _manager.TransitionState(StateType.Idle);
                 break;
         }
-        if (!_rayCastTest.IsPlayerDetected)return;
+
+        if (!_rayCastTest.IsPlayerDetected) return;//如果没有发现玩家，就不去执行增长警戒值的操作
         if(_parameter.alarmValue>=_parameter.alarmMaxValue)
         {
             _manager.TransitionState(StateType.Chase);
@@ -77,7 +79,7 @@ public class FlipState : IState
 
     public void OnExit()
     {
-        _rayCastTest.IsTracing = false;
+        _rayCastTest.IsPatrolTracing = false;
         // Debug.Log("退出转向状态");
     }
 

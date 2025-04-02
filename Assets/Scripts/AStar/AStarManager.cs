@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 不要给这个类添加新的对外方法，仅提供FindPath方法
+/// </summary>
 public class AStarManager
 {
     private static AStarManager instance;
@@ -47,7 +49,12 @@ public class AStarManager
             }
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="maxX">X轴格子坐标</param>
+    /// <param name="maxY">Y轴格子坐标</param>
+    /// <param name="nodes"></param>
     public void InitMapInfoWithPosition(int maxX, int maxY, List<List<AStarNode>> nodes)
     {
         mapH = maxY+1;
@@ -64,8 +71,6 @@ public class AStarManager
         }
     }
     
-    
-
     public List<AStarNode> FindPath(Vector2 startPos, Vector2 endPos)
     {
         if (startPos.x<0||startPos.x>=mapW||endPos.x<0||endPos.x>=mapW||
