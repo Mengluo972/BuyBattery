@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableTrigger : MonoBehaviour
 {
-    private bool inTrigger;
+    [SerializeField]private bool inTrigger;
     private iInteractable actionItem;
 
     public KeyCode actionKey;
@@ -23,23 +23,32 @@ public class InteractableTrigger : MonoBehaviour
             if (Input.GetKeyDown(actionKey))
             {
                 actionItem.TriggerAction();
+                inTrigger = false;
+                actionItem.inTriggerAnimation(false);
             }
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Interactable"))
         {
             inTrigger = true;
+            actionItem.inTriggerAnimation(false);
             actionItem = other.GetComponent<iInteractable>();
+            actionItem.inTriggerAnimation(true);
         }
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
-        inTrigger = false;
+        if (collision.GetComponent<iInteractable>() == actionItem)
+        {
+            inTrigger = false;
+            actionItem.inTriggerAnimation(false);
+        }
+        
     }
 
 }

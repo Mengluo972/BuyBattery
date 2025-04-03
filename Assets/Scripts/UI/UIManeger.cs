@@ -165,10 +165,12 @@ public class UIManeger : MonoBehaviour
     {
         saveTip.SetActive(true);
         float t = Time.time;
+        Debug.Log("表锅savetip来了喔？");
 
         await UniTask.WaitUntil(()=>(Time.time-t>saveTipsTime));
 
         saveTip.SetActive(false);
+        Debug.Log("表锅savetip走了喔？");
 
     }
 
