@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     //道具类相关信号量
     [NonSerialized]public bool IsMoveAble = true;
     [NonSerialized]public bool IsRunable = true;
-    
+    [NonSerialized]public bool IsDisguised = false;
+
     private void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody>();
@@ -120,4 +121,26 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    public void SetMoveAble(bool moveAble)
+    {
+        IsMoveAble = moveAble;
+    }
+
+    public void SetRunAble(bool runAble)
+    {
+        IsRunable = runAble;
+    }
+
+    public void DisguisedItem()//假设减值的数值是负数
+    {
+        IsDisguised = !IsDisguised;
+        SetRunAble(!IsDisguised);
+        _curMaxVelocity += reduceVelocity * Convert.ToInt32(IsDisguised);
+    }
+
+    public void EasterEggItem(GameObject easterEgg)//通过交互物品输入彩蛋是哪个
+    {
+        easterEgg.SetActive(true);
+    }
+
 }

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 不要给这个类添加新的对外方法，仅提供FindPath方法
+/// </summary>
 public class AStarManager
 {
     private static AStarManager instance;
@@ -47,7 +49,12 @@ public class AStarManager
             }
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="maxX">X轴格子坐标</param>
+    /// <param name="maxY">Y轴格子坐标</param>
+    /// <param name="nodes"></param>
     public void InitMapInfoWithPosition(int maxX, int maxY, List<List<AStarNode>> nodes)
     {
         mapH = maxY+1;
@@ -63,9 +70,7 @@ public class AStarManager
             }
         }
     }
-    
-    
-
+    //这个向量的坐标一定要是处理后的数据，使用原始数据会出错
     public List<AStarNode> FindPath(Vector2 startPos, Vector2 endPos)
     {
         if (startPos.x<0||startPos.x>=mapW||endPos.x<0||endPos.x>=mapW||
@@ -81,6 +86,12 @@ public class AStarManager
         if (start.Type==Node_Type.Stop||end.Type==Node_Type.Stop)   
         {
             Debug.Log("起点或者终点有阻挡");
+            Debug.Log($"起点坐标：{start.x},{start.y} 终点坐标：{end.x},{end.y}");
+            if(start.Type==Node_Type.Stop)
+                Debug.Log("起点有阻挡");
+            if(end.Type==Node_Type.Stop)
+                Debug.Log("终点有阻挡");
+            Time.timeScale = 0;
             return null;
         }
         //清空开启和关闭列表
@@ -98,21 +109,21 @@ public class AStarManager
         {
             //节点添加
             //左上方
-            // AddToOpenList(start.x-1,start.y+1,14,start,end);
+            AddToOpenList(start.x-1,start.y+1,14,start,end);
             //正上方
             AddToOpenList(start.x,start.y+1,10,start,end);
             //右上方
-            // AddToOpenList(start.x+1,start.y+1,14,start,end);
+            AddToOpenList(start.x+1,start.y+1,14,start,end);
             //左方
             AddToOpenList(start.x-1,start.y,10,start,end);
             //右方
             AddToOpenList(start.x+1,start.y,10,start,end);
             //左下方
-            // AddToOpenList(start.x-1,start.y-1,14,start,end);
+            AddToOpenList(start.x-1,start.y-1,14,start,end);
             //正下方
             AddToOpenList(start.x,start.y-1,10,start,end);
             //右下方
-            // AddToOpenList(start.x+1,start.y-1,14,start,end);
+            AddToOpenList(start.x+1,start.y-1,14,start,end);
             
             //是否为死路
             if (openList.Count == 0)

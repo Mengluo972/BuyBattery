@@ -3,7 +3,17 @@ guid: 71e69f4af74f8764c8538501ec9ee538
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron1
+    second: {fileID: 2100000, guid: 63ff447235f569445a433fb028cebc8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: screen
+    second: {fileID: 2100000, guid: 8423e2f3ff4636346ae8aea61bbbd4d7, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
