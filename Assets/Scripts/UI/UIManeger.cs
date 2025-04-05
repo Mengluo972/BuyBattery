@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,12 +24,19 @@ public class UIManeger : MonoBehaviour
     private GameObject stopMenu;
     private GameObject saveTip;
     private GameObject BG;//BG同时用于判断是否处于游戏中
-    private GameObject uIModel;
-    [Header("需要设置的内容")]
+    private GameObject oldBG;
+    
+    //[Header("拖入模型UI")]
+    //public GameObject uIModel;
+    [Header("输入跳转场景名")]
     public string gameSceneName;
     public string mainMenuSceneName;
-
+    [Header("输入UI显示时间")]
     public float saveTipsTime;
+    public float MTS;
+    public float MTSD;
+    public float MTNG;
+
 
     private static GameObject instance;
 
@@ -80,17 +89,22 @@ public class UIManeger : MonoBehaviour
         deathMenu = transform.Find("Death").gameObject;
         saveTip = transform.Find("SaveTips").gameObject;
         BG = transform.Find("UI_BuyButtery_BG").gameObject;
-        uIModel = transform.Find("UIModel").gameObject;
+        oldBG = transform.Find("BG").gameObject;
     }
 
     public void OpenSaveData()
     {
-        WaitForBack(saveData);
+        WaitForBack(saveData,MTSD);
     }
 
     public void OpenSetting()
     {
-        WaitForBack(settings);
+        WaitForBack(settings,MTS);
+    }
+
+    public void DeathLoad()
+    {
+        OpenDeathLoad();
     }
 
     public void StartGame()
@@ -116,60 +130,108 @@ public class UIManeger : MonoBehaviour
     public void BackMainMenu()
     {
         deathMenu.SetActive(false);
-        BG.SetActive(true);
+        stopMenu.SetActive(false);
+        oldBG.SetActive(true);
         StartCoroutine(LoadScene(mainMenuSceneName));
+        //ceneManager.LoadScene(mainMenuSceneName);
     }
 
-
-
-    private async UniTaskVoid WaitForBack(GameObject[] tagetGO)
+    private async UniTaskVoid OpenDeathLoad()
     {
         InBack = false;
-        mainMenu.SetActive(false);
-        tagetGO[0].SetActive(true);
-        tagetGO[1].SetActive(true);
+        saveData[0].SetActive(true);
 
+        Button backButton = saveData[0].transform.Find("BackBTN").GetComponent<Button>();
+        backButton.onClick.RemoveAllListeners();
+        backButton.onClick.AddListener(() => { InBack = true; });
+
+        await UniTask.WaitUntil(() => InBack || Input.GetKeyDown(KeyCode.Escape));
+
+        saveData[0].SetActive(false);
+    }
+
+    private async UniTaskVoid WaitForBack(GameObject[] tagetGO,float setTime)
+    {
+        mainMenu.SetActive(false);
+        tagetGO[1].SetActive(true);
+        InBack = false;
+
+
+        await UniTask.Delay((int)setTime*1000);
+        
+        tagetGO[0].SetActive(true);
+        
         Button backButton = tagetGO[0].transform.Find("BackBTN").GetComponent<Button>();
         backButton.onClick.RemoveAllListeners();
         backButton.onClick.AddListener(() => { InBack = true; });
 
         await UniTask.WaitUntil(() => InBack || Input.GetKeyDown(KeyCode.Escape));
 
-        mainMenu.SetActive(BG.activeSelf);
+        PlayableDirector tagetGOAni = tagetGO[1].GetComponent<PlayableDirector>();
+        
+        tagetGOAni.time = setTime;
+        tagetGOAni.playableGraph.GetRootPlayable(0).SetSpeed(-1);
+        tagetGOAni.Play();
         tagetGO[0].SetActive(false);
+
+        await UniTask.Delay((int)setTime * 1000);
+
+        mainMenu.SetActive(BG.activeSelf);
+        tagetGO[1].SetActive(false);
+        
     }
 
 
     IEnumerator LoadScene(string sceneName)
     {
-        uIModel.SetActive(false);
-        Slider slider = loading[0].GetComponentInChildren<Slider>();
+        Time.timeScale = 1f;
+        if (BG.activeSelf)
+        {
+            loading[1].SetActive(true);
 
+            yield return new WaitForSeconds(MTNG);
+
+            loading[0].SetActive(true);
+            Slider slider = loading[0].GetComponentInChildren<Slider>();
+
+            yield return StartCoroutine(FakeLoad(slider, 0.4f, 0, 0.7f));//总时间，初始值和终值
+
+            yield return StartCoroutine(FakeLoad(slider, 0.2f, 0.7f, 1f));
+        }
 
         Debug.Log("表锅开始加载了喔");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;
 
-        loading[0].SetActive(true);
-
-        while (!asyncLoad.isDone)
+        float persent = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+        while (persent < 1f)
         {
-            float persent = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            slider.value = persent;
-
-            if (persent >= 1f)
-            {
-                Debug.Log("表锅加载成功了喔");
-                asyncLoad.allowSceneActivation = true;
-                loading[0].SetActive(false);
-                BG.SetActive(false);
-                Time.timeScale = 1f;
-            }
+            persent = Mathf.Clamp01(asyncLoad.progress / 0.9f);
 
             yield return null;
         }
+        Debug.Log("表锅加载成功了喔");
 
+        asyncLoad.allowSceneActivation = true;
+        loading[0].SetActive(false);
+        loading[1].SetActive(false);
+        BG.SetActive(false);
+        
     }
+
+    IEnumerator FakeLoad(Slider slider,float faket,float startValue,float endValue)
+    {
+        float tt = 0;
+        slider.value = startValue;
+        while (tt < faket)
+        {
+            slider.value = Mathf.Lerp(startValue, endValue, tt / faket);
+            tt += Time.deltaTime;
+            yield return null;
+        }
+        slider.value = endValue;
+    }
+
 
     private async UniTaskVoid ShowSaveTip()
     {
