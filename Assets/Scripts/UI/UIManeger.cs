@@ -19,7 +19,7 @@ public class UIManeger : MonoBehaviour
     private GameObject stopMenu;
     private GameObject saveTip;
     private GameObject BG;//BG同时用于判断是否处于游戏中
-
+    [Header("需要设置的内容")]
     public string gameSceneName;
     public string mainMenuSceneName;
 
@@ -57,11 +57,13 @@ public class UIManeger : MonoBehaviour
         CoffeeMachine.CoffeeSave -= () => ShowSaveTip();  
     }
 
-
+    [Header("紫砂键")]
+    public KeyCode deathKey;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !deathMenu.activeSelf && !BG.activeSelf) { Pause(); }
+        if (Input.GetKeyDown(deathKey)){Dead();}
     }
 
     private void FindGameObject()

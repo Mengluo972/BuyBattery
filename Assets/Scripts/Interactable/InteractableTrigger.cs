@@ -6,9 +6,8 @@ public class InteractableTrigger : MonoBehaviour
 {
     [SerializeField]private bool inTrigger;
     private iInteractable actionItem;
-
+    [Header("交互键位")]
     public KeyCode actionKey;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +33,10 @@ public class InteractableTrigger : MonoBehaviour
         if (other.CompareTag("Interactable"))
         {
             inTrigger = true;
-            actionItem.inTriggerAnimation(false);
+            if (actionItem != null)
+            {
+                actionItem.inTriggerAnimation(false);
+            }
             actionItem = other.GetComponent<iInteractable>();
             actionItem.inTriggerAnimation(true);
         }
