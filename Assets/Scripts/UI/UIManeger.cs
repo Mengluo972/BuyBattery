@@ -12,13 +12,17 @@ public class UIManeger : MonoBehaviour
     private bool InBack;
     private bool paused;
     [SerializeField] private GameObject mainMenu;
-    private GameObject saveData;
-    private GameObject settings;
-    private GameObject loading;
+    private GameObject[] saveData;
+    private GameObject saveDataAni;
+    private GameObject[] settings;
+    private GameObject settingsAni;
+    private GameObject[] loading;
+    private GameObject loadingAni;
     private GameObject deathMenu;
     private GameObject stopMenu;
     private GameObject saveTip;
     private GameObject BG;//BG同时用于判断是否处于游戏中
+    private GameObject uIModel;
     [Header("需要设置的内容")]
     public string gameSceneName;
     public string mainMenuSceneName;
@@ -69,13 +73,14 @@ public class UIManeger : MonoBehaviour
     private void FindGameObject()
     {
         mainMenu = transform.Find("MainMenu").gameObject;
-        saveData = transform.Find("SaveData").gameObject;
-        settings = transform.Find("Settings").gameObject;
-        loading = transform.Find("Loading").gameObject;
+        saveData = new GameObject[2] { transform.Find("SaveData").gameObject, transform.Find("TimeLIne_UI_MtoSD").gameObject };
+        settings = new GameObject[2] { transform.Find("Settings").gameObject, transform.Find("TimeLIne_UI_MtoS").gameObject };
+        loading = new GameObject[2] { transform.Find("Loading").gameObject, transform.Find("TimeLIne_UI_MtoNG").gameObject };
         stopMenu = transform.Find("Stop").gameObject;
         deathMenu = transform.Find("Death").gameObject;
         saveTip = transform.Find("SaveTips").gameObject;
-        BG = transform.Find("BG").gameObject;
+        BG = transform.Find("UI_BuyButtery_BG").gameObject;
+        uIModel = transform.Find("UIModel").gameObject;
     }
 
     public void OpenSaveData()
@@ -117,32 +122,35 @@ public class UIManeger : MonoBehaviour
 
 
 
-    private async UniTaskVoid WaitForBack(GameObject tagetGO)
+    private async UniTaskVoid WaitForBack(GameObject[] tagetGO)
     {
         InBack = false;
         mainMenu.SetActive(false);
-        tagetGO.SetActive(true);
+        tagetGO[0].SetActive(true);
+        tagetGO[1].SetActive(true);
 
-        Button backButton = tagetGO.transform.Find("BackBTN").GetComponent<Button>();
+        Button backButton = tagetGO[0].transform.Find("BackBTN").GetComponent<Button>();
         backButton.onClick.RemoveAllListeners();
         backButton.onClick.AddListener(() => { InBack = true; });
 
         await UniTask.WaitUntil(() => InBack || Input.GetKeyDown(KeyCode.Escape));
 
         mainMenu.SetActive(BG.activeSelf);
-        tagetGO.SetActive(false);
+        tagetGO[0].SetActive(false);
     }
 
 
     IEnumerator LoadScene(string sceneName)
     {
-        Slider slider = loading.GetComponentInChildren<Slider>();
+        uIModel.SetActive(false);
+        Slider slider = loading[0].GetComponentInChildren<Slider>();
+
 
         Debug.Log("表锅开始加载了喔");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;
 
-        loading.SetActive(true);
+        loading[0].SetActive(true);
 
         while (!asyncLoad.isDone)
         {
@@ -153,7 +161,7 @@ public class UIManeger : MonoBehaviour
             {
                 Debug.Log("表锅加载成功了喔");
                 asyncLoad.allowSceneActivation = true;
-                loading.SetActive(false);
+                loading[0].SetActive(false);
                 BG.SetActive(false);
                 Time.timeScale = 1f;
             }
