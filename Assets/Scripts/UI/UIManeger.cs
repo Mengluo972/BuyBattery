@@ -157,7 +157,7 @@ public class UIManeger : MonoBehaviour
         InBack = false;
 
 
-        await UniTask.Delay((int)setTime*1000);
+        await UniTask.Delay((int)(setTime*1000));
         
         tagetGO[0].SetActive(true);
         
@@ -174,7 +174,7 @@ public class UIManeger : MonoBehaviour
         tagetGOAni.Play();
         tagetGO[0].SetActive(false);
 
-        await UniTask.Delay((int)setTime * 1000);
+        await UniTask.Delay((int)(setTime * 1000));
 
         mainMenu.SetActive(BG.activeSelf);
         tagetGO[1].SetActive(false);
