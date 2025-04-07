@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineWidth: 1.38
+    - _OutlineWidth: 0.27
     - _ShadowRange: 0.382
     - _ShadowSmooth: 0.2
     m_Colors:

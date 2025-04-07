@@ -24,13 +24,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _ScreenTex:
-        m_Texture: {fileID: 2800000, guid: 8010e2a9b555d6b4da36e07b96015bc0, type: 3}
-        m_Scale: {x: 1.5, y: 1.5}
+        m_Texture: {fileID: 2800000, guid: a600c17017efc5f46afba8a71b99f2e6, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _ScreenPower: 0.72
-    - _ShadowRange: 0.276
+    - _ShadowRange: 0.35
     - _ShadowSmooth: 0.19
     m_Colors:
     - _BaseColor: {r: 0.627451, g: 0.61960787, b: 0.61960787, a: 1}
