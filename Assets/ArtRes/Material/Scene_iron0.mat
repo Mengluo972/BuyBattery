@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ScreenPower: 0.72
-    - _ShadowRange: 0.276
+    - _ShadowRange: 0.25
     - _ShadowSmooth: 0.19
     m_Colors:
     - _BaseColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}

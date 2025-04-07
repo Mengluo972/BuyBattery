@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30ea512e0ebc8bb4a9648e14402af75c
+guid: 8a299cc844e8f41449122fe7e6dc3261
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: billboard
-    second: {fileID: 2100000, guid: 69e4afa5ba4a5bc43882fea3a583ea20, type: 2}
+      name: scene_P
+    second: {fileID: 2100000, guid: 2f4907f9217b3bf4092f615c9d9a7d60, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: prop0
+      name: scene_PotatoBody
     second: {fileID: 2100000, guid: 2f4907f9217b3bf4092f615c9d9a7d60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scene_PotatoCloth
+    second: {fileID: 2100000, guid: 465d0328f6a5fba499df22bf9976030e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scene_PotatoTrousers
+    second: {fileID: 2100000, guid: b586cf85c8394e047b4e9b4be5452983, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +55,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.3
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -100,14 +110,14 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1.3
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
