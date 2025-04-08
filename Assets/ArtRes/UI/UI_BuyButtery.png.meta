@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_BuyBattery_DeathB
+      name: UI_BuyButtery_DeathB
       rect:
         serializedVersion: 2
         x: 1517
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed9a14baee42e6b49969d72ee45bd19a
-      internalID: -498481133
+      spriteID: cb360fd8d994f104e82725bf2dfcaf66
+      internalID: 896676325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_DeathC
+      name: UI_BuyButtery_DeathC
       rect:
         serializedVersion: 2
         x: 323
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 284a06bc1e10f7540b9d84cab52151b0
-      internalID: 2008677400
+      spriteID: a2a64ee15da9bbf429a27164fbeb6139
+      internalID: -125968902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_DeathI
+      name: UI_BuyButtery_DeathI
       rect:
         serializedVersion: 2
         x: 639
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a74a7552ae478d498decf25a69dbc59
-      internalID: 1154040880
+      spriteID: 53908fbb147ab28419ef3dc9afd53f32
+      internalID: 1873041367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_DeathM
+      name: UI_BuyButtery_DeathM
       rect:
         serializedVersion: 2
         x: 323
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3996e0d638142541830b5de42323b00
-      internalID: 1898838387
+      spriteID: 1ba5fecae6487894ab7e631a1e8207e7
+      internalID: -1421875448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_MenuB
+      name: UI_BuyButtery_MenuB
       rect:
         serializedVersion: 2
         x: 23
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1793e39825d1ada488d8912d49266958
-      internalID: 945104827
+      spriteID: e2b382cab2976134eb7bfb492fe2876b
+      internalID: -936466359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_MenuC
+      name: UI_BuyButtery_MenuC
       rect:
         serializedVersion: 2
         x: 23
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb310e72e29de324d80f40bff6d1e606
-      internalID: 381098148
+      spriteID: 694789f62e0c3ff45bd1062e58e3aea5
+      internalID: -1382125152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_MenuI
+      name: UI_BuyButtery_MenuI
       rect:
         serializedVersion: 2
         x: 955
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6a2feaf35535354bb2346ad43e4ff76
-      internalID: -660835654
+      spriteID: 45a648e16eacf6a4894b3da577038e49
+      internalID: 810298445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_MenuM
+      name: UI_BuyButtery_MenuM
       rect:
         serializedVersion: 2
         x: 1517
@@ -258,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e523eb52a64e5e44ab510c2ee01f8d74
-      internalID: 1743691840
+      spriteID: 3751ef831c62d8340a409d77d8295f04
+      internalID: 295476139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_NewGameBTN
+      name: UI_BuyButtery_NewGameBTN
       rect:
         serializedVersion: 2
         x: 813
@@ -279,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44da0610494517f4ca72f3e56d2152ae
-      internalID: -930250614
+      spriteID: e9e4e3cd780967b43814e7877a72991f
+      internalID: -1894986351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_QuitGameBTN
+      name: UI_BuyButtery_QuitGameBTN
       rect:
         serializedVersion: 2
         x: 1833
@@ -300,14 +300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8927a171a06488a48a6f6c8ed0c87c9f
-      internalID: 1935964215
+      spriteID: 2e47323801c9d324e8a06436cb77e9b2
+      internalID: 654162496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_SaveDataBTN
+      name: UI_BuyButtery_SaveDataBTN
       rect:
         serializedVersion: 2
         x: 1355
@@ -321,14 +321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c84c73274644d841883edf09e64bc53
-      internalID: -1869652284
+      spriteID: dafd66f8a96a0bf4d9b9ec5fa80b8d8b
+      internalID: 1704141352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_SaveDataIcon
+      name: UI_BuyButtery_SaveDataIcon
       rect:
         serializedVersion: 2
         x: 1979
@@ -342,14 +342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58eb14a5f864b8e4c976de8f6df9103d
-      internalID: -422912204
+      spriteID: 3abfea23ef14805439ab7fff3ebf63e6
+      internalID: -469821795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_SaveDataPanel
+      name: UI_BuyButtery_SaveDataPanel
       rect:
         serializedVersion: 2
         x: 23
@@ -363,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 479d0b6d6de6e1a49bf57e5d9aefd0a0
-      internalID: -115323458
+      spriteID: 95b68e4a314be0544b26f34378272795
+      internalID: -1348293083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_SettingsBTN
+      name: UI_BuyButtery_SettingsBTN
       rect:
         serializedVersion: 2
         x: 1517
@@ -384,14 +384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df640bcfd36f7d94abf896050f9170f7
-      internalID: 1805576230
+      spriteID: 83fb4f5c381b0074ebb6714c1d840edd
+      internalID: -624236676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_Slider0
+      name: UI_BuyButtery_Slider0
       rect:
         serializedVersion: 2
         x: 23
@@ -400,19 +400,19 @@ TextureImporter:
         height: 58
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 22, y: 16, z: 23, w: 17}
+      border: {x: 14, y: 16, z: 15, w: 14}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 650f37782999a8841bc67ae6cb01bbd6
-      internalID: -60136651
+      spriteID: 1cf81036d7abb0c46be877b15553e2a4
+      internalID: 62654043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_Slider1
+      name: UI_BuyButtery_Slider1
       rect:
         serializedVersion: 2
         x: 23
@@ -421,19 +421,19 @@ TextureImporter:
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 11, y: 10, z: 10, w: 10}
+      border: {x: 10, y: 9, z: 9, w: 9}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0b2c2e0755db114e8e2aa7d4ea38d1c
-      internalID: 1104105516
+      spriteID: b1226ec76380aea46a5761a0cc56673c
+      internalID: 587375643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_SliderHandle
+      name: UI_BuyButtery_SliderHandle
       rect:
         serializedVersion: 2
         x: 1833
@@ -447,14 +447,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 899439bf879d1e6448b14424da3adeac
-      internalID: 1586141657
+      spriteID: 91c3d52c967e0c343a8a8057a6adeba3
+      internalID: -1416045191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_StopIcon
+      name: UI_BuyButtery_StopIcon
       rect:
         serializedVersion: 2
         x: 1517
@@ -468,14 +468,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6dae8baf55e1847ba34577b50eb5e1
-      internalID: 1993528482
+      spriteID: e6f6c16ac90abf647aa0bf348d0dd066
+      internalID: 291959737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_BuyBattery_UsingPhoneIcon
+      name: UI_BuyButtery_Title
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 663
+        width: 741
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e168eaea1292c7c4796016700acf4a27
+      internalID: 732267740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_BuyButtery_UsingPhoneIcon
       rect:
         serializedVersion: 2
         x: 1867
@@ -489,8 +510,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3eb4a2d5b0086048bfcbe270227487e
-      internalID: 315236583
+      spriteID: fb9c02cbfc360e54899f5af98293867e
+      internalID: -1908151700
       vertices: []
       indices: 
       edges: []
@@ -506,25 +527,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_BuyBattery_DeathB: -498481133
-      UI_BuyBattery_DeathC: 2008677400
-      UI_BuyBattery_DeathI: 1154040880
-      UI_BuyBattery_DeathM: 1898838387
-      UI_BuyBattery_MenuB: 945104827
-      UI_BuyBattery_MenuC: 381098148
-      UI_BuyBattery_MenuI: -660835654
-      UI_BuyBattery_MenuM: 1743691840
-      UI_BuyBattery_NewGameBTN: -930250614
-      UI_BuyBattery_QuitGameBTN: 1935964215
-      UI_BuyBattery_SaveDataBTN: -1869652284
-      UI_BuyBattery_SaveDataIcon: -422912204
-      UI_BuyBattery_SaveDataPanel: -115323458
-      UI_BuyBattery_SettingsBTN: 1805576230
-      UI_BuyBattery_Slider0: -60136651
-      UI_BuyBattery_Slider1: 1104105516
-      UI_BuyBattery_SliderHandle: 1586141657
-      UI_BuyBattery_StopIcon: 1993528482
-      UI_BuyBattery_UsingPhoneIcon: 315236583
+      UI_BuyButtery_DeathB: 896676325
+      UI_BuyButtery_DeathC: -125968902
+      UI_BuyButtery_DeathI: 1873041367
+      UI_BuyButtery_DeathM: -1421875448
+      UI_BuyButtery_MenuB: -936466359
+      UI_BuyButtery_MenuC: -1382125152
+      UI_BuyButtery_MenuI: 810298445
+      UI_BuyButtery_MenuM: 295476139
+      UI_BuyButtery_NewGameBTN: -1894986351
+      UI_BuyButtery_QuitGameBTN: 654162496
+      UI_BuyButtery_SaveDataBTN: 1704141352
+      UI_BuyButtery_SaveDataIcon: -469821795
+      UI_BuyButtery_SaveDataPanel: -1348293083
+      UI_BuyButtery_SettingsBTN: -624236676
+      UI_BuyButtery_Slider0: 62654043
+      UI_BuyButtery_Slider1: 587375643
+      UI_BuyButtery_SliderHandle: -1416045191
+      UI_BuyButtery_StopIcon: 291959737
+      UI_BuyButtery_Title: 732267740
+      UI_BuyButtery_UsingPhoneIcon: -1908151700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
