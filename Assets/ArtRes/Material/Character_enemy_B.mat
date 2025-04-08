@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineWidth: 0.42
+    - _OutlineWidth: 0.18
     - _ShadowRange: 0.382
     m_Colors:
     - _OutLineColor: {r: 0.085142955, g: 0.18279004, b: 0.2578616, a: 1}
