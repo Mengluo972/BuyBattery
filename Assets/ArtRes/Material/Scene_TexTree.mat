@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scene_iron2
-  m_Shader: {fileID: 4800000, guid: 4c1e9e16b44dd4147bc77ede70a3bc6c, type: 3}
+  m_Name: Scene_TexTree
+  m_Shader: {fileID: 4800000, guid: c71c212ab47647545b7bd904bc85c1fc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,16 +23,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _ScreenTex:
-        m_Texture: {fileID: 2800000, guid: a600c17017efc5f46afba8a71b99f2e6, type: 3}
-        m_Scale: {x: 5, y: 5}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4a3a19ed7c0f8a3478270176df33c9f0, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ScreenPower: 0.72
-    - _ShadowRange: 0.35
-    - _ShadowSmooth: 0.19
-    m_Colors:
-    - _BaseColor: {r: 0.627451, g: 0.61960787, b: 0.61960787, a: 1}
-    - _ShadowColor: {r: 0.47058827, g: 0.48627454, b: 0.49803925, a: 1}
+    - _Cutoff: 0.5
+    m_Colors: []
   m_BuildTextureStacks: []
