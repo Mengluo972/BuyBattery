@@ -15,12 +15,11 @@ public class MapInfoController : MonoBehaviour
     private static List<List<AStarNode>> mapNodes = new List<List<AStarNode>>();//不会随着脚本的销毁而销毁
     private static List<List<Transform>> mapTransforms = new List<List<Transform>>();//不会随着脚本的销毁而销毁
     private static Transform _originPosition;
-    
-    public string mapName;
     private static int _mapX;
     private static int _mapY;
     
     //下面是临时测试用，具体使用时请使用静态方法
+    public string mapName;
     public GameObject nodePrefab;//预制体应当具有Node脚本
     public Transform originPosition;//应放在地图左下角格子处并且是格子的中心点(x.5,0,z.5)
     // public GameObject cube;//障碍物标记
@@ -29,7 +28,7 @@ public class MapInfoController : MonoBehaviour
     void Start()
     {
         // LoadSceneData($"MapInfo/{mapName}");
-        LoadSceneData(1);
+        LoadSceneData(2);
     }
 
     private static T ParseXML<T>(string xmlContent)
@@ -67,12 +66,12 @@ public class MapInfoController : MonoBehaviour
     // }
     
     /// <summary>
-    /// 关卡文件名应为LevelX.xml，X为阿拉伯数字
+    /// 关卡文件名应为LevelBoxX.xml，X为阿拉伯数字
     /// </summary>
     /// <param name="levelNum"></param>
     public static void LoadSceneData(int levelNum)
     {
-        TextAsset xmlFile = Resources.Load<TextAsset>($"MapInfo/Level{levelNum}");
+        TextAsset xmlFile = Resources.Load<TextAsset>($"MapInfo/LevelBox{levelNum}");
         if (xmlFile!=null)
         {
             //清空数据
@@ -114,9 +113,11 @@ public class MapInfoController : MonoBehaviour
                 list.Add(nodeGameObject.transform);
                 Node node = nodeGameObject.GetComponent<Node>();
                 node.AStarNode = mapNodes[i][j];
+                // Instantiate(cube, position, Quaternion.identity);
                 if (node.AStarNode.Type==Node_Type.Stop)
                 {
                     Instantiate(cube, position, Quaternion.identity);
+                    Debug.Log("检测到障碍物，坐标为："+position);
                 }
             }
             mapTransforms.Add(list);

@@ -82,16 +82,16 @@ public class FindState : IState
     {
         // Debug.Log($"玩家位置:{_manager.parameter.playerTarget.position}");
         //如果寻路出了问题，就回来看看这里
-        Debug.Log($"敌人的位置:{Floor(_manager.transform.position.x)},{Floor(_manager.transform.position.z)}");
-        Debug.Log($"玩家的位置:{Floor(_manager.parameter.playerTarget.transform.position.x)},{Floor(_manager.parameter.playerTarget.transform.position.z)}");
+        // Debug.Log($"敌人的位置:{Floor(_manager.transform.position.x)},{Floor(_manager.transform.position.z)}");
+        // Debug.Log($"玩家的位置:{Floor(_manager.parameter.playerTarget.transform.position.x)},{Floor(_manager.parameter.playerTarget.transform.position.z)}");
         List<AStarNode> newList = AStarManager.Instance.FindPath(
             new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
             new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
                 Floor(_manager.parameter.playerTarget.transform.position.z)));
-        for (int i=0;i<newList.Count;i++)
-        {
-            Debug.Log($"第{i}个节点信息 x:{newList[i].x},y:{newList[i].y}");
-        }
+        // for (int i=0;i<newList.Count;i++)
+        // {
+        //     Debug.Log($"第{i}个节点信息 x:{newList[i].x},y:{newList[i].y}");
+        // }
         List<Transform> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
         Queue<Vector3> newTargetQueue = new Queue<Vector3>();
         foreach (var transform in newTransformList)

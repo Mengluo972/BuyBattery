@@ -76,7 +76,7 @@ public class AStarManager
         if (startPos.x<0||startPos.x>=mapW||endPos.x<0||endPos.x>=mapW||
             startPos.y<0||startPos.x>=mapH||endPos.y<0||endPos.y>=mapH)
         {
-            Debug.Log("起点或终点在地图格子范围外");
+            Debug.Log($"起点或终点在地图格子范围外，起点坐标为：{startPos.x},{startPos.y} 终点坐标为：{endPos.x},{endPos.y}");
             return null;
         }
 
