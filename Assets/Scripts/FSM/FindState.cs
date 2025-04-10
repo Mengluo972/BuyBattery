@@ -13,6 +13,7 @@ public class FindState : IState
     private RayCastTest _rayCastTest;
     [SerializeField]private float chaseCooldownTime = 2f;//追逐冷却时间
     private float chaseCooldownTimer = 0f;
+    
 
     public FindState(FSM manager)
     {
@@ -51,9 +52,14 @@ public class FindState : IState
         }
         //做玩家是否进入逮人距离的判断
 
-        if (ChaseDistanceCheck())
+        // if (ChaseDistanceCheck())
+        // {
+        //     Debug.Log("通过ChaseDistanceCheck进入逮人状态");
+        //     _manager.TransitionState(StateType.Chase);
+        // }
+        if (Vector3.Distance(_manager.transform.position,_parameter.playerTarget.position)<_rayCastTest.chaseDistance)
         {
-            Debug.Log("通过ChaseDistanceCheck进入逮人状态");
+            Debug.Log("玩家距离过近，进入逮人状态");
             _manager.TransitionState(StateType.Chase);
         }
         
@@ -68,6 +74,18 @@ public class FindState : IState
             _parameter.chaseSpeed * Time.deltaTime);
         chaseCooldownTimer += Time.deltaTime;
         
+    }
+    public void OnExit()
+    {
+        _rayCastTest.IsChaseTracing = false;
+    }
+
+    public void TriggerCheck()
+    {
+        if (_parameter.TriggerListener.IsCaughtPlayer)
+        {
+            _manager.TransitionState(StateType.Attack);
+        }
     }
     
     private bool ChaseDistanceCheck()
@@ -84,14 +102,18 @@ public class FindState : IState
         //如果寻路出了问题，就回来看看这里
         // Debug.Log($"敌人的位置:{Floor(_manager.transform.position.x)},{Floor(_manager.transform.position.z)}");
         // Debug.Log($"玩家的位置:{Floor(_manager.parameter.playerTarget.transform.position.x)},{Floor(_manager.parameter.playerTarget.transform.position.z)}");
-        List<AStarNode> newList = AStarManager.Instance.FindPath(
-            new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
-            new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
-                Floor(_manager.parameter.playerTarget.transform.position.z)));
+        Vector2 startPos = new Vector2(
+            Floor(_manager.transform.position.x - MapInfoController.originPosition.position.x),
+            Floor(_manager.transform.position.z - MapInfoController.originPosition.position.z));
+        Vector2 endPos = new Vector2(
+            Floor(_manager.parameter.playerTarget.transform.position.x - MapInfoController.originPosition.position.x),
+            Floor(_manager.parameter.playerTarget.transform.position.z - MapInfoController.originPosition.position.z));
+        List<AStarNode> newList = AStarManager.Instance.FindPath(startPos,endPos);
         // for (int i=0;i<newList.Count;i++)
         // {
         //     Debug.Log($"第{i}个节点信息 x:{newList[i].x},y:{newList[i].y}");
         // }
+        Debug.Log(newList.Count==0?"寻路失败":"寻路成功");
         List<Transform> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
         Queue<Vector3> newTargetQueue = new Queue<Vector3>();
         foreach (var transform in newTransformList)
@@ -129,16 +151,5 @@ public class FindState : IState
         return (int)num - 1;
     }
 
-    public void OnExit()
-    {
-        _rayCastTest.IsChaseTracing = false;
-    }
-
-    public void TriggerCheck()
-    {
-        if (_parameter.TriggerListener.IsCaughtPlayer)
-        {
-            _manager.TransitionState(StateType.Attack);
-        }
-    }
+    
 }

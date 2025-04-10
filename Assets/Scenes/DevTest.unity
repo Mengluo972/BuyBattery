@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &50022626
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,15 +355,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.29
+      value: 10.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.43
+      value: 4.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -880,9 +879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045ece83006baeb43bb280b575a84283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapName: TestFile
-  nodePrefab: {fileID: 1602501591637105388, guid: 73565bf46282e09469f903d33886d739, type: 3}
-  originPosition: {fileID: 412798689}
 --- !u!4 &412798689
 Transform:
   m_ObjectHideFlags: 0
@@ -1798,7 +1794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &598815922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &650913777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,21 +2046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9adfa92405f2ce84d9eca9be63665265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomMaxX: 3
-  roomMaxY: 2
-  roomNodes:
-  - {fileID: 2067745175}
-  - {fileID: 866390054}
-  - {fileID: 11197411}
-  - {fileID: 1628065866}
-  - {fileID: 1235987700}
-  - {fileID: 1110649012}
-  - {fileID: 592721160}
-  - {fileID: 1114723417}
-  - {fileID: 1670710743}
-  - {fileID: 598815922}
-  - {fileID: 1370179337}
-  - {fileID: 1368151606}
 --- !u!4 &658032603
 Transform:
   m_ObjectHideFlags: 0
@@ -2289,8 +2268,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCount: 50
   fieldOfView: 90
-  viewDistance: 1
+  viewDistance: 20
   rayRadius: 40
+  chaseDistance: 5
 --- !u!4 &724177385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
@@ -2547,7 +2527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &928240900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,6 +2817,7 @@ MonoBehaviour:
   fieldOfView: 90
   viewDistance: 25
   rayRadius: 10
+  chaseDistance: 10
 --- !u!4 &960530381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
@@ -3074,7 +3054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1114723417
 GameObject:
   m_ObjectHideFlags: 0
@@ -3193,7 +3172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1116712576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,7 +3424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1260504997
 GameObject:
   m_ObjectHideFlags: 0
@@ -3723,7 +3700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1370179337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,7 +3818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1408623064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4393,7 +4368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1670710743
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,7 +4486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &1740542577
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,7 +5412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1100cda98cac4aab5150846e3a04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkable: 1
 --- !u!1 &2081829916
 GameObject:
   m_ObjectHideFlags: 0

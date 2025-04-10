@@ -21,6 +21,7 @@ public class Parameter//敌人信息
     [NonSerialized]public TriggerListener TriggerListener;
     public Transform lastPatrolPoint;
     public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
+    // public float chaseDistance;//进入找人状态的检测距离
 
     public float flipTime;//转向使用的时间
     public float flipWaitTimeBefore;//转向前停留时间

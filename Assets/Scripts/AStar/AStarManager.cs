@@ -71,12 +71,22 @@ public class AStarManager
         }
     }
     //这个向量的坐标一定要是处理后的数据，使用原始数据会出错
+    //注意线程安全
     public List<AStarNode> FindPath(Vector2 startPos, Vector2 endPos)
     {
+        // Debug.Log($"startPos.x<0结果为：{startPos.x<0} startPos.x>=mapW结果为：{startPos.x>=mapW}");
+        // Debug.Log($"endPos.x<0结果为：{endPos.x<0} endPos.x>=mapW结果为：{endPos.x>=mapW}");
+        // Debug.Log($"startPos.y<0结果为：{startPos.y<0} startPos.y>=mapH结果为：{startPos.y>=mapH}");
+        // Debug.Log($"endPos.y<0结果为：{endPos.y<0} endPos.y>=mapH结果为：{endPos.y>=mapH}");
         if (startPos.x<0||startPos.x>=mapW||endPos.x<0||endPos.x>=mapW||
             startPos.y<0||startPos.x>=mapH||endPos.y<0||endPos.y>=mapH)
         {
             Debug.Log($"起点或终点在地图格子范围外，起点坐标为：{startPos.x},{startPos.y} 终点坐标为：{endPos.x},{endPos.y}");
+            // Debug.Log($"startPos.x<0结果为：{startPos.x<0} startPos.x>=mapW结果为：{startPos.x>=mapW}");
+            // Debug.Log($"endPos.x<0结果为：{endPos.x<0} endPos.x>=mapW结果为：{endPos.x>=mapW}");
+            // Debug.Log($"startPos.y<0结果为：{startPos.y<0} startPos.y>=mapH结果为：{startPos.y>=mapH}");
+            // Debug.Log($"endPos.y<0结果为：{endPos.y<0} endPos.y>=mapH结果为：{endPos.y>=mapH}");
+            Debug.Log($"地图的范围为：宽度{mapW}*高度{mapH}");
             return null;
         }
 
