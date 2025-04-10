@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
+
 /// <summary>
 /// 逮人状态
 /// </summary>
@@ -12,6 +14,7 @@ public class ChaseState : IState
     private Parameter _parameter;
 
     private RayCastTest _rayCastTest;
+    private NavMeshAgent _navMeshAgent;
     // private TriggerListener _triggerListener;
     // private Transform _targetPosition;
 
@@ -24,6 +27,8 @@ public class ChaseState : IState
         _manager = manager;
         _parameter = manager.parameter;
         _rayCastTest = manager.RayCastTest;
+        _navMeshAgent = manager.GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = _parameter.chaseSpeed;
         // _triggerListener = manager.transform.GetChild(0).GetComponent<TriggerListener>();
         // _cts = new CancellationTokenSource();
     }
@@ -62,9 +67,9 @@ public class ChaseState : IState
 
         _parameter.alarmValue-= _parameter.alarmDecreaseSpeed*Time.deltaTime;
         _manager.transform.LookAt(_parameter.playerTarget);
-        _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _parameter.playerTarget.position,
-            _parameter.chaseSpeed * Time.deltaTime);
-        
+        // _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _parameter.playerTarget.position,
+        //     _parameter.chaseSpeed * Time.deltaTime);
+        _navMeshAgent.SetDestination(_parameter.playerTarget.position);
         // _chaseTimer += Time.deltaTime;
         // if (Vector3.Distance(_manager.transform.position,_parameter.playerTarget.position)<0.5f&&_chaseTimer >= _chaseCooldownTime)
         // {
