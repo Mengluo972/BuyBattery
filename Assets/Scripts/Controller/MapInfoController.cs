@@ -130,13 +130,13 @@ public class MapInfoController : MonoBehaviour
     }
     
     //进行坐标转换，将网格坐标转换为世界坐标
-    public static List<Transform> AStarNodeToTransforms(List<AStarNode> path)
+    public static List<Vector3> AStarNodeToTransforms(List<AStarNode> path)
     {
-        List<Transform> transforms = new List<Transform>();
+        List<Vector3> transforms = new List<Vector3>();
         foreach (var node in path)
         {
             // print($"节点信息 x:{node.x},y:{node.y}");
-            transforms.Add(mapTransforms[node.x][node.y]);
+            transforms.Add(mapTransforms[node.x][node.y].position);
         }
 
         return transforms;

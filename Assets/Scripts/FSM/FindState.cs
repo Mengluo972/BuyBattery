@@ -47,8 +47,8 @@ public class FindState : IState
         if (Vector3.Distance(_manager.transform.position,_chaseTarget)<0.5f)
         {
             NextChaseTarget();
-            Debug.Log("进入下一个寻找点");
-            Debug.Log($"当前追逐点为{_chaseTarget}");
+            // Debug.Log("进入下一个寻找点");
+            // Debug.Log($"当前追逐点为{_chaseTarget}");
         }
         //做玩家是否进入逮人距离的判断
 
@@ -114,11 +114,11 @@ public class FindState : IState
         //     Debug.Log($"第{i}个节点信息 x:{newList[i].x},y:{newList[i].y}");
         // }
         Debug.Log(newList.Count==0?"寻路失败":"寻路成功");
-        List<Transform> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
+        List<Vector3> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
         Queue<Vector3> newTargetQueue = new Queue<Vector3>();
-        foreach (var transform in newTransformList)
+        foreach (var vector3 in newTransformList)
         {
-            newTargetQueue.Enqueue(new Vector3(transform.position.x, _manager.transform.position.y, transform.position.z));
+            newTargetQueue.Enqueue(new Vector3(vector3.x, _manager.transform.position.y, vector3.z));
             
         }
         // _chaseQueue.Clear();
