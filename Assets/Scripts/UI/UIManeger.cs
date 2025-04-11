@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class UIManeger : MonoBehaviour
 {
+    public static event Action youDie;
+
     private bool InBack;
     private bool paused;
     [SerializeField] private GameObject mainMenu;
@@ -63,11 +65,13 @@ public class UIManeger : MonoBehaviour
     private void OnEnable()
     {
         CoffeeMachine.CoffeeSave += () => ShowSaveTip();
+        AttackState.DeathEvent += Dead;
     }
 
     private void OnDisable()
     {
-        CoffeeMachine.CoffeeSave -= () => ShowSaveTip();  
+        CoffeeMachine.CoffeeSave -= () => ShowSaveTip();
+        AttackState.DeathEvent -= Dead;
     }
 
     [Header("紫砂键")]
