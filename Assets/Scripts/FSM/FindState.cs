@@ -113,6 +113,7 @@ public class FindState : IState
     {
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
+            _parameter.alarmValue = 0;
             _manager.TransitionState(StateType.Attack);
         }
     }
@@ -127,10 +128,6 @@ public class FindState : IState
     }
     private void ReloadChaseList()
     {
-        // Debug.Log($"玩家位置:{_manager.parameter.playerTarget.position}");
-        //如果寻路出了问题，就回来看看这里
-        // Debug.Log($"敌人的位置:{Floor(_manager.transform.position.x)},{Floor(_manager.transform.position.z)}");
-        // Debug.Log($"玩家的位置:{Floor(_manager.parameter.playerTarget.transform.position.x)},{Floor(_manager.parameter.playerTarget.transform.position.z)}");
         Vector2 startPos = new Vector2(
             Floor(_manager.transform.position.x - MapInfoController.originPosition.position.x),
             Floor(_manager.transform.position.z - MapInfoController.originPosition.position.z));
@@ -138,10 +135,6 @@ public class FindState : IState
             Floor(_manager.parameter.playerTarget.transform.position.x - MapInfoController.originPosition.position.x),
             Floor(_manager.parameter.playerTarget.transform.position.z - MapInfoController.originPosition.position.z));
         List<AStarNode> newList = AStarManager.Instance.FindPath(startPos,endPos);
-        // for (int i=0;i<newList.Count;i++)
-        // {
-        //     Debug.Log($"第{i}个节点信息 x:{newList[i].x},y:{newList[i].y}");
-        // }
         Debug.Log(newList.Count==0?"寻路失败":"寻路成功");
         List<Vector3> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
         Queue<Vector3> newTargetQueue = new Queue<Vector3>();
@@ -150,7 +143,6 @@ public class FindState : IState
             newTargetQueue.Enqueue(new Vector3(vector3.x, _manager.transform.position.y, vector3.z));
             
         }
-        // _chaseQueue.Clear();
         newTargetQueue.Dequeue();//出掉一个队列节点试图减少回头的情况
         _chaseQueue = newTargetQueue;
     }

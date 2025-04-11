@@ -15,12 +15,6 @@ public class ChaseState : IState
 
     private RayCastTest _rayCastTest;
     private NavMeshAgent _navMeshAgent;
-    // private TriggerListener _triggerListener;
-    // private Transform _targetPosition;
-
-    // private float _chaseCooldownTime = 0.5f;//追逐冷却时间
-    // private float _chaseTimer = 0f;//追逐冷却计时器
-    // private CancellationTokenSource _cts;
     
     public ChaseState(FSM manager)
     {
@@ -29,8 +23,6 @@ public class ChaseState : IState
         _rayCastTest = manager.RayCastTest;
         _navMeshAgent = manager.GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = _parameter.chaseSpeed;
-        // _triggerListener = manager.transform.GetChild(0).GetComponent<TriggerListener>();
-        // _cts = new CancellationTokenSource();
     }
     public void OnEnter()
     {
@@ -41,7 +33,6 @@ public class ChaseState : IState
 
     public void OnUpdate()
     {
-        // Debug.Log("正在追逐");
         if (_parameter.alarmValue<=0)
         {
             _parameter.alarmValue = 0;
@@ -55,34 +46,13 @@ public class ChaseState : IState
             Debug.Log("通过!_rayCastTest.IsPlayerDetected进入追人状态");
             return;
         }
-        // //这个逻辑尚不明确
-        // if (MapInfoController.BarrierCheck(AStarManager.Instance.FindPath(
-        //         new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
-        //         new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
-        //             Floor(_manager.parameter.playerTarget.transform.position.z)))))
-        // {
-        //     _manager.TransitionState(StateType.Find);
-        //     Debug.Log("通过MapInfoController.BarrierCheck进入追人状态");
-        // }
 
         _parameter.alarmValue-= _parameter.alarmDecreaseSpeed*Time.deltaTime;
         _manager.transform.LookAt(_parameter.playerTarget);
-        // _manager.transform.position = Vector3.MoveTowards(_manager.transform.position, _parameter.playerTarget.position,
-        //     _parameter.chaseSpeed * Time.deltaTime);
+        
         _navMeshAgent.SetDestination(_parameter.playerTarget.position);
-        // _chaseTimer += Time.deltaTime;
-        // if (Vector3.Distance(_manager.transform.position,_parameter.playerTarget.position)<0.5f&&_chaseTimer >= _chaseCooldownTime)
-        // {
-        //     _chaseTimer = 0f;
-        // }
+        
     }
-    //寻路逻辑:发现玩家后，获取玩家坐标，在玩家与该敌人之间进行一次寻路，将最近的一个寻路点添加到下一个寻路目标点，每隔一段时间再次获取玩家坐标，进行一次寻路
-    //直到接触到玩家跳出状态才会停止寻路
-    
-    //需要做将AStarNode转换为坐标的工作,大概在MapInfoController中实现
-    //进入状态时调用，只调用一次
-    //如果状态更改记得取消
-    //不能直接传坐标
  
     public void OnExit()
     {
@@ -94,6 +64,7 @@ public class ChaseState : IState
     {
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
+            _parameter.alarmValue = 0;
             _manager.TransitionState(StateType.Attack);
         }
     }

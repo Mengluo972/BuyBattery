@@ -19,7 +19,7 @@ public class Parameter//敌人信息
     public Animator animator;
     [NonSerialized]public int PatrolIndex;
     [NonSerialized]public TriggerListener TriggerListener;
-    public Transform lastPatrolPoint;
+    [NonSerialized]public Vector3 LastPatrolPoint;
     public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
     // public float chaseDistance;//进入找人状态的检测距离
 
