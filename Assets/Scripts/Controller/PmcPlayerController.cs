@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class PmcPlayerController : MonoBehaviour
@@ -9,9 +10,10 @@ public class PmcPlayerController : MonoBehaviour
     [SerializeField] private float nomalSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float reduceSpeed;
-
+    [SerializeField] private KeyCode InterKey;
     [SerializeField] private float coolDownTime;
     [SerializeField] private float runDuaration;
+    [SerializeField] private float DisguiseDuaration;
 
     [SerializeField] private float smoothSpeed;
     [SerializeField] private float smoothAngle;
@@ -40,6 +42,18 @@ public class PmcPlayerController : MonoBehaviour
         _cameraDirectionTransform = transform.Find("Main Camera");
         cc = GetComponent<CharacterController>();
 
+    }
+
+    private void OnEnable()
+    {
+        DisguiseItem.PlayerDisguise += () => PlayerDisguise();
+        HideItem.PlayerHide += () => PlayerHide();
+    }
+
+    private void OnDisable()
+    {
+        DisguiseItem.PlayerDisguise -= () => PlayerDisguise();
+        HideItem.PlayerHide -= () => PlayerHide();
     }
 
     // Update is called once per frame
@@ -144,11 +158,35 @@ public class PmcPlayerController : MonoBehaviour
         }
     }
 
+    private async UniTaskVoid PlayerDisguise()
+    {
+        DisguiseChange();
+        gameObject.tag = "HiddenPlayer";
+        float t = Time.time;
+
+        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration));
+
+        DisguiseChange();
+        gameObject.tag = "Player";
+    }
+
     public void DisguiseChange()
     {
         IsDisguised = !IsDisguised;
 
+        _isRunning = false;
         _canRun = !IsDisguised;
+    }
+
+    private async UniTaskVoid PlayerHide()
+    {
+        HideChange();
+        gameObject.tag = "HiddenPlayer";
+
+        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
+
+        HideChange();
+        gameObject.tag = "Player";
     }
 
     public void HideChange()

@@ -13,6 +13,7 @@ public class UIManeger : MonoBehaviour
 {
     public static event Action youDie;
 
+    private bool isEasterEgg;//标记彩蛋是否触发
     private bool InBack;
     private bool paused;
     [SerializeField] private GameObject mainMenu;
@@ -35,6 +36,7 @@ public class UIManeger : MonoBehaviour
     public string mainMenuSceneName;
     [Header("输入UI显示时间")]
     public float saveTipsTime;
+    public float EasterEggTime;
     public float MTS;
     public float MTSD;
     public float MTNG;
@@ -65,12 +67,14 @@ public class UIManeger : MonoBehaviour
     private void OnEnable()
     {
         CoffeeMachine.CoffeeSave += () => ShowSaveTip();
+        ShenMiLittleBook.EasterEgg += () => ShowEasterEgg();
         AttackState.DeathEvent += Dead;
     }
 
     private void OnDisable()
     {
         CoffeeMachine.CoffeeSave -= () => ShowSaveTip();
+        ShenMiLittleBook.EasterEgg -= () => ShowEasterEgg();
         AttackState.DeathEvent -= Dead;
     }
 
@@ -247,6 +251,20 @@ public class UIManeger : MonoBehaviour
 
         saveTip.SetActive(false);
         Debug.Log("表锅savetip走了喔？");
+
+    }
+
+    private async UniTaskVoid ShowEasterEgg()
+    {
+        //这里显示彩蛋UI
+        float t = Time.time;
+        Debug.Log("表锅出彩蛋了喔");
+        isEasterEgg=true;
+
+        await UniTask.WaitUntil(() => (Time.time - t > EasterEggTime));
+
+        //隐藏彩蛋UI
+        Debug.Log("表锅彩蛋冇了喔");
 
     }
 
