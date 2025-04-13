@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-
+/// <summary>
+/// 通用转向状态
+/// </summary>
 public class FlipState : IState
 {
     private FSM _manager;
@@ -52,7 +54,16 @@ public class FlipState : IState
                 if (_timer>=_parameter.flipWaitTimeAfter)
                 {
                     _timer = 0;
-                    _manager.TransitionState(StateType.Patrol);
+                    switch (_parameter.enemyType)
+                    {
+                        case EnemyType.PatrolEnemy:
+                            _manager.TransitionState(StateType.Patrol);
+                            break;
+                        case EnemyType.AttractEnemy:
+                            _manager.TransitionState(StateType.AttractivePatrol);
+                            break;
+                    }
+                    
                 }
                 break;
             default:

@@ -7,11 +7,12 @@ using UnityEngine.Serialization;
 
 public enum StateType
 {
-    Idle,Patrol,Chase,Flip,EndingChase,Attack,Shoot,Find
+    Idle,Patrol,Chase,Flip,EndingChase,Attack,Shoot,Find,Attract,AttractivePatrol
 }
 [Serializable]
 public class Parameter//敌人信息
 {
+    public EnemyType enemyType;//敌人类型
     public float moveSpeed;
     public float chaseSpeed;
     public Transform[] partrolPoints;
@@ -20,6 +21,7 @@ public class Parameter//敌人信息
     [NonSerialized]public int PatrolIndex;
     [NonSerialized]public TriggerListener TriggerListener;
     [NonSerialized]public Vector3 LastPatrolPoint;
+    [NonSerialized]public EnemyController EnemyController;
     public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
     // public float chaseDistance;//进入找人状态的检测距离
 
@@ -30,6 +32,23 @@ public class Parameter//敌人信息
     public float alarmAccelerationSpeed;//警戒值增加速度
     public float alarmDecreaseSpeed;//警戒值减少速度
     public float alarmMaxValue;//警戒值最大值
+}
+
+public enum EnemyType
+{
+    PatrolEnemy,
+    //巡逻型敌人
+    //按照固定路线巡逻，发现玩家追逐一段距离，离开距离后回到固定轨道
+    AttractEnemy,
+    //追逐型敌人
+    //追着玩家发出声音，引起其他敌人注意。人类可以做僵尸蹦跳动画
+    StandEnemy,
+    //站桩型敌人
+    //站在固定位置，发现玩家后追逐，离开范围后回到固定轨道
+    StunEnemy,
+    //定身型敌人
+    //发现玩家，玩家固定位置一段时间
+    
 }
 public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有一个FSM组件，且需要有一个具有collider触发器的子物体
 {
@@ -54,7 +73,13 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         _states.Add(StateType.Attack,new AttackState(this));
         _states.Add(StateType.Shoot,new ShootStage(this));
         _states.Add(StateType.Find,new FindState(this));
-        
+
+
+        if (parameter.enemyType==EnemyType.AttractEnemy)
+        {
+            _states.Add(StateType.AttractivePatrol,new AttractivePatrolState(this));
+            _states.Add(StateType.Attract,new AttractState(this));
+        }
         
         TransitionState(StateType.Patrol);
         

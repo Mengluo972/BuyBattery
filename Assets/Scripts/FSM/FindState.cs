@@ -118,52 +118,52 @@ public class FindState : IState
         }
     }
     
-    private bool ChaseDistanceCheck()
-    {
-        if (!_rayCastTest.IsPlayerDetected) return false;
-        return MapInfoController.BarrierCheck(AStarManager.Instance.FindPath(
-            new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
-            new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
-                Floor(_manager.parameter.playerTarget.transform.position.z))));
-    }
-    private void ReloadChaseList()
-    {
-        Vector2 startPos = new Vector2(
-            Floor(_manager.transform.position.x - MapInfoController.originPosition.position.x),
-            Floor(_manager.transform.position.z - MapInfoController.originPosition.position.z));
-        Vector2 endPos = new Vector2(
-            Floor(_manager.parameter.playerTarget.transform.position.x - MapInfoController.originPosition.position.x),
-            Floor(_manager.parameter.playerTarget.transform.position.z - MapInfoController.originPosition.position.z));
-        List<AStarNode> newList = AStarManager.Instance.FindPath(startPos,endPos);
-        Debug.Log(newList.Count==0?"寻路失败":"寻路成功");
-        List<Vector3> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
-        Queue<Vector3> newTargetQueue = new Queue<Vector3>();
-        foreach (var vector3 in newTransformList)
-        {
-            newTargetQueue.Enqueue(new Vector3(vector3.x, _manager.transform.position.y, vector3.z));
-            
-        }
-        newTargetQueue.Dequeue();//出掉一个队列节点试图减少回头的情况
-        _chaseQueue = newTargetQueue;
-    }
-
-    private void NextChaseTarget()
-    {
-        if (_chaseQueue.Count<=0)
-        {
-            _manager.TransitionState(StateType.EndingChase);
-            Debug.Log("失去目标,进入结束追逐状态");
-        }
-
-        Vector3 rawData = new();
-        if (!_chaseQueue.TryDequeue(out rawData))
-        {
-            Debug.Log("队列为空");
-            return;
-        }
-        Debug.Log($"节点的信息:x:{rawData.x},y:{rawData.y},z:{rawData.z}");
-        _chaseTarget = new Vector3(rawData.x, rawData.y, rawData.z);
-    }
+    // private bool ChaseDistanceCheck()
+    // {
+    //     if (!_rayCastTest.IsPlayerDetected) return false;
+    //     return MapInfoController.BarrierCheck(AStarManager.Instance.FindPath(
+    //         new Vector2(Floor(_manager.transform.position.x), Floor(_manager.transform.position.z)),
+    //         new Vector2(Floor(_manager.parameter.playerTarget.transform.position.x),
+    //             Floor(_manager.parameter.playerTarget.transform.position.z))));
+    // }
+    // private void ReloadChaseList()
+    // {
+    //     Vector2 startPos = new Vector2(
+    //         Floor(_manager.transform.position.x - MapInfoController.originPosition.position.x),
+    //         Floor(_manager.transform.position.z - MapInfoController.originPosition.position.z));
+    //     Vector2 endPos = new Vector2(
+    //         Floor(_manager.parameter.playerTarget.transform.position.x - MapInfoController.originPosition.position.x),
+    //         Floor(_manager.parameter.playerTarget.transform.position.z - MapInfoController.originPosition.position.z));
+    //     List<AStarNode> newList = AStarManager.Instance.FindPath(startPos,endPos);
+    //     Debug.Log(newList.Count==0?"寻路失败":"寻路成功");
+    //     List<Vector3> newTransformList = MapInfoController.AStarNodeToTransforms(newList);
+    //     Queue<Vector3> newTargetQueue = new Queue<Vector3>();
+    //     foreach (var vector3 in newTransformList)
+    //     {
+    //         newTargetQueue.Enqueue(new Vector3(vector3.x, _manager.transform.position.y, vector3.z));
+    //         
+    //     }
+    //     newTargetQueue.Dequeue();//出掉一个队列节点试图减少回头的情况
+    //     _chaseQueue = newTargetQueue;
+    // }
+    //
+    // private void NextChaseTarget()
+    // {
+    //     if (_chaseQueue.Count<=0)
+    //     {
+    //         _manager.TransitionState(StateType.EndingChase);
+    //         Debug.Log("失去目标,进入结束追逐状态");
+    //     }
+    //
+    //     Vector3 rawData = new();
+    //     if (!_chaseQueue.TryDequeue(out rawData))
+    //     {
+    //         Debug.Log("队列为空");
+    //         return;
+    //     }
+    //     Debug.Log($"节点的信息:x:{rawData.x},y:{rawData.y},z:{rawData.z}");
+    //     _chaseTarget = new Vector3(rawData.x, rawData.y, rawData.z);
+    // }
     private float Floor(float num)
     {
         // if (num > 0) return (int)num + 0.5f;
