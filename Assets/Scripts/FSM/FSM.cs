@@ -32,6 +32,7 @@ public class Parameter//敌人信息
     public float alarmAccelerationSpeed;//警戒值增加速度
     public float alarmDecreaseSpeed;//警戒值减少速度
     public float alarmMaxValue;//警戒值最大值
+    public float attractDistance;//最大吸引距离（如果敌人为追逐型的人的话才生效）
 }
 
 public enum EnemyType
@@ -79,6 +80,8 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         {
             _states.Add(StateType.AttractivePatrol,new AttractivePatrolState(this));
             _states.Add(StateType.Attract,new AttractState(this));
+            TransitionState(StateType.AttractivePatrol);
+            return;
         }
         
         TransitionState(StateType.Patrol);

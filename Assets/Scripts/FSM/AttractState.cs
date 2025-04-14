@@ -15,7 +15,11 @@ public class AttractState : IState
 
     public void OnEnter()
     {
-        
+        List<FSM> enemies = _parameter.EnemyController.GetEnemies(_manager, _parameter.attractDistance);
+        foreach (var enemy in enemies)
+        {
+            enemy.TransitionState(StateType.Chase);
+        }
     }
 
     public void OnUpdate()
