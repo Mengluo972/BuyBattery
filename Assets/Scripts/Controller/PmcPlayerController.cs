@@ -131,13 +131,13 @@ public class PmcPlayerController : MonoBehaviour
 
     public void RunningChange()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _canRun && IsMoveAble)//ÅÜ²½Æô¶¯
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _canRun && IsMoveAble)//è·‘æ­¥å¯åŠ¨
         {
             _canRun = false;
             _runTimer = runDuaration;
             _isRunning = true;
         }
-        if (_isRunning)//ÕıÔÚÅÜ²½£¬¼ì²âÊ£ÓàÊ±¼ä
+        if (_isRunning)//æ­£åœ¨è·‘æ­¥ï¼Œæ£€æµ‹å‰©ä½™æ—¶é—´
         {
             _runTimer -= Time.deltaTime;
             if (_runTimer <= 0)
@@ -147,7 +147,7 @@ public class PmcPlayerController : MonoBehaviour
                 _isCoolingDown = true;
             }
         }
-        if (_isCoolingDown)//ÕıÔÚÀäÈ´£¬¼ì²âÊ£ÓàÊ±¼ä
+        if (_isCoolingDown)//æ­£åœ¨å†·å´ï¼Œæ£€æµ‹å‰©ä½™æ—¶é—´
         {
             _cooldownTimer -= Time.deltaTime;
             if (_cooldownTimer <= 0)

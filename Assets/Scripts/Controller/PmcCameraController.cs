@@ -5,28 +5,28 @@ using UnityEngine;
 public class PmcCameraController : MonoBehaviour
 {
     public Transform playerTransform;
-    [Header("ÓëÎïÌåµÄ¾àÀë")]
-    public float distance = 5f;   // ÉãÏñ»úÓëÎïÌåµÄ¾àÀë
+    [Header("ä¸ç‰©ä½“çš„è·ç¦»")]
+    public float distance = 5f;   // æ‘„åƒæœºä¸ç‰©ä½“çš„è·ç¦»
     private float height = 3f;
-    [Header("Êó±êÁéÃô¶È")]
-    public float mouseSensitivity = 2f; // Êó±êÁéÃô¶È
-    [Header("´¹Ö±½Ç¶È·¶Î§")]
+    [Header("é¼ æ ‡çµæ•åº¦")]
+    public float mouseSensitivity = 2f; // é¼ æ ‡çµæ•åº¦
+    [Header("å‚ç›´è§’åº¦èŒƒå›´")]
     public float maxCurrentY;
     public float minCurrentY;
-    [Header("Ïà»úÄ£Ê½")]
+    [Header("ç›¸æœºæ¨¡å¼")]
     [Range(1,2)]
     public int mode;
 
-    [Header("¿ª¾Ö½Ç¶È(?)")]
+    [Header("å¼€å±€è§’åº¦(?)")]
     public float startX = -90f;
     public float startY = 45f;
 
-    private float currentX = -90f;  //Ë®Æ½½Ç¶È
-    private float currentY = 45f; //´¹Ö±½Ç¶È
+    private float currentX = -90f;  //æ°´å¹³è§’åº¦
+    private float currentY = 45f; //å‚ç›´è§’åº¦
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked; // ËøÊó±ê
+        //Cursor.lockState = CursorLockMode.Locked; // é”é¼ æ ‡
         currentX = startX;
         currentY = startY;
         playerTransform = transform.parent;
@@ -56,7 +56,7 @@ public class PmcCameraController : MonoBehaviour
     }
 
 
-    public void CameraSet2()//²»¹Ì¶¨Ë®Æ½¾àÀë
+    public void CameraSet2()//ä¸å›ºå®šæ°´å¹³è·ç¦»
     {
         currentX += Input.GetAxis("Mouse X") * mouseSensitivity;
         currentY -= Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -72,7 +72,7 @@ public class PmcCameraController : MonoBehaviour
         transform.LookAt(playerTransform.position);
     }
 
-    public void CameraSet1()//¹Ì¶¨Ë®Æ½¾àÀë
+    public void CameraSet1()//å›ºå®šæ°´å¹³è·ç¦»
     {
         currentX += Input.GetAxis("Mouse X") * mouseSensitivity;
         currentY -= Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -85,7 +85,7 @@ public class PmcCameraController : MonoBehaviour
         float height = distance * Mathf.Tan(verticalAngleRad);
         float horizontalOffset = distance;
 
-        // ½«Ë®Æ½Æ«ÒÆ×ª»»ÎªÊÀ½ç×ø±ê·½Ïò
+        // å°†æ°´å¹³åç§»è½¬æ¢ä¸ºä¸–ç•Œåæ ‡æ–¹å‘
         Vector3 horizontalDir = Quaternion.Euler(0, currentX, 0) * Vector3.forward;
         Vector3 position = playerTransform.position
                          - horizontalDir * horizontalOffset
