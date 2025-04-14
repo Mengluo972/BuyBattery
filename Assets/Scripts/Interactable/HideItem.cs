@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -17,7 +17,7 @@ public class HideItem : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        //ÕâÀïĞ´¶¯»­
+        //è¿™é‡Œå†™åŠ¨ç”»
         AnimateOn();
         inTrigger = b;
 
@@ -26,11 +26,11 @@ public class HideItem : MonoBehaviour,IInteractable
     private async UniTaskVoid AnimateOn()
     {
         inTrigger = true;
-        Debug.Log("½«¾ü×ß´ËĞ¡µÀ£¡");
+        Debug.Log("å°†å†›èµ°æ­¤å°é“ï¼");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
-        Debug.Log("±İÏÂºÎ¹ÊÏÈ½µ£¿");
+        Debug.Log("é™›ä¸‹ä½•æ•…å…ˆé™ï¼Ÿ");
 
     }
 

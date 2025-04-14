@@ -2421,6 +2421,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: gameSceneName
+      value: LevelBox2_ScriptTest
+      objectReference: {fileID: 0}
     - target: {fileID: 6328367495925741164, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1046.4495

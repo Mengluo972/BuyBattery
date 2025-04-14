@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -131,13 +131,13 @@ public class PmcPlayerController : MonoBehaviour
 
     public void RunningChange()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _canRun && IsMoveAble)//ÅÜ²½Æô¶¯
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _canRun && IsMoveAble)//è·‘æ­¥å¯åŠ¨
         {
             _canRun = false;
             _runTimer = runDuaration;
             _isRunning = true;
         }
-        if (_isRunning)//ÕıÔÚÅÜ²½£¬¼ì²âÊ£ÓàÊ±¼ä
+        if (_isRunning)//æ­£åœ¨è·‘æ­¥ï¼Œæ£€æµ‹å‰©ä½™æ—¶é—´
         {
             _runTimer -= Time.deltaTime;
             if (_runTimer <= 0)
@@ -147,7 +147,7 @@ public class PmcPlayerController : MonoBehaviour
                 _isCoolingDown = true;
             }
         }
-        if (_isCoolingDown)//ÕıÔÚÀäÈ´£¬¼ì²âÊ£ÓàÊ±¼ä
+        if (_isCoolingDown)//æ­£åœ¨å†·å´ï¼Œæ£€æµ‹å‰©ä½™æ—¶é—´
         {
             _cooldownTimer -= Time.deltaTime;
             if (_cooldownTimer <= 0)
@@ -164,7 +164,7 @@ public class PmcPlayerController : MonoBehaviour
         gameObject.tag = "HiddenPlayer";
         float t = Time.time;
 
-        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration));
+        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
 
         DisguiseChange();
         gameObject.tag = "Player";
@@ -172,10 +172,17 @@ public class PmcPlayerController : MonoBehaviour
 
     public void DisguiseChange()
     {
+        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
+        //ç§»åŠ¨ç¢°æ’ä½“ï¼Œæ‹’ç»äº¤äº’
+        //collider.enabled = IsDisguised;
+
         IsDisguised = !IsDisguised;
 
         _isRunning = false;
         _canRun = !IsDisguised;
+
+        //æ›¿ä»£åŠ¨ç”»
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
     private async UniTaskVoid PlayerHide()
@@ -192,6 +199,9 @@ public class PmcPlayerController : MonoBehaviour
     public void HideChange()
     {
         IsMoveAble = !IsMoveAble;
+
+        //ä½ åˆ«é—®æˆ‘è¿™ä»€ä¹ˆbä¸œè¥¿ï¼Œæˆ‘è¿˜æƒ³é—®
+        //transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
     }
 
 }
