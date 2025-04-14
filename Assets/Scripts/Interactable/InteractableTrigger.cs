@@ -7,7 +7,7 @@ public class InteractableTrigger : MonoBehaviour
     [SerializeField]private bool inTrigger;
     private IInteractable actionItem;
     [Header("交互键位")]
-    public KeyCode actionKey;
+    public KeyCode actionKey=KeyCode.E;
     // Start is called before the first frame update
     void Start()
     {
