@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -17,7 +17,7 @@ public class ShenMiLittleBook : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        //ÕâÀïĞ´¶¯»­
+        //è¿™é‡Œå†™åŠ¨ç”»
         AnimateOn();
         inTrigger = b;
 
@@ -26,11 +26,11 @@ public class ShenMiLittleBook : MonoBehaviour,IInteractable
     private async UniTaskVoid AnimateOn()
     {
         inTrigger = true;
-        Debug.Log("ÕâÊÇÊ²Ã´£¿²Êµ°£¿¿´Ò»ÏÂ¡£");
+        Debug.Log("è¿™æ˜¯ä»€ä¹ˆï¼Ÿå½©è›‹ï¼Ÿçœ‹ä¸€ä¸‹ã€‚");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
-        Debug.Log("²»¿´ÁË£¬×ßÁË¡£");
+        Debug.Log("ä¸çœ‹äº†ï¼Œèµ°äº†ã€‚");
 
     }
 

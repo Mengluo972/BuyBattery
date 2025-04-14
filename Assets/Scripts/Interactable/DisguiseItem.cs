@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -19,7 +19,7 @@ public class DisguiseItem : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        //����д����
+        //这里写动画
         AnimateOn();
         inTrigger = b;
 
@@ -28,11 +28,11 @@ public class DisguiseItem : MonoBehaviour,IInteractable
     private async UniTaskVoid AnimateOn()
     {
         inTrigger = true;
-        Debug.Log("û���ˣ�����αװ���ߡ�");
+        Debug.Log("没词了，碰到伪装道具。");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
-        Debug.Log("�뿪αװ���߽�����Χ");
+        Debug.Log("离开伪装道具交互范围");
 
     }
 

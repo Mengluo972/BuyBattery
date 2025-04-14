@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -164,7 +164,7 @@ public class PmcPlayerController : MonoBehaviour
         gameObject.tag = "HiddenPlayer";
         float t = Time.time;
 
-        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration));
+        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
 
         DisguiseChange();
         gameObject.tag = "Player";
@@ -172,10 +172,17 @@ public class PmcPlayerController : MonoBehaviour
 
     public void DisguiseChange()
     {
+        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
+        //移动碰撞体，拒绝交互
+        //collider.enabled = IsDisguised;
+
         IsDisguised = !IsDisguised;
 
         _isRunning = false;
         _canRun = !IsDisguised;
+
+        //替代动画
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
     private async UniTaskVoid PlayerHide()
@@ -192,6 +199,9 @@ public class PmcPlayerController : MonoBehaviour
     public void HideChange()
     {
         IsMoveAble = !IsMoveAble;
+
+        //你别问我这什么b东西，我还想问
+        //transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
     }
 
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelTest.unity
     guid: 4890b5a2222380841b4d1ed0a75adfca
+  - enabled: 1
+    path: Assets/Scenes/LevelBox2_ScriptTest.unity
+    guid: f6813ae3e73c36d448a2f4e40910add2
   m_configObjects: {}

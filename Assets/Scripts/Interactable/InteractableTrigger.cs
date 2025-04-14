@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableTrigger : MonoBehaviour
 {
     [SerializeField]private bool inTrigger;
-    private IInteractable actionItem;
+    private IInteractable actionItem = null;
     [Header("交互键位")]
     public KeyCode actionKey=KeyCode.E;
     // Start is called before the first frame update
@@ -48,7 +48,10 @@ public class InteractableTrigger : MonoBehaviour
         if (collision.GetComponent<IInteractable>() == actionItem)
         {
             inTrigger = false;
-            actionItem.inTriggerAnimation(false);
+            if (actionItem != null)
+            {
+                actionItem.inTriggerAnimation(false);
+            }
         }
         
     }
