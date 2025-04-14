@@ -173,8 +173,8 @@ public class PmcPlayerController : MonoBehaviour
     public void DisguiseChange()
     {
         BoxCollider collider = gameObject.GetComponent<BoxCollider>();
-        //移动碰撞体，拒绝交互
-        //collider.enabled = IsDisguised;
+        //禁用碰撞体，拒绝交互
+        collider.enabled = IsDisguised;
 
         IsDisguised = !IsDisguised;
 
@@ -199,6 +199,9 @@ public class PmcPlayerController : MonoBehaviour
     public void HideChange()
     {
         IsMoveAble = !IsMoveAble;
+        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
+        //禁用碰撞体，拒绝交互
+        collider.enabled = IsDisguised;
 
         //你别问我这什么b东西，我还想问
         //transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
