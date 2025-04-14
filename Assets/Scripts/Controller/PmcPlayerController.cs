@@ -28,6 +28,7 @@ public class PmcPlayerController : MonoBehaviour
     private Transform _cameraDirectionTransform;
     private float _cameraX;
     private Transform _playerModel;
+    private BoxCollider _collider;
 
 
     [NonSerialized] public bool IsMoveAble = true;
@@ -40,6 +41,7 @@ public class PmcPlayerController : MonoBehaviour
     void Start()
     {
         _cameraDirectionTransform = transform.Find("Main Camera");
+        _collider = gameObject.GetComponent<BoxCollider>();
         cc = GetComponent<CharacterController>();
 
     }
@@ -172,9 +174,8 @@ public class PmcPlayerController : MonoBehaviour
 
     public void DisguiseChange()
     {
-        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
         //禁用碰撞体，拒绝交互
-        collider.enabled = IsDisguised;
+        _collider.enabled = IsDisguised;
 
         IsDisguised = !IsDisguised;
 
@@ -190,21 +191,25 @@ public class PmcPlayerController : MonoBehaviour
         HideChange();
         gameObject.tag = "HiddenPlayer";
 
+        
+
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
         HideChange();
         gameObject.tag = "Player";
+
     }
 
     public void HideChange()
     {
         IsMoveAble = !IsMoveAble;
-        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
-        //禁用碰撞体，拒绝交互
-        collider.enabled = IsDisguised;
 
-        //你别问我这什么b东西，我还想问
-        //transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        //你别问我这是什么东西，我还想问这是什么东西
+        //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + Convert.ToInt32(!IsMoveAble)*10f, transform.localPosition.z);
+
+        //禁用碰撞体，拒绝交互
+        _collider.enabled = IsDisguised;
+
     }
 
 }
