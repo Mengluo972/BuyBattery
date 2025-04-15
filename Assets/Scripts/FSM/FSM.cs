@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 public enum StateType
 {
-    Idle,Patrol,Chase,Flip,EndingChase,Attack,Shoot,Find,Attract,AttractivePatrol
+    Idle,Patrol,Chase,Flip,EndingChase,Attack,Stun,Find,Attract,AttractivePatrol
 }
 [Serializable]
 public class Parameter//敌人信息
@@ -72,7 +72,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         _states.Add(StateType.Flip,new FlipState(this));
         _states.Add(StateType.EndingChase,new EndingChaseState(this));
         _states.Add(StateType.Attack,new AttackState(this));
-        _states.Add(StateType.Shoot,new ShootStage(this));
+        _states.Add(StateType.Stun,new StunState(this));
         _states.Add(StateType.Find,new FindState(this));
 
 

@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        enemies = new List<FSM>();
+        // enemies = new List<FSM>();
         foreach (var enemy in enemies)
         {
             enemy.parameter.EnemyController = this;

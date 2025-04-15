@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ShootStage : IState
+public class StunState : IState
 {
-    private ObjectPool<GameObject> _bulletPool;
+    // private ObjectPool<GameObject> _bulletPool;
     private FSM _manager;
     private Parameter _parameter;
-    public ShootStage(FSM manager)
+    public StunState(FSM manager)
     {
         _manager = manager;
         _parameter = manager.parameter;

@@ -26,7 +26,7 @@ public class ChaseState : IState
     }
     public void OnEnter()
     {
-        Debug.Log("进入逮人状态");
+        Debug.Log($"{_manager.gameObject.name}进入逮人状态");
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
     }
@@ -43,7 +43,7 @@ public class ChaseState : IState
         if (!_rayCastTest.IsPlayerDetected)
         {
             _manager.TransitionState(StateType.Find);
-            Debug.Log("通过!_rayCastTest.IsPlayerDetected进入追人状态");
+            Debug.Log($"{_manager.gameObject.name}通过!_rayCastTest.IsPlayerDetected进入找人状态");
             return;
         }
 
@@ -56,7 +56,7 @@ public class ChaseState : IState
  
     public void OnExit()
     {
-        Debug.Log("退出逮人状态");
+        Debug.Log($"{_manager.gameObject.name}退出逮人状态");
         _rayCastTest.IsChaseTracing = false;
     }
 

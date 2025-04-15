@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 /// <summary>
@@ -77,6 +78,18 @@ public class FlipState : IState
         {
             _parameter.LastPatrolPoint = _manager.transform.position;
             Debug.Log(_manager.gameObject.name + "发现玩家，进入追逐状态");
+            if (_parameter.enemyType==EnemyType.AttractEnemy)
+            {
+                Debug.Log("当前敌人为追逐型敌人，正在吸引周围的敌人前来追逐玩家");
+                List<FSM> list = _parameter.EnemyController.GetEnemies(_manager,_parameter.attractDistance);
+                foreach (var fsm in list)
+                {
+                    fsm.parameter.alarmValue = fsm.parameter.alarmMaxValue;
+                    fsm.TransitionState(StateType.Chase);
+                }
+
+                return;
+            }
             _manager.TransitionState(StateType.Chase);
             return;
         }

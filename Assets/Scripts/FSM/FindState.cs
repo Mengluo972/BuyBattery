@@ -93,7 +93,15 @@ public class FindState : IState
         if (Vector3.Distance(_manager.transform.position,_parameter.playerTarget.position)<_rayCastTest.chaseDistance)
         {
             Debug.Log("玩家距离过近，进入逮人状态");
-            _manager.TransitionState(StateType.Chase);
+            switch (_parameter.enemyType)
+            {
+                case EnemyType.PatrolEnemy:
+                    _manager.TransitionState(StateType.Chase);
+                    break;
+                case EnemyType.AttractEnemy:
+                    _manager.TransitionState(StateType.Attract);
+                    break;
+            }
         }
         if (_parameter.alarmValue<=0)
         {

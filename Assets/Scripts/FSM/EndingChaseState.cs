@@ -32,7 +32,7 @@ public class EndingChaseState : IState
         if (Vector3.Distance(_manager.transform.position, _getBackTarget) < 1.7f)
         {
             _manager.TransitionState(StateType.Patrol);
-            Debug.Log("返回巡逻状态");
+            Debug.Log($"{_manager.gameObject.name}返回巡逻状态");
         }
         _navMeshAgent.SetDestination(_getBackTarget);
         _manager.transform.LookAt(_getBackTarget);
