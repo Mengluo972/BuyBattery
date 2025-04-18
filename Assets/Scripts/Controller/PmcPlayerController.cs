@@ -208,7 +208,7 @@ public class PmcPlayerController : MonoBehaviour
         //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + Convert.ToInt32(!IsMoveAble)*10f, transform.localPosition.z);
 
         //禁用碰撞体，拒绝交互
-        _collider.enabled = IsDisguised;
+        _collider.enabled = IsMoveAble;
 
     }
 
