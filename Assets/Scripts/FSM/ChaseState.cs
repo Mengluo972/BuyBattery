@@ -29,6 +29,7 @@ public class ChaseState : IState
         Debug.Log($"{_manager.gameObject.name}进入逮人状态");
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
+        _parameter.animator.Play("");
     }
 
     public void OnUpdate()

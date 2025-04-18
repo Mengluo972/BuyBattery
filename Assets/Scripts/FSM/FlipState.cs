@@ -35,6 +35,9 @@ public class FlipState : IState
         switch (_flipWaitStage)
         {
             case 0:
+                //转向前等待播放静止动画，只能播放一次
+                //todo...
+                
                 _timer += Time.deltaTime;
                 if (_timer >= _parameter.flipWaitTimeBefore)
                 {
@@ -44,6 +47,9 @@ public class FlipState : IState
                 break;
             case 1:
                 _flipWaitStage = 2;
+                //转向中播放行走动画，只能播放一次
+                //todo...
+                
                 _manager.transform
                     .DOLookAt(_parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.flipTime)
                     .OnComplete(() => _flipWaitStage = 3);
@@ -51,6 +57,10 @@ public class FlipState : IState
             case 2://该阶段只等待回调
                 break;
             case 3:
+                //转向后播放静止动画，只能播放一次
+                //todo...
+                
+                
                 _timer += Time.deltaTime;
                 if (_timer>=_parameter.flipWaitTimeAfter)
                 {
