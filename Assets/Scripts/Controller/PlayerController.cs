@@ -60,30 +60,26 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                // Vector3 vec = new Vector3(_playerModel.rotation.x,Vector3.Angle(_playerModel.forward, _cameraLeft),_playerModel.rotation.z);
-                // Quaternion quaternion =
-                //     Quaternion.Slerp(_playerModel.rotation, Quaternion.Euler(vec), 0.5f);
-                // _playerModel.rotation = quaternion;
-                if (_rb.velocity != _cameraDirectionTransform.forward.normalized * _curMaxVelocity)
-                    _rb.velocity += _cameraDirectionTransform.forward.normalized * acceleration;
+                _rb.velocity += _cameraDirectionTransform.forward.normalized * acceleration;
+                _rb.velocity = Vector3.ClampMagnitude(_rb.velocity,(_cameraDirectionTransform.forward.normalized * _curMaxVelocity).magnitude);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                if (_rb.velocity != -_cameraDirectionTransform.forward.normalized * _curMaxVelocity)
-                    _rb.velocity -= _cameraDirectionTransform.forward.normalized * acceleration;
+                _rb.velocity -= _cameraDirectionTransform.forward.normalized * acceleration;
+                _rb.velocity = Vector3.ClampMagnitude(_rb.velocity,(-_cameraDirectionTransform.forward.normalized * _curMaxVelocity).magnitude);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                if (_rb.velocity != _cameraLeft * _curMaxVelocity)
-                    _rb.velocity += _cameraLeft * acceleration;
+                _rb.velocity += _cameraLeft * acceleration;
+                _rb.velocity = Vector3.ClampMagnitude(_rb.velocity,(_cameraLeft * _curMaxVelocity).magnitude);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                if (_rb.velocity != _cameraRight * _curMaxVelocity)
-                    _rb.velocity += _cameraRight * acceleration;
+                _rb.velocity += _cameraRight * acceleration;
+                _rb.velocity = Vector3.ClampMagnitude(_rb.velocity,(_cameraRight * _curMaxVelocity).magnitude);
             }
         }
 

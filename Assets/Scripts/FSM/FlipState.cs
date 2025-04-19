@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
-
+/// <summary>
+/// 通用转向状态
+/// </summary>
 public class FlipState : IState
 {
     private FSM _manager;
@@ -32,6 +35,9 @@ public class FlipState : IState
         switch (_flipWaitStage)
         {
             case 0:
+                //转向前等待播放静止动画，只能播放一次
+                //todo...
+                
                 _timer += Time.deltaTime;
                 if (_timer >= _parameter.flipWaitTimeBefore)
                 {
@@ -41,6 +47,9 @@ public class FlipState : IState
                 break;
             case 1:
                 _flipWaitStage = 2;
+                //转向中播放行走动画，只能播放一次
+                //todo...
+                
                 _manager.transform
                     .DOLookAt(_parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.flipTime)
                     .OnComplete(() => _flipWaitStage = 3);
@@ -48,11 +57,24 @@ public class FlipState : IState
             case 2://该阶段只等待回调
                 break;
             case 3:
+                //转向后播放静止动画，只能播放一次
+                //todo...
+                
+                
                 _timer += Time.deltaTime;
                 if (_timer>=_parameter.flipWaitTimeAfter)
                 {
                     _timer = 0;
-                    _manager.TransitionState(StateType.Patrol);
+                    switch (_parameter.enemyType)
+                    {
+                        case EnemyType.PatrolEnemy:
+                            _manager.TransitionState(StateType.Patrol);
+                            break;
+                        case EnemyType.AttractEnemy:
+                            _manager.TransitionState(StateType.AttractivePatrol);
+                            break;
+                    }
+                    
                 }
                 break;
             default:
@@ -64,7 +86,20 @@ public class FlipState : IState
         if (!_rayCastTest.IsPlayerDetected) return;//如果没有发现玩家，就不去执行增长警戒值的操作
         if(_parameter.alarmValue>=_parameter.alarmMaxValue)
         {
+            _parameter.LastPatrolPoint = _manager.transform.position;
             Debug.Log(_manager.gameObject.name + "发现玩家，进入追逐状态");
+            if (_parameter.enemyType==EnemyType.AttractEnemy)
+            {
+                Debug.Log("当前敌人为追逐型敌人，正在吸引周围的敌人前来追逐玩家");
+                List<FSM> list = _parameter.EnemyController.GetEnemies(_manager,_parameter.attractDistance);
+                foreach (var fsm in list)
+                {
+                    fsm.parameter.alarmValue = fsm.parameter.alarmMaxValue;
+                    fsm.TransitionState(StateType.Chase);
+                }
+
+                return;
+            }
             _manager.TransitionState(StateType.Chase);
             return;
         }
@@ -87,6 +122,7 @@ public class FlipState : IState
     {
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
+            _parameter.alarmValue = 0;
             _manager.TransitionState(StateType.Attack);
         }
     }

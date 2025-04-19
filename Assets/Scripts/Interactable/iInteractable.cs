@@ -1,4 +1,4 @@
-﻿public interface iInteractable
+﻿public interface IInteractable
 {
     void TriggerAction();
 

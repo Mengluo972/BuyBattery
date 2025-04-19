@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-public class CoffeeMachine : MonoBehaviour,iInteractable
+public class CoffeeMachine : MonoBehaviour,IInteractable
 {
     public static event Action CoffeeSave;
     private bool inTrigger;

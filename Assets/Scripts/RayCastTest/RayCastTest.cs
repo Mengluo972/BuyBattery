@@ -8,8 +8,9 @@ public class RayCastTest : MonoBehaviour
 {
     [SerializeField] private byte rayCount = 10;//不建议条数在10以下
     [SerializeField] private float fieldOfView = 90f;
-    [SerializeField] private float viewDistance = 25f;//逮人状态的检测距离
+    [SerializeField] private float viewDistance = 25f;//从巡逻状态进入逮人状态的检测距离
     [SerializeField] private float rayRadius = 10f;//警戒值开始增长的距离
+    public float chaseDistance = 10f;//从追人状态进入逮人状态的检测距离
     [NonSerialized] public bool IsPatrolTracing;//是否开启巡逻射线追踪
     [NonSerialized] public bool IsChaseTracing;//是否开启追击射线追踪
     [NonSerialized] public bool IsPlayerDetected;//是否检测到玩家

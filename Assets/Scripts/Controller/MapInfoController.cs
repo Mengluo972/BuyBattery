@@ -12,24 +12,27 @@ using UnityEngine.Serialization;
 /// </summary>
 public class MapInfoController : MonoBehaviour
 {
+    public static string mapName;//调试用，地图名字自定义
     private static List<List<AStarNode>> mapNodes = new List<List<AStarNode>>();//不会随着脚本的销毁而销毁
     private static List<List<Transform>> mapTransforms = new List<List<Transform>>();//不会随着脚本的销毁而销毁
-    private static Transform _originPosition;
-    
-    public string mapName;
+    public static Transform originPosition;
     private static int _mapX;
     private static int _mapY;
     
     //下面是临时测试用，具体使用时请使用静态方法
-    public GameObject nodePrefab;//预制体应当具有Node脚本
-    public Transform originPosition;//应放在地图左下角格子处并且是格子的中心点(x.5,0,z.5)
+    // public string mapName;
+    // public GameObject nodePrefab;//预制体应当具有Node脚本
+    // public Transform originPosition;//应放在地图左下角格子处并且是格子的中心点(x.5,0,z.5)
     // public GameObject cube;//障碍物标记
     
     //正式使用时不要用Start读取地图信息
     void Start()
     {
         // LoadSceneData($"MapInfo/{mapName}");
-        LoadSceneData(1);
+        mapName = "LevelBox";
+        LoadSceneData(2);
+        // mapName = "Level";
+        // LoadSceneData(1);
     }
 
     private static T ParseXML<T>(string xmlContent)
@@ -67,12 +70,12 @@ public class MapInfoController : MonoBehaviour
     // }
     
     /// <summary>
-    /// 关卡文件名应为LevelX.xml，X为阿拉伯数字
+    /// 关卡文件名应为LevelBoxX.xml，X为阿拉伯数字
     /// </summary>
     /// <param name="levelNum"></param>
     public static void LoadSceneData(int levelNum)
     {
-        TextAsset xmlFile = Resources.Load<TextAsset>($"MapInfo/Level{levelNum}");
+        TextAsset xmlFile = Resources.Load<TextAsset>($"MapInfo/{mapName}{levelNum}");
         if (xmlFile!=null)
         {
             //清空数据
@@ -90,7 +93,7 @@ public class MapInfoController : MonoBehaviour
         mapTransforms.Clear();
         
         Transform originPos = GameObject.Find("OriginPosition").transform;//应放在地图左下角格子处并且是格子的中心点(x.5,0,z.5)，名字为OriginPosition
-        _originPosition = originPos;
+        originPosition = originPos;
         GameObject prefab = Resources.Load<GameObject>("MapInfo/NodePrefab/NodePrefab");//预制体放在Resources/MapInfo/NodePrefab文件夹下，名字为NodePrefab
         //测试用,障碍标记
         GameObject cube = Resources.Load<GameObject>("MapInfo/NodePrefab/Cube");
@@ -100,7 +103,9 @@ public class MapInfoController : MonoBehaviour
         
         _mapX = mapNodes.Count-1;
         _mapY = mapNodes[0].Count-1;
-
+        
+        print($"地图最大X坐标为：{_mapX}，最大Y坐标为：{_mapY}");
+        
         AStarManager.Instance.InitMapInfoWithPosition(_mapX,_mapY,mapNodes);
         
         //与数据存储同步,列优先读取
@@ -114,23 +119,24 @@ public class MapInfoController : MonoBehaviour
                 list.Add(nodeGameObject.transform);
                 Node node = nodeGameObject.GetComponent<Node>();
                 node.AStarNode = mapNodes[i][j];
-                if (node.AStarNode.Type==Node_Type.Stop)
-                {
-                    Instantiate(cube, position, Quaternion.identity);
-                }
+                // if (node.AStarNode.Type==Node_Type.Stop)
+                // {
+                //     Instantiate(cube, position, Quaternion.identity);
+                //     Debug.Log("检测到障碍物，坐标为："+position);
+                // }
             }
             mapTransforms.Add(list);
         }
     }
     
     //进行坐标转换，将网格坐标转换为世界坐标
-    public static List<Transform> AStarNodeToTransforms(List<AStarNode> path)
+    public static List<Vector3> AStarNodeToTransforms(List<AStarNode> path)
     {
-        List<Transform> transforms = new List<Transform>();
+        List<Vector3> transforms = new List<Vector3>();
         foreach (var node in path)
         {
             // print($"节点信息 x:{node.x},y:{node.y}");
-            transforms.Add(mapTransforms[node.x][node.y]);
+            transforms.Add(mapTransforms[node.x][node.y].position);
         }
 
         return transforms;
