@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ScreenPower: 0.225
+    - _ScreenPower: 0.145
     - _ShadowRange: 0.631
     - _ShadowSmooth: 0.327
     m_Colors:

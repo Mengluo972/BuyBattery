@@ -68,9 +68,9 @@ Shader "Scene/dotTex"
                 o.uv = v.uv;
                 float3 posVS = UnityObjectToViewPos(v.vertex).xyz;
                 o.screenUV = posVS.xy / posVS.z;
-                float originDist = UnityObjectToViewPos(float3(0.0,0.0,0.0)).z;
-                o.screenUV *= originDist;
-                o.screenUV *= _ScreenTex_ST.xy;
+                // float originDist = UnityObjectToViewPos(float3(0.0,0.0,0.0)).z;
+//                o.screenUV *= originDist;
+                o.screenUV *= _ScreenTex_ST.xy * 7;
                 //修正摄像机距离问题：使拉近前后纹理大小一致
                 
                 // o.screenUV *= ndcNormal.xy;
