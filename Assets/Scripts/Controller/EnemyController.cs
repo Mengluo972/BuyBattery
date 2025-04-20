@@ -9,14 +9,15 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public List<FSM> enemies; //在场景中完成绑定
+    private static List<FSM> _staticEnemies;//注意列表的刷新和清除
 
     void Start()
     {
-        // enemies = new List<FSM>();
         foreach (var enemy in enemies)
         {
             enemy.parameter.EnemyController = this;
         }
+        _staticEnemies = enemies;//共享同一块内存
     }
 
     void Update()
@@ -30,6 +31,19 @@ public class EnemyController : MonoBehaviour
         foreach (var enemy in enemies)
         {
             if (Vector3.Distance(enemy.transform.position,attractiveEnemy.transform.position)<=distance)
+            {
+                enemiesInRange.Add(enemy);
+            }
+        }
+        return enemiesInRange;
+    }
+    
+    public static List<FSM> GetEnemies(Vector3 targetPosition, float distance)
+    {
+        List<FSM> enemiesInRange = new List<FSM>();
+        foreach (var enemy in _staticEnemies)
+        {
+            if (Vector3.Distance(enemy.transform.position,targetPosition)<=distance)
             {
                 enemiesInRange.Add(enemy);
             }

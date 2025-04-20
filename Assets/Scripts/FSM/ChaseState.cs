@@ -21,12 +21,12 @@ public class ChaseState : IState
         _manager = manager;
         _parameter = manager.parameter;
         _rayCastTest = manager.RayCastTest;
-        _navMeshAgent = manager.GetComponent<NavMeshAgent>();
+        _navMeshAgent = manager.parameter.NavMeshAgent;
         _navMeshAgent.speed = _parameter.chaseSpeed;
     }
     public void OnEnter()
     {
-        Debug.Log($"{_manager.gameObject.name}进入逮人状态");
+        // Debug.Log($"{_manager.gameObject.name}进入逮人状态");
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
         _parameter.animator.Play("");
@@ -44,7 +44,7 @@ public class ChaseState : IState
         if (!_rayCastTest.IsPlayerDetected)
         {
             _manager.TransitionState(StateType.Find);
-            Debug.Log($"{_manager.gameObject.name}通过!_rayCastTest.IsPlayerDetected进入找人状态");
+            // Debug.Log($"{_manager.gameObject.name}通过!_rayCastTest.IsPlayerDetected进入找人状态");
             return;
         }
 
@@ -57,7 +57,7 @@ public class ChaseState : IState
  
     public void OnExit()
     {
-        Debug.Log($"{_manager.gameObject.name}退出逮人状态");
+        // Debug.Log($"{_manager.gameObject.name}退出逮人状态");
         _rayCastTest.IsChaseTracing = false;
     }
 

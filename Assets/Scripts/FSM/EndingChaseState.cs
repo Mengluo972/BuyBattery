@@ -19,12 +19,13 @@ public class EndingChaseState : IState
     {
         _manager = manager;
         _parameter = manager.parameter;
-        _navMeshAgent = manager.GetComponent<NavMeshAgent>();
+        _navMeshAgent = manager.parameter.NavMeshAgent;
     }
     public void OnEnter()
     {
         _getBackTarget = _parameter.LastPatrolPoint;
-        Debug.Log("进入结束追逐状态");
+        // _getBackTarget = _parameter.partrolPoints[0].position;
+        // Debug.Log("进入结束追逐状态");
     }
 
     public void OnUpdate()
@@ -32,7 +33,7 @@ public class EndingChaseState : IState
         if (Vector3.Distance(_manager.transform.position, _getBackTarget) < 1.7f)
         {
             _manager.TransitionState(StateType.Patrol);
-            Debug.Log($"{_manager.gameObject.name}返回巡逻状态");
+            // Debug.Log($"{_manager.gameObject.name}返回巡逻状态");
         }
         _navMeshAgent.SetDestination(_getBackTarget);
         _manager.transform.LookAt(_getBackTarget);

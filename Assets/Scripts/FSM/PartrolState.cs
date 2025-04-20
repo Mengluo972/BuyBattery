@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PartrolState : IState
 {
@@ -8,12 +9,14 @@ public class PartrolState : IState
     private Parameter _parameter;
     private RayCastTest _rayCastTest;
     private Rigidbody _rigidbody;//默认FSM组件下手动挂载了Rigidbody组件
+    private NavMeshAgent _navMeshAgent;
     public PartrolState(FSM manager)
     {
         _manager = manager;
         _parameter = manager.parameter;
         _rayCastTest = manager.RayCastTest;
         _rigidbody = manager.GetComponent<Rigidbody>();
+        _navMeshAgent = manager.parameter.NavMeshAgent;
     }
     public void OnEnter()
     {
@@ -23,7 +26,7 @@ public class PartrolState : IState
 
     public void OnUpdate()
     {
-        if(Vector3.Distance(_manager.transform.position,_parameter.partrolPoints[_parameter.PatrolIndex].position)<0.5f)
+        if(Vector3.Distance(_manager.transform.position,_parameter.partrolPoints[_parameter.PatrolIndex].position)<=_navMeshAgent.stoppingDistance)
         {
             _parameter.PatrolIndex++;//一旦到达就立刻增加索引值，在转向状态中不再额外增加
             if(_parameter.PatrolIndex>=_parameter.partrolPoints.Length)//越界检测
@@ -31,9 +34,11 @@ public class PartrolState : IState
                 _parameter.PatrolIndex = 0;
             }
             _manager.TransitionState(StateType.Flip);
+            return;
         }
-        _manager.transform.position = Vector3.MoveTowards(_manager.transform.position,
-            _parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.moveSpeed * Time.deltaTime);
+        // _manager.transform.position = Vector3.MoveTowards(_manager.transform.position,
+        //     _parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.moveSpeed * Time.deltaTime);
+        _navMeshAgent.SetDestination(_parameter.partrolPoints[_parameter.PatrolIndex].position);
         if (!_rayCastTest.IsPlayerDetected) return;//如果没有发现玩家，就不去执行增长警戒值的操作
         if(_parameter.alarmValue>=_parameter.alarmMaxValue)
         {

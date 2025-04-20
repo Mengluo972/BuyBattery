@@ -23,7 +23,7 @@ public class FindState : IState
         _manager = manager;
         _parameter = manager.parameter;
         _rayCastTest = manager.RayCastTest;
-        _navMeshAgent = manager.GetComponent<NavMeshAgent>();
+        _navMeshAgent = manager.parameter.NavMeshAgent;
         _navMeshAgent.stoppingDistance = 1.7f;//只能在一个状态的初始化中进行更改，否则会出现数据混乱
         _navMeshAgent.acceleration = 40f;
     }
@@ -92,7 +92,7 @@ public class FindState : IState
     {
         if (Vector3.Distance(_manager.transform.position,_parameter.playerTarget.position)<_rayCastTest.chaseDistance)
         {
-            Debug.Log("玩家距离过近，进入逮人状态");
+            // Debug.Log("玩家距离过近，进入逮人状态");
             switch (_parameter.enemyType)
             {
                 case EnemyType.PatrolEnemy:

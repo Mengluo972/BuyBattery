@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Serialization;
 
 public enum StateType
@@ -12,27 +13,29 @@ public enum StateType
 [Serializable]
 public class Parameter//敌人信息
 {
-    public EnemyType enemyType;//敌人类型
-    public float moveSpeed;
-    public float chaseSpeed;
-    public Transform[] partrolPoints;
-    public FakePatrolNodes[] fakePatrolPoints;//相关假巡逻点的集合，无需考虑先后顺序直接拖进去
-    public Animator animator;
+    [Header("观测用敌人状态")]public StateType enemyState;//观测用敌人状态
+    [Header("敌人类型")]public EnemyType enemyType;//敌人类型
+    [Header("行走速度")]public float moveSpeed;
+    [Header("追逐速度")]public float chaseSpeed;
+    [Header("巡逻点")]public Transform[] partrolPoints;
+    [Header("已弃用")]public FakePatrolNodes[] fakePatrolPoints;//相关假巡逻点的集合，无需考虑先后顺序直接拖进去
+    [NonSerialized]public Animator animator;
     [NonSerialized]public int PatrolIndex;
     [NonSerialized]public TriggerListener TriggerListener;
     [NonSerialized]public Vector3 LastPatrolPoint;
     [NonSerialized]public EnemyController EnemyController;
-    public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
+    [NonSerialized]public NavMeshAgent NavMeshAgent;
+    [Header("玩家角色")]public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
     // public float chaseDistance;//进入找人状态的检测距离
-
-    public float flipTime;//转向使用的时间
-    public float flipWaitTimeBefore;//转向前停留时间
-    public float flipWaitTimeAfter;//转向后停留时间
-    public float alarmValue;//敌人警戒值
-    public float alarmAccelerationSpeed;//警戒值增加速度
-    public float alarmDecreaseSpeed;//警戒值减少速度
-    public float alarmMaxValue;//警戒值最大值
-    public float attractDistance;//最大吸引距离（如果敌人为追逐型的人的话才生效）
+    
+    [Header("转向使用的时间")]public float flipTime;//转向使用的时间
+    [Header("转向前停留时间")]public float flipWaitTimeBefore;//转向前停留时间
+    [Header("转向后停留时间")]public float flipWaitTimeAfter;//转向后停留时间
+    [Header("敌人警戒值")]public float alarmValue;//敌人警戒值
+    [Header("警戒值增加速度")]public float alarmAccelerationSpeed;//警戒值增加速度
+    [Header("警戒值减少速度")]public float alarmDecreaseSpeed;//警戒值减少速度
+    [Header("警戒值最大值")]public float alarmMaxValue;//警戒值最大值
+    [Header("最大吸引距离（如果敌人为追逐型的人的话才生效）")]public float attractDistance;//最大吸引距离（如果敌人为追逐型的人的话才生效）
 }
 
 public enum EnemyType
@@ -65,6 +68,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         _meshCollider = transform.GetChild(0).GetComponent<MeshCollider>();//疑似无用
         transform.GetChild(0).AddComponent<TriggerListener>();//触发器监听脚本的添加在这里完成，无需手动添加
         parameter.TriggerListener = transform.GetChild(0).GetComponent<TriggerListener>();
+        parameter.NavMeshAgent = GetComponent<NavMeshAgent>();
         
         _states.Add(StateType.Idle,new IdleState(this));
         _states.Add(StateType.Chase,new ChaseState(this));
@@ -102,6 +106,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         {
             _currentState.OnExit();
         }
+        parameter.enemyState = type;
         _currentState = _states[type];
         _currentState.OnEnter();
     }
