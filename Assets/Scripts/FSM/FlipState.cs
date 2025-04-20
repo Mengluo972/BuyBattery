@@ -13,7 +13,7 @@ public class FlipState : IState
     private float _timer;
     private RayCastTest _rayCastTest;
     private int _flipWaitStage;//一共4阶段，值为0时等待第一段，值为1时开始转向，值为2时进行转向，值为3时等待第二段
-    
+    private bool _isPlayed;
     public FlipState(FSM manager)
     {
         _manager = manager;
@@ -36,8 +36,31 @@ public class FlipState : IState
         {
             case 0:
                 //转向前等待播放静止动画，只能播放一次
-                //todo...
-                
+                _isPlayed = false;
+                if (!_isPlayed)
+                {
+                    _isPlayed = true;
+                    switch (_parameter.enemyAnimator)
+                    {
+                        case EnemyAnimator.colleague:
+                            _parameter.animator.Play("enemy_colleague@Idle");
+                            break;
+                        case EnemyAnimator.intern:
+                            _parameter.animator.Play("enemy_intern@idle1");
+                            break;
+                        case EnemyAnimator.cat:
+                            _parameter.animator.Play("metarig_Cat|stand");
+                            break;
+                        case EnemyAnimator.boss:
+                            _parameter.animator.Play("enemy_boss@Idle");
+                            break;
+                        case EnemyAnimator.maneger:
+                            _parameter.animator.Play("enemy_manager@idle");
+                            break;
+
+                    }
+                }
+
                 _timer += Time.deltaTime;
                 if (_timer >= _parameter.flipWaitTimeBefore)
                 {

@@ -15,6 +15,7 @@ public class Parameter//敌人信息
 {
     [Header("观测用敌人状态")]public StateType enemyState;//观测用敌人状态
     [Header("敌人类型")]public EnemyType enemyType;//敌人类型
+    [Header("敌人模型")] public EnemyAnimator enemyAnimator;
     [Header("行走速度")]public float moveSpeed;
     [Header("追逐速度")]public float chaseSpeed;
     [Header("巡逻点")]public Transform[] partrolPoints;
@@ -54,6 +55,17 @@ public enum EnemyType
     //发现玩家，玩家固定位置一段时间
     
 }
+
+public enum EnemyAnimator
+{
+    colleague,
+    intern,
+    cat,
+    boss,
+    maneger,
+
+}
+
 public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有一个FSM组件，且需要有一个具有collider触发器的子物体
 {
     public Parameter parameter;

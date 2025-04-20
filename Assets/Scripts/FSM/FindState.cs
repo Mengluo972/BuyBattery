@@ -46,6 +46,22 @@ public class FindState : IState
     {
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
+        switch (_parameter.enemyAnimator)
+        {
+            case EnemyAnimator.colleague:
+                _parameter.animator.Play("enemy_colleague@walk");
+                break;
+            case EnemyAnimator.cat:
+                _parameter.animator.Play("metarig_Cat|walk");
+                break;
+            case EnemyAnimator.boss:
+                _parameter.animator.Play("enemy_boss@Walk");
+                break;
+            case EnemyAnimator.maneger:
+                _parameter.animator.Play("enemy_manager@walk");
+                break;
+
+        }
     }
 
     // public void OnUpdate()

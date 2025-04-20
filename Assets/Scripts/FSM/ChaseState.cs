@@ -29,7 +29,25 @@ public class ChaseState : IState
         // Debug.Log($"{_manager.gameObject.name}进入逮人状态");
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
-        _parameter.animator.Play("");
+        switch (_parameter.enemyAnimator)
+        {
+            case EnemyAnimator.colleague:
+                _parameter.animator.Play("enemy_colleague@run");
+                break;
+            case EnemyAnimator.intern:
+                _parameter.animator.Play("enemy_intern@run");
+                break;
+            case EnemyAnimator.cat:
+                _parameter.animator.Play("metarig_Cat|walk");
+                break;
+            case EnemyAnimator.boss:
+                _parameter.animator.Play("enemy_boss@run");
+                break;
+            case EnemyAnimator.maneger:
+                _parameter.animator.Play("enemy_maneger@run");
+                break;
+
+        }
     }
 
     public void OnUpdate()
