@@ -33,6 +33,7 @@ public class PmcPlayerController : MonoBehaviour
     private Animator _animator;
 
 
+    [NonSerialized] public bool _inAction = false;
     [NonSerialized] public bool IsMoveAble = true;
     [NonSerialized] public bool IsRunable = true;
     [NonSerialized] public bool IsDisguised = false;
@@ -80,6 +81,7 @@ public class PmcPlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             SetPlayerRotation();
+            _inAction = false;
             if (_isRunning)
             {
                 ani = "rig_player|walk";
@@ -90,17 +92,28 @@ public class PmcPlayerController : MonoBehaviour
                 ani = "rig_player|slide";
                 //_animator.Play("rig_player|slide");
             }
+            _animator.Play(ani);
+            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName(ani) && stateInfo.normalizedTime >= 1.0f)
+            {
+                _animator.Play(ani, -1, 0f); // 从开头重新播放
+            }
         }
         else
         {
+            if (!_inAction)
+            {
+                ani = "rig_player|Idle";
+                _animator.Play(ani);
+            }
+            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.normalizedTime >= 1.0f)
+            {
+                _inAction = false;
+                _animator.Play("rig_player|Idle", -1, 0f); // 从开头重新播放
+            }
             //_animator.Play("rig_player|Idle");
-            ani = "rig_player|Idle";
-        }
-        _animator.Play(ani);
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-        if (stateInfo.IsName(ani) && stateInfo.normalizedTime >= 1.0f)
-        {
-            _animator.Play(ani, -1, 0f); // 从开头重新播放
+
         }
 
         cc.Move(move);

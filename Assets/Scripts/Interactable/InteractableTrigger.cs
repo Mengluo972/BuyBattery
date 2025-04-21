@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractableTrigger : MonoBehaviour
@@ -8,10 +9,14 @@ public class InteractableTrigger : MonoBehaviour
     private IInteractable actionItem = null;
     [Header("交互键位")]
     public KeyCode actionKey=KeyCode.E;
+
+    private PmcPlayerController playerController;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController=GetComponent<PmcPlayerController>();
+        animator=GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,6 +26,8 @@ public class InteractableTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(actionKey))
             {
+                animator.Play("rig_player|touch");
+                playerController._inAction=true;
                 actionItem.TriggerAction();
                 inTrigger = false;
                 actionItem.inTriggerAnimation(false);
