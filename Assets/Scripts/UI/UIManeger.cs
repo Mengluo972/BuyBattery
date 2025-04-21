@@ -49,6 +49,7 @@ public class UIManeger : MonoBehaviour
     {
         FindGameObject();
         paused = false;
+        Cursor.lockState = CursorLockMode.None;
 
     }
 
@@ -142,6 +143,14 @@ public class UIManeger : MonoBehaviour
         oldBG.SetActive(true);
         StartCoroutine(LoadScene(mainMenuSceneName));
         //ceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void Restart()
+    {
+        deathMenu.SetActive(false);
+        stopMenu.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(gameSceneName);
     }
 
     private async UniTaskVoid OpenDeathLoad()

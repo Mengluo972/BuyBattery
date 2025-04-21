@@ -29,6 +29,7 @@ public class PmcPlayerController : MonoBehaviour
     private float _cameraX;
     private Transform _playerModel;
     private BoxCollider _collider;
+    private Animator _animator;
 
 
     [NonSerialized] public bool IsMoveAble = true;
@@ -43,6 +44,7 @@ public class PmcPlayerController : MonoBehaviour
         _cameraDirectionTransform = transform.Find("Main Camera");
         _collider = gameObject.GetComponent<BoxCollider>();
         cc = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
 
     }
 
@@ -135,6 +137,7 @@ public class PmcPlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _canRun && IsMoveAble)//跑步启动
         {
+            _animator.Play("rig_player|slide");
             _canRun = false;
             _runTimer = runDuaration;
             _isRunning = true;
