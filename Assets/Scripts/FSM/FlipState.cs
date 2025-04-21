@@ -123,7 +123,27 @@ public class FlipState : IState
 
                 return;
             }
-            _manager.TransitionState(StateType.Chase);
+
+            switch (_parameter.enemyType)
+            {
+                case EnemyType.AttractEnemy:
+                    Debug.Log("当前敌人为追逐型敌人，正在吸引周围的敌人前来追逐玩家");
+                    List<FSM> list = _parameter.EnemyController.GetEnemies(_manager,_parameter.attractDistance);
+                    foreach (var fsm in list)
+                    {
+                        fsm.parameter.alarmValue = fsm.parameter.alarmMaxValue;
+                        fsm.TransitionState(StateType.Chase);
+                    }
+
+                    return;
+                case EnemyType.StunEnemy:
+                    Debug.Log("当前敌人为眩晕型敌人，将玩家定身");
+                    _manager.TransitionState(StateType.Stun);
+                    break;
+                default:
+                    _manager.TransitionState(StateType.Chase);
+                    break;
+            }
             return;
         }
         _parameter.alarmValue += _parameter.alarmAccelerationSpeed*Time.deltaTime;
