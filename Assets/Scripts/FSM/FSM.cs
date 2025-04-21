@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -77,6 +78,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
     {
         RayCastTest = GetComponent<RayCastTest>();
         parameter.animator = GetComponent<Animator>();
+        GetAnimation(parameter.animator);
         _meshCollider = transform.GetChild(0).GetComponent<MeshCollider>();//疑似无用
         transform.GetChild(0).AddComponent<TriggerListener>();//触发器监听脚本的添加在这里完成，无需手动添加
         parameter.TriggerListener = transform.GetChild(0).GetComponent<TriggerListener>();
@@ -123,4 +125,29 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         _currentState.OnEnter();
     }
     
+    public void GetAnimation(Animator ani)
+    {
+        string p="";
+        switch (parameter.enemyAnimator)
+        {
+            case EnemyAnimator.intern:
+                p = "Assets/ArtRes/Character/animator/Intern.controller";
+                break;
+            case EnemyAnimator.boss:
+                p = "Assets/ArtRes/Character/animator/Boss.controller";
+                break;
+            case EnemyAnimator.cat:
+                p = "Assets/ArtRes/Character/animator/Cat.controller";
+                break;
+            case EnemyAnimator.colleague:
+                p = "Assets/ArtRes/Character/animator/Colleague.controller";
+                break;
+            case EnemyAnimator.maneger:
+                p = "Assets/ArtRes/Character/animator/Maneger.controller";
+                break;
+        }
+        ani.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(p);
+        Debug.Log(p);
+    }
+
 }
