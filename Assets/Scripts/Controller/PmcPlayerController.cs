@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -52,12 +53,14 @@ public class PmcPlayerController : MonoBehaviour
     {
         DisguiseItem.PlayerDisguise += () => PlayerDisguise();
         HideItem.PlayerHide += () => PlayerHide();
+        AttackState.DeathEvent += () => PlayerDead();
     }
 
     private void OnDisable()
     {
         DisguiseItem.PlayerDisguise -= () => PlayerDisguise();
         HideItem.PlayerHide -= () => PlayerHide();
+        AttackState.DeathEvent -= () => PlayerDead();
     }
 
     // Update is called once per frame
@@ -72,7 +75,34 @@ public class PmcPlayerController : MonoBehaviour
         Vector3 move = GetInput();
         float speed = setSpeed();
         move = move * speed * Time.deltaTime;
-        if (move != Vector3.zero) { SetPlayerRotation(); }
+
+        string ani;
+        if (move != Vector3.zero)
+        {
+            SetPlayerRotation();
+            if (_isRunning)
+            {
+                ani = "rig_player|walk";
+                //_animator.Play("rig_player|walk");
+            }
+            else
+            {
+                ani = "rig_player|slide";
+                //_animator.Play("rig_player|slide");
+            }
+        }
+        else
+        {
+            //_animator.Play("rig_player|Idle");
+            ani = "rig_player|Idle";
+        }
+        _animator.Play(ani);
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName(ani) && stateInfo.normalizedTime >= 1.0f)
+        {
+            _animator.Play(ani, -1, 0f); // 从开头重新播放
+        }
+
         cc.Move(move);
     }
 
@@ -137,7 +167,6 @@ public class PmcPlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _canRun && IsMoveAble)//跑步启动
         {
-            _animator.Play("rig_player|slide");
             _canRun = false;
             _runTimer = runDuaration;
             _isRunning = true;
@@ -213,6 +242,11 @@ public class PmcPlayerController : MonoBehaviour
         //禁用碰撞体，拒绝交互
         _collider.enabled = IsMoveAble;
 
+    }
+
+    public void PlayerDead()
+    {
+        _animator.Play("rig_player|scared");
     }
 
 }
