@@ -18,6 +18,22 @@ public class AttackState : IState
     public void OnEnter()
     {
         Debug.Log("进入攻击状态");
+        switch (_parameter.enemyAnimator)
+        {
+            case EnemyAnimator.colleague:
+                _parameter.animator.Play("enemy_colleague@catch");
+                break;
+            case EnemyAnimator.intern:
+                _parameter.animator.Play("enemy_intern@catch");
+                break;
+            case EnemyAnimator.boss:
+                _parameter.animator.Play("enemy_boss@catch");
+                break;
+            case EnemyAnimator.maneger:
+                _parameter.animator.Play("enemy_manager@catch1");
+                break;
+
+        }
         DeathEvent?.Invoke();
     }
 

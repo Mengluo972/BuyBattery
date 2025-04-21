@@ -26,7 +26,7 @@ public class PmcCameraController : MonoBehaviour
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked; // 锁鼠标
+        Cursor.lockState = CursorLockMode.Locked; // 锁鼠标
         currentX = startX;
         currentY = startY;
         playerTransform = transform.parent;
@@ -35,9 +35,17 @@ public class PmcCameraController : MonoBehaviour
 
     void Update()
     {
-        CameraSet(mode);
+        if (Time.timeScale!=0)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            CameraSet(mode);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        
     }
-
 
     public void CameraSet(int m)
     {
