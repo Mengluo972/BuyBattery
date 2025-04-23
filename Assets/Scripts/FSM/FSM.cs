@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 
 public enum StateType
 {
-    Idle,Patrol,Chase,Flip,EndingChase,Attack,Stun,Find,Attract,AttractivePatrol
+    Idle,Patrol,Chase,Flip,EndingChase,Attack,Stun,Find,Attract,AttractivePatrol,Track,TrackWaiting,TrackBack
 }
 [Serializable]
 public class Parameter//敌人信息
@@ -19,8 +19,8 @@ public class Parameter//敌人信息
     [Header("敌人模型")] public EnemyAnimator enemyAnimator;
     [Header("行走速度")]public float moveSpeed;
     [Header("追逐速度")]public float chaseSpeed;
-    [Header("巡逻点")]public Transform[] partrolPoints;
-    [Header("已弃用")]public FakePatrolNodes[] fakePatrolPoints;//相关假巡逻点的集合，无需考虑先后顺序直接拖进去
+    [Header("巡逻点(无论如何至少要有一个该角色站立的原点)")]public Transform[] partrolPoints;
+    // [Header("已弃用")]public FakePatrolNodes[] fakePatrolPoints;//相关假巡逻点的集合，无需考虑先后顺序直接拖进去
     [NonSerialized]public Animator animator;
     [NonSerialized]public int PatrolIndex;
     [NonSerialized]public TriggerListener TriggerListener;
@@ -38,6 +38,7 @@ public class Parameter//敌人信息
     [Header("警戒值减少速度")]public float alarmDecreaseSpeed;//警戒值减少速度
     [Header("警戒值最大值")]public float alarmMaxValue;//警戒值最大值
     [Header("最大吸引距离（如果敌人为追逐型的人的话才生效）")]public float attractDistance;//最大吸引距离（如果敌人为追逐型的人的话才生效）
+    [Header("追踪型敌人是否处于追踪状态")]public bool isChasing = false;//追踪型敌人是否处于追踪状态
 }
 
 public enum EnemyType
@@ -54,6 +55,9 @@ public enum EnemyType
     StunEnemy,
     //定身型敌人
     //发现玩家，玩家固定位置一段时间
+    TrackEnemy
+    //追踪型敌人
+    //当玩家进入房间后一直追逐玩家，玩家离开房间后停止追踪
     
 }
 
@@ -94,17 +98,23 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         _states.Add(StateType.Find,new FindState(this));
 
 
-        if (parameter.enemyType==EnemyType.AttractEnemy)
+        switch (parameter.enemyType)
         {
-            _states.Add(StateType.AttractivePatrol,new AttractivePatrolState(this));
-            _states.Add(StateType.Attract,new AttractState(this));
-            TransitionState(StateType.AttractivePatrol);
-            return;
+            case EnemyType.AttractEnemy:
+                _states.Add(StateType.AttractivePatrol,new AttractivePatrolState(this));
+                _states.Add(StateType.Attract,new AttractState(this));
+                TransitionState(StateType.AttractivePatrol);
+                return;
+            case EnemyType.TrackEnemy:
+                _states.Add(StateType.Track,new TrackState(this));
+                _states.Add(StateType.TrackWaiting,new TrackWatingState(this));
+                _states.Add(StateType.TrackBack,new TrackBackState(this));
+                TransitionState(StateType.TrackWaiting);
+                return;
+            default:
+                TransitionState(StateType.Patrol);
+                break;
         }
-        
-        TransitionState(StateType.Patrol);
-        
-        
     }
 
     void Update()
