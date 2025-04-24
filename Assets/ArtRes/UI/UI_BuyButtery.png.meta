@@ -185,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 23
-        y: 436
+        y: 221
         width: 234
         height: 262
       alignment: 0
@@ -516,6 +516,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI_BuyButtery_PhonePanel
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 502
+        width: 254
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb12ae175751444ba18016213ae9983
+      internalID: -837050366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -536,6 +557,7 @@ TextureImporter:
       UI_BuyButtery_MenuI: 810298445
       UI_BuyButtery_MenuM: 295476139
       UI_BuyButtery_NewGameBTN: -1894986351
+      UI_BuyButtery_PhonePanel: -837050366
       UI_BuyButtery_QuitGameBTN: 654162496
       UI_BuyButtery_SaveDataBTN: 1704141352
       UI_BuyButtery_SaveDataIcon: -469821795
