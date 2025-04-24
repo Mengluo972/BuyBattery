@@ -79,7 +79,7 @@ Shader "Character/player"
             ENDCG
         }
 		//描边Pass
-
+        /*
         Pass
 		{
 		    Tags {"LightMode"="ForwardBase"}
@@ -152,6 +152,6 @@ Shader "Character/player"
                 return fixed4(_OutLineColor.rgb, 0);
             }
             ENDCG
-        }
+        }*/
     }
 }
