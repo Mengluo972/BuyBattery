@@ -20,6 +20,9 @@ public class PmcCameraController : MonoBehaviour
     [Header("开局角度(?)")]
     public float startX = -90f;
     public float startY = 45f;
+    
+    [Header("摄像机Y轴偏移")]
+    public float offsetY = 0f;
 
     private float currentX = -90f;  //水平角度
     private float currentY = 45f; //垂直角度
@@ -77,7 +80,8 @@ public class PmcCameraController : MonoBehaviour
         Vector3 position = playerTransform.position + rotation * dir + Vector3.up * height;
 
         transform.position = position;
-        transform.LookAt(playerTransform.position);
+        // transform.LookAt(playerTransform.position);
+        transform.LookAt(new Vector3(playerTransform.position.x, playerTransform.position.y+offsetY, playerTransform.position.z));
     }
 
     public void CameraSet1()//固定水平距离
@@ -100,7 +104,8 @@ public class PmcCameraController : MonoBehaviour
                          + Vector3.up * height;
 
         transform.position = position;
-        transform.LookAt(playerTransform.position);
+        // transform.LookAt(playerTransform.position);
+        transform.LookAt(new Vector3(playerTransform.position.x, playerTransform.position.y+offsetY, playerTransform.position.z));
     }
 
 }
