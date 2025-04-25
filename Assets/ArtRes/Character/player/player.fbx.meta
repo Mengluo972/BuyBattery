@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: phone
+    second: {fileID: 2100000, guid: 1c424a57a658d3844a6bc18af0bcbf44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: "\u6750\u8D28"
     second: {fileID: 2100000, guid: f43642dc5ed5cf74483f49fc9fb28418, type: 2}
   materials:
