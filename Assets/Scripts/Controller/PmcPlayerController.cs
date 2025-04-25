@@ -37,6 +37,7 @@ public class PmcPlayerController : MonoBehaviour
     [NonSerialized] public bool IsMoveAble = true;
     [NonSerialized] public bool IsRunable = true;
     [NonSerialized] public bool IsDisguised = false;
+    [NonSerialized] public bool IsSafe = false;
 
 
 
@@ -55,6 +56,7 @@ public class PmcPlayerController : MonoBehaviour
         DisguiseItem.PlayerDisguise += () => PlayerDisguise();
         HideItem.PlayerHide += () => PlayerHide();
         AttackState.DeathEvent += () => PlayerDead();
+        SafeItem.PlayerSafe += () => PlayerSafe();
     }
 
     private void OnDisable()
@@ -62,6 +64,7 @@ public class PmcPlayerController : MonoBehaviour
         DisguiseItem.PlayerDisguise -= () => PlayerDisguise();
         HideItem.PlayerHide -= () => PlayerHide();
         AttackState.DeathEvent -= () => PlayerDead();
+        SafeItem.PlayerSafe -= () => PlayerSafe();
     }
 
     // Update is called once per frame
@@ -231,17 +234,41 @@ public class PmcPlayerController : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
+    private async UniTaskVoid PlayerSafe()
+    {
+        SafeChange();
+        gameObject.tag = "HiddenPlayer";
+        float t = Time.time;
+
+        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
+
+        SafeChange();
+        gameObject.tag = "Player";
+    }
+
+    public void SafeChange()
+    {
+        //禁用碰撞体，拒绝交互
+        _collider.enabled = IsSafe;
+
+        IsSafe = !IsSafe;
+
+        _isRunning = false;
+        _canRun = !IsSafe;
+
+        //替代动画
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
+    }
+
     private async UniTaskVoid PlayerHide()
     {
         HideChange();
-        gameObject.tag = "HiddenPlayer";
-
-        
+        //gameObject.tag = "HiddenPlayer";
 
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
         HideChange();
-        gameObject.tag = "Player";
+        //gameObject.tag = "Player";
 
     }
 
