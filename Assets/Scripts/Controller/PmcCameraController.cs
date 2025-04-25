@@ -32,7 +32,7 @@ public class PmcCameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // 锁鼠标
         currentX = startX;
         currentY = startY;
-        playerTransform = transform.parent;
+        playerTransform = GameObject.Find("Player").transform;
 
     }
 

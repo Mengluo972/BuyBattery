@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class DoorItem : MonoBehaviour,IInteractable
 {
+    public GameObject DoorCollider;
+
     public void inTriggerAnimation(bool b)
     {
-        throw new System.NotImplementedException();
+        DoorCollider.SetActive(b);
     }
 
     public void TriggerAction()
@@ -17,7 +19,7 @@ public class DoorItem : MonoBehaviour,IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        
+        DoorCollider = transform.Find("DoorCollider").gameObject;
     }
 
     // Update is called once per frame

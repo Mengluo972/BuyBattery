@@ -8,14 +8,25 @@ using UnityEngine;
 
 public class PmcPlayerController : MonoBehaviour
 {
+    [Header("速度设置")]
     [SerializeField] private float nomalSpeed;
-    [SerializeField] private float runSpeed;
-    [SerializeField] private float reduceSpeed;
+
+    [Header("交互键位")]
     [SerializeField] private KeyCode InterKey;
+
+    [Header("疾跑相关")]
     [SerializeField] private float coolDownTime;
     [SerializeField] private float runDuaration;
-    [SerializeField] private float DisguiseDuaration;
+    [SerializeField] private float runSpeed;
 
+    [Header("伪装相关")]
+    [SerializeField] private float DisguiseDuaration;
+    [SerializeField] private float reduceSpeed;
+
+    [Header("保护相关")]
+    [SerializeField] private float safeSpeed;
+
+    [Header("平滑转向相关")]
     [SerializeField] private float smoothSpeed;
     [SerializeField] private float smoothAngle;
 
@@ -44,7 +55,7 @@ public class PmcPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _cameraDirectionTransform = transform.Find("Main Camera");
+        _cameraDirectionTransform = GameObject.Find("Main Camera").transform;
         _collider = gameObject.GetComponent<BoxCollider>();
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
@@ -158,6 +169,10 @@ public class PmcPlayerController : MonoBehaviour
         if (IsDisguised)
         {
             return reduceSpeed;
+        }
+        if (IsSafe)
+        {
+            return safeSpeed;
         }
 
         return nomalSpeed;
@@ -278,6 +293,7 @@ public class PmcPlayerController : MonoBehaviour
 
         //你别问我这是什么东西，我还想问这是什么东西
         //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + Convert.ToInt32(!IsMoveAble)*10f, transform.localPosition.z);
+        gameObject.SetActive(IsMoveAble);
 
         //禁用碰撞体，拒绝交互
         _collider.enabled = IsMoveAble;

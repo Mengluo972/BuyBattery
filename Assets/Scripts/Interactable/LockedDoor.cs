@@ -5,6 +5,7 @@ using UnityEngine;
 public class LockedDoor : MonoBehaviour,IInteractable
 {
     public int DoorNumber;
+    public GameObject DoorCollider;
     private bool isUnlocked=false;
     private bool isOpen=false;
 
@@ -12,7 +13,10 @@ public class LockedDoor : MonoBehaviour,IInteractable
     {
         if (isOpen)
         {
+            //这里加开门的动画
+            //todo...
 
+            DoorCollider.SetActive(!b);
         }
 
     }
@@ -22,6 +26,7 @@ public class LockedDoor : MonoBehaviour,IInteractable
         if (isUnlocked)
         {
             isOpen = true;
+            inTriggerAnimation(true);
         }
         
     }
@@ -29,6 +34,7 @@ public class LockedDoor : MonoBehaviour,IInteractable
     private void OnEnable()
     {
         KeyItem.DoorUnLock += UnLock;
+        
     }
 
     private void OnDisable()
@@ -47,7 +53,7 @@ public class LockedDoor : MonoBehaviour,IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        
+        DoorCollider = transform.Find("DoorCollider").gameObject;
     }
 
     // Update is called once per frame

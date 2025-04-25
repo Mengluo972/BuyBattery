@@ -7,7 +7,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Quaternion _targetRotation;
-    private PlayerController _playerController;
+    public PlayerController _playerController;
 
     private void Start()
     {

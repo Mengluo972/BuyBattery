@@ -16,6 +16,7 @@ public class KeyItem : MonoBehaviour, IInteractable
     public void TriggerAction()
     {
         DoorUnLock?.Invoke(keyNumber);
+        gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
