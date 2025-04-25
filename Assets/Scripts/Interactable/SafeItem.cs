@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class SafeItem : MonoBehaviour
+public class SafeItem : MonoBehaviour,IInteractable
 {
     public static event Action PlayerSafe;
     private bool inTrigger;

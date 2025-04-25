@@ -22,7 +22,7 @@ public class InteractableTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inTrigger)
+        if (inTrigger && !playerController.IsDisguised && !playerController.IsSafe)//可交互，且不处于装备道具状态
         {
             if (Input.GetKeyDown(actionKey))
             {
@@ -62,5 +62,6 @@ public class InteractableTrigger : MonoBehaviour
         }
         
     }
+
 
 }

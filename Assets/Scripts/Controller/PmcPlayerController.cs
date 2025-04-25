@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PmcPlayerController : MonoBehaviour
 {
+    [Header("拖入物体")]
+    [SerializeField] private GameObject HeadBoxItem;
+    [SerializeField] private GameObject BigBoxItem;
+
     [Header("速度设置")]
     [SerializeField] private float nomalSpeed;
 
@@ -50,8 +55,6 @@ public class PmcPlayerController : MonoBehaviour
     [NonSerialized] public bool IsDisguised = false;
     [NonSerialized] public bool IsSafe = false;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,9 @@ public class PmcPlayerController : MonoBehaviour
         _collider = gameObject.GetComponent<BoxCollider>();
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+
+        HeadBoxItem.SetActive(false);
+        BigBoxItem.SetActive(false);
 
     }
 
@@ -82,7 +88,11 @@ public class PmcPlayerController : MonoBehaviour
     void Update()
     {
         RunningChange();
-        PlayerMove();
+        if (IsMoveAble)
+        {
+            PlayerMove();
+        }
+        
     }
 
     public void PlayerMove()
@@ -245,59 +255,76 @@ public class PmcPlayerController : MonoBehaviour
         _isRunning = false;
         _canRun = !IsDisguised;
 
-        //替代动画
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
+        //启用大箱子
+        BigBoxItem.SetActive(IsDisguised);
+        //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
     private async UniTaskVoid PlayerSafe()
     {
         SafeChange();
-        gameObject.tag = "HiddenPlayer";
+        //gameObject.tag = "HiddenPlayer";
         float t = Time.time;
 
         await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
 
         SafeChange();
-        gameObject.tag = "Player";
+        //gameObject.tag = "Player";
     }
 
     public void SafeChange()
     {
         //禁用碰撞体，拒绝交互
-        _collider.enabled = IsSafe;
+        //_collider.enabled = IsSafe;
 
         IsSafe = !IsSafe;
 
         _isRunning = false;
         _canRun = !IsSafe;
 
-        //替代动画
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
+        //启用头戴式箱子
+        HeadBoxItem.SetActive(IsSafe);
+        //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
     private async UniTaskVoid PlayerHide()
     {
-        HideChange();
-        //gameObject.tag = "HiddenPlayer";
+        //HideChange();
+        gameObject.tag = "HiddenPlayer";
+        _animator.Play("rig_player|idleToHide");
+
+        IsMoveAble = false;
+        _collider.enabled = false;
+
+        await UniTask.WaitUntil(() => {
+            var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            return stateInfo.normalizedTime >= 1.0f;
+        });
+
+        gameObject.SetActive(false);
 
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
-        HideChange();
-        //gameObject.tag = "Player";
+        gameObject.SetActive(true);
+        _animator.Play("rig_player|hideToIdle");
+
+        await UniTask.WaitUntil(() => {
+            var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            return stateInfo.normalizedTime >= 1.0f;
+        });
+
+        IsMoveAble = true;
+        _collider.enabled = true;
+        //HideChange();
+        gameObject.tag = "Player";
 
     }
 
-    public void HideChange()
+    public void HideChange()//无前摇隐藏，未启用
     {
         IsMoveAble = !IsMoveAble;
-
-        //你别问我这是什么东西，我还想问这是什么东西
-        //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + Convert.ToInt32(!IsMoveAble)*10f, transform.localPosition.z);
         gameObject.SetActive(IsMoveAble);
-
-        //禁用碰撞体，拒绝交互
         _collider.enabled = IsMoveAble;
-
     }
 
     public void PlayerDead()
