@@ -13,7 +13,7 @@ public class LockedDoor : MonoBehaviour,IInteractable
     {
         if (isOpen)
         {
-            //这里加开门的动画
+            //杩欓噷鍔犲紑闂ㄧ殑鍔ㄧ敾
             //todo...
 
             DoorCollider.SetActive(!b);

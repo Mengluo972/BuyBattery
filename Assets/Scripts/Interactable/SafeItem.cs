@@ -18,7 +18,7 @@ public class SafeItem : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        //ÕâÀïĞ´¶¯»­
+        //è¿™é‡Œå†™åŠ¨ç”»
         AnimateOn();
         inTrigger = b;
 
@@ -27,11 +27,11 @@ public class SafeItem : MonoBehaviour,IInteractable
     private async UniTaskVoid AnimateOn()
     {
         inTrigger = true;
-        Debug.Log("ÎÕÎÕÊÖ£¬ÎÕÎÕË«ÊÖ");
+        Debug.Log("æ¡æ¡æ‰‹ï¼Œæ¡æ¡åŒæ‰‹");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
-        Debug.Log("ÀÎÊ¯ÄÍ»÷Êõ");
+        Debug.Log("ç‰¢çŸ³è€å‡»æœ¯");
 
     }
     // Start is called before the first frame update
