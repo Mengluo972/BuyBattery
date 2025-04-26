@@ -239,6 +239,9 @@ public class PmcPlayerController : MonoBehaviour
         gameObject.tag = "HiddenPlayer";
         float t = Time.time;
 
+        _animator.Play("rig_player|getHeadBox");
+        _inAction = true;
+
         await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
 
         DisguiseChange();
@@ -263,10 +266,13 @@ public class PmcPlayerController : MonoBehaviour
     private async UniTaskVoid PlayerSafe()
     {
         SafeChange();
-        //gameObject.tag = "HiddenPlayer";
-        float t = Time.time;
 
-        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
+        _animator.Play("rig_player|getHeadBox");
+        _inAction = true;
+
+        //gameObject.tag = "HiddenPlayer";
+
+        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
         SafeChange();
         //gameObject.tag = "Player";
