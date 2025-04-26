@@ -271,9 +271,8 @@ public class PmcPlayerController : MonoBehaviour
         _inAction = true;
 
         //gameObject.tag = "HiddenPlayer";
-        float t = Time.time;
 
-        await UniTask.WaitUntil(() => (Time.time - t > DisguiseDuaration|| Input.GetKeyDown(InterKey)));
+        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
         SafeChange();
         //gameObject.tag = "Player";
