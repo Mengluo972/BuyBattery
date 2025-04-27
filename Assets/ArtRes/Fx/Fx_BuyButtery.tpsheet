@@ -1,0 +1,25 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:91985608a997bfa33bcc0b0218135cf6:f69a06aa8be273b4eb4a1a45dfbe877a:29b1025f8479deeaa8ce5ce278795fdd$
+#
+:format=40300
+:texture=Fx_BuyButtery.png
+:size=512x512
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+Fx_BuyButtery_Irritable0;20;445;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable1;86;445;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable2;152;445;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise0;377;304;115;208; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise1;163;42;79;262; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise2;0;44;163;260; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_save;272;410;105;102; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake0;0;447;20;65; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake1;246;435;26;77; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake2;218;440;28;72; 0.5;0.5; 0;0;0;0
