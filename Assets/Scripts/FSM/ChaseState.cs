@@ -22,13 +22,14 @@ public class ChaseState : IState
         _parameter = manager.parameter;
         _rayCastTest = manager.RayCastTest;
         _navMeshAgent = manager.parameter.NavMeshAgent;
-        _navMeshAgent.speed = _parameter.chaseSpeed;
+        // _navMeshAgent.speed = _parameter.chaseSpeed;
     }
     public void OnEnter()
     {
         // Debug.Log($"{_manager.gameObject.name}进入逮人状态");
         _rayCastTest.IsChaseTracing = true;
         _rayCastTest.IsPatrolTracing = false;
+        _navMeshAgent.speed = _parameter.chaseSpeed;
         switch (_parameter.enemyAnimator)
         {
             case EnemyAnimator.colleague:
