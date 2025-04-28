@@ -3,7 +3,12 @@ guid: dba257370b87e89479ed0ae3b56a5cbc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banner
+    second: {fileID: 2100000, guid: 04253ea8f59c29c4ca2e9df7c3781b91, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

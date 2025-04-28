@@ -3,7 +3,12 @@ guid: 3fad320057a359346b3cb1ad5fc43fd8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ivy_Mat_2048.001
+    second: {fileID: 2100000, guid: 5316b13dd130df944b7bbd9a23d9865d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
