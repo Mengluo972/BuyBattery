@@ -8,7 +8,7 @@ public class LockedDoor : MonoBehaviour,IDoorControl
 {
     public int DoorNumber;
     public GameObject DoorCollider;
-    private bool isLocked=true;
+    public bool isLocked=true;
     public Animator ani;
     private bool inTrigger;
 
@@ -51,12 +51,12 @@ public class LockedDoor : MonoBehaviour,IDoorControl
     {
         inTrigger = true;
         Debug.Log("表锅我开门了喔");
-        ani.Play("doorGlassBone|doorGlass_openOut");
+        ani.Play("doorGlassBone|doorGlass_open");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
         Debug.Log("表锅我关门了喔");
-        ani.Play("doorGlassBone|doorGlass_openIn");
+        ani.Play("doorGlassBone|doorGlass_close");
 
     }
 

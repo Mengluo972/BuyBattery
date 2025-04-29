@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorItem : MonoBehaviour,IDoorControl
 {
-    public GameObject DoorCollider;
+    //public GameObject DoorCollider;
     public Animator ani;
     private bool inTrigger;
 
@@ -23,12 +23,12 @@ public class DoorItem : MonoBehaviour,IDoorControl
     {
         inTrigger = true;
         Debug.Log("表锅我开门了喔");
-        ani.Play("doorGlassBone|doorGlass_openOut");
+        ani.Play("doorGlassBone|doorGlass_open");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
         Debug.Log("表锅我关门了喔");
-        ani.Play("doorGlassBone|doorGlass_openIn");
+        ani.Play("doorGlassBone|doorGlass_close");
 
     }
 
