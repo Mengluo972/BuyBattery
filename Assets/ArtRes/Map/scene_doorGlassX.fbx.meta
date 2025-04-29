@@ -24,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: doorGlassBone|doorGlass_0
-      takeName: doorGlassBone|doorGlass_0
-      internalID: 6614649961204040807
+      name: doorGlassBoneX|doorGlass_0
+      takeName: doorGlassBoneX|doorGlass_0
+      internalID: -1823806357118373626
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -62,9 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: doorGlassBone|doorGlass_openIn
-      takeName: doorGlassBone|doorGlass_openIn
-      internalID: 1259426219063968161
+      name: doorGlassBoneX|doorGlass_closeX
+      takeName: doorGlassBoneX|doorGlass_closeX
+      internalID: 710155802629283621
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -91,9 +91,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: doorGlassBone|doorGlass_openOut
-      takeName: doorGlassBone|doorGlass_openOut
-      internalID: -233891158165970862
+      name: doorGlassBoneX|doorGlass_openX
+      takeName: doorGlassBoneX|doorGlass_openX
+      internalID: -2473063281099179001
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -180,7 +180,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
