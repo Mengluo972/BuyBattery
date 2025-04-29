@@ -7,6 +7,8 @@ public class InteractableTrigger : MonoBehaviour
 {
     [SerializeField]private bool inTrigger;
     private IInteractable actionItem = null;
+    private GameObject actionGameObject = null;
+    private IDoorControl actionDoor = null;
     [Header("交互键位")]
     public KeyCode actionKey=KeyCode.E;
 
@@ -26,6 +28,9 @@ public class InteractableTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(actionKey))
             {
+                transform.LookAt(actionGameObject.transform);
+                transform.localEulerAngles = new Vector3(0f,transform.localEulerAngles.y,0f);
+
                 animator.Play("rig_player|touch");
                 playerController._inAction=true;
                 actionItem.TriggerAction();
@@ -44,8 +49,14 @@ public class InteractableTrigger : MonoBehaviour
             {
                 actionItem.inTriggerAnimation(false);
             }
+            actionGameObject = other.gameObject;
             actionItem = other.GetComponent<IInteractable>();
             actionItem.inTriggerAnimation(true);
+        }
+        if (other.CompareTag("Door"))
+        {
+            actionDoor=other.GetComponent<IDoorControl>();
+            actionDoor.DoorOpen();
         }
 
     }
@@ -59,6 +70,14 @@ public class InteractableTrigger : MonoBehaviour
             {
                 actionItem.inTriggerAnimation(false);
             }
+        }
+        if (collision.GetComponent<IDoorControl>() == actionDoor)
+        {
+            if(actionDoor != null)
+            {
+                actionDoor.DoorClose();
+            }
+
         }
         
     }

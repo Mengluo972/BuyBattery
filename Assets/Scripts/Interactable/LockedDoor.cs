@@ -1,35 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class LockedDoor : MonoBehaviour,IInteractable
+public class LockedDoor : MonoBehaviour,IDoorControl
 {
     public int DoorNumber;
     public GameObject DoorCollider;
-    private bool isUnlocked=false;
-    private bool isOpen=false;
+    private bool isLocked=true;
+    public Animator ani;
+    private bool inTrigger;
 
-    public void inTriggerAnimation(bool b)
+    public void DoorOpen()
     {
-        if (isOpen)
+        if (!isLocked)
         {
-            //这里加开门的动画
-            //todo...
-
-            DoorCollider.SetActive(!b);
+            AnimateOn();
+            
         }
-
     }
 
-    public void TriggerAction()
+    public void DoorClose()
     {
-        if (isUnlocked)
-        {
-            isOpen = true;
-            inTriggerAnimation(true);
-        }
-        
+        inTrigger = false;
     }
+
 
     private void OnEnable()
     {
@@ -46,14 +42,29 @@ public class LockedDoor : MonoBehaviour,IInteractable
     {
         if (Taget == DoorNumber)
         {
-            isUnlocked = true;
+            isLocked = false;
+            DoorCollider.SetActive(false);
         }
+    }
+
+    private async UniTaskVoid AnimateOn()
+    {
+        inTrigger = true;
+        Debug.Log("表锅我开门了喔");
+        ani.Play("doorGlassBone|doorGlass_openOut");
+
+        await UniTask.WaitUntil(() => !inTrigger);
+
+        Debug.Log("表锅我关门了喔");
+        ani.Play("doorGlassBone|doorGlass_openIn");
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         DoorCollider = transform.Find("DoorCollider").gameObject;
+        ani = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,4 +72,6 @@ public class LockedDoor : MonoBehaviour,IInteractable
     {
         
     }
+
+    
 }
