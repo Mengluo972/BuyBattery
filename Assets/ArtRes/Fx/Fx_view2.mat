@@ -33,11 +33,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FlowSpeed: 5
+    - _FlowSpeed: 1.81
     - _NoiseInt: 0.5
     - _Opacity: 0.5
     - _WarpInt: 0.5
     - _WarpMidVal: 0.5
     m_Colors:
-    - _viewColor: {r: 1, g: 0.94438446, b: 0.81446534, a: 1}
+    - _viewColor: {r: 1, g: 0.792988, b: 0.3050313, a: 1}
   m_BuildTextureStacks: []
