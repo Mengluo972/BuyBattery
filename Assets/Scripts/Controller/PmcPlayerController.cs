@@ -97,14 +97,15 @@ public class PmcPlayerController : MonoBehaviour
 
     public void PlayerMove()
     {
-        Vector3 move = GetInput();
+        Vector3 input = GetInput();
         float speed = setSpeed();
-        move = move * speed * Time.deltaTime;
+        Vector3 move = Vector3.zero;
 
         string ani;
-        if (move != Vector3.zero)
+        if (input != Vector3.zero)
         {
-            SetPlayerRotation();
+            SetPlayerRotation(input);
+            move = transform.forward * speed * Time.deltaTime;
             _inAction = false;
             if (_isRunning)
             {
@@ -148,19 +149,19 @@ public class PmcPlayerController : MonoBehaviour
         Vector3 input = new Vector3();
         if (Input.GetKey(KeyCode.W))
         {
-            input += (transform.forward);
+            input += Vector3.forward;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            input -= (transform.forward);
+            input -= Vector3.forward;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            input += (transform.right);
+            input += Vector3.right;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            input -= (transform.right);
+            input -= Vector3.right;
         }
         return input;
     }
@@ -188,7 +189,7 @@ public class PmcPlayerController : MonoBehaviour
         return nomalSpeed;
     }
 
-    public void SetPlayerRotation()
+    public void SetPlayerRota()
     {
         float playerY = transform.eulerAngles.y;
         float cameraY =_cameraDirectionTransform.eulerAngles.y;
@@ -201,6 +202,30 @@ public class PmcPlayerController : MonoBehaviour
         else
         {
             transform.rotation = finalRotation;
+        }
+    }
+
+    public void SetPlayerRotation(Vector3 inputVector3)
+    {
+        Vector3 cameraForward = _cameraDirectionTransform.transform.forward;
+        cameraForward.y = 0f;
+        cameraForward.Normalize();
+        Vector3 cameraRight = _cameraDirectionTransform.transform.right;
+        cameraRight.y = 0f;
+        cameraRight.Normalize();
+
+        Vector3 targetDirection =cameraForward * inputVector3.z +cameraRight * inputVector3.x;
+
+        float angleDiff = Vector3.Angle(transform.forward, targetDirection);
+
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        if (angleDiff > smoothAngle)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, smoothSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(targetDirection); ;
         }
     }
 
