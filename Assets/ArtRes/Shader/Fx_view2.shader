@@ -1,7 +1,7 @@
 Shader "Fx/view2" {
     //材质面板参数
     Properties {
-            _viewColor  ("显示颜色",Color)          =(1.0,1.0,1.0,1.0)
+            [HDR]_viewColor  ("显示颜色",Color)          =(1.0,1.0,1.0,1.0)
             _NoiseTex   ("混合用噪声图",2d)           ="gray"{}
             _Opacity    ("透明度",Range(0,1))        =0.5
             _NoiseInt   ("混合强度",Range(0,5))       =0.5
