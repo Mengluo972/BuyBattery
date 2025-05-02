@@ -8748,6 +8748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: props_printer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8755,6 +8759,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 231048461}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 231048464}
   m_SourcePrefab: {fileID: 100100000, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
 --- !u!4 &231048459 stripped
 Transform:
@@ -8787,6 +8794,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.107755, y: 1.5966407, z: 1.1101624}
   m_Center: {x: -0.00012817982, y: 0.83633715, z: 0.0013318661}
+--- !u!114 &231048464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231048460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a169a919263444096b78be3fda8de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractDistance: 5
+  attractTime: 3
 --- !u!43 &231652435
 Mesh:
   m_ObjectHideFlags: 0
@@ -10782,6 +10803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: scene_trashCan
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46c053cc047924345bb79dcfb2528d2d, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10789,6 +10814,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46c053cc047924345bb79dcfb2528d2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 281862488}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46c053cc047924345bb79dcfb2528d2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 281862491}
   m_SourcePrefab: {fileID: 100100000, guid: 46c053cc047924345bb79dcfb2528d2d, type: 3}
 --- !u!4 &281862486 stripped
 Transform:
@@ -10821,6 +10849,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5553581, y: 0.5184398, z: 0.5553581}
   m_Center: {x: 0, y: 0.25981852, z: 0}
+--- !u!114 &281862491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281862487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc078da784180d45a77f625bd2daa6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &283243846
 GameObject:
   m_ObjectHideFlags: 0
@@ -11603,7 +11643,7 @@ Transform:
   m_GameObject: {fileID: 289336793}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -1.199901, z: -32}
+  m_LocalPosition: {x: 7.9, y: -1.199901, z: -32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56372,7 +56412,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.3, y: 0.536, z: 0.231}
+  m_Extents: {x: 1.48, y: 1.095, z: 0.231}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -56390,9 +56430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884765020da16394181fc8b39184cdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originPosition: {fileID: 0}
-  targetPosition: {fileID: 0}
-  time: 0
+  originPosition: {fileID: 547900441}
+  targetPosition: {fileID: 1226013191}
+  time: 0.5
 --- !u!1 &1522253605
 GameObject:
   m_ObjectHideFlags: 0
@@ -70441,6 +70481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: props_coffeeMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 45d5cee6ce6fd1140abd580793e0c191, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78405,6 +78449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: props_printer
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78412,6 +78460,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2084901540}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2084901543}
   m_SourcePrefab: {fileID: 100100000, guid: 133bebcde8d6a614eba984e2f0454d1f, type: 3}
 --- !u!4 &2084901538 stripped
 Transform:
@@ -78444,6 +78495,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.107755, y: 1.5966407, z: 1.1101624}
   m_Center: {x: -0.00012817982, y: 0.83633715, z: 0.0013318661}
+--- !u!114 &2084901543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084901539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a169a919263444096b78be3fda8de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractDistance: 5
+  attractTime: 3
 --- !u!1001 &2085554561
 PrefabInstance:
   m_ObjectHideFlags: 0
