@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
@@ -6,8 +7,9 @@ using UnityEngine;
 public class DoorItem : MonoBehaviour,IDoorControl
 {
     //public GameObject DoorCollider;
-    public Animator ani;
+    private Animator ani;
     private bool inTrigger;
+    private BoxCollider box;
 
     public void DoorClose()
     {
@@ -22,13 +24,15 @@ public class DoorItem : MonoBehaviour,IDoorControl
     private async UniTaskVoid AnimateOn()
     {
         inTrigger = true;
-        Debug.Log("±í¹øÎÒ¿ªÃÅÁËà¸");
+        // box.isTrigger = true;
+        Debug.Log("è¡¨é”…æˆ‘å¼€é—¨äº†å–”");
         ani.Play("doorGlassBone|doorGlass_open");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
-        Debug.Log("±í¹øÎÒ¹ØÃÅÁËà¸");
+        Debug.Log("è¡¨é”…æˆ‘å…³é—¨äº†å–”");
         ani.Play("doorGlassBone|doorGlass_close");
+        box.isTrigger = false;
 
     }
 
@@ -37,6 +41,7 @@ public class DoorItem : MonoBehaviour,IDoorControl
     {
         //DoorCollider = transform.Find("DoorCollider").gameObject;
         ani=GetComponent<Animator>();
+        box = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame

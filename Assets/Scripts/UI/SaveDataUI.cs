@@ -60,7 +60,7 @@ public class SaveDataUI : MonoBehaviour
         GameObject SDUI = Instantiate(SaveDataPrefab, parentObject.transform);
         SDUI.name = $"SaveData{"n"}";
 
-        //下面写读取存档的按钮事件
+        //涓嬮潰鍐欒鍙栧瓨妗ｇ殑鎸夐挳浜嬩欢
         //Button targetButton = SDUI.GetComponent<Button>();
     }
 
