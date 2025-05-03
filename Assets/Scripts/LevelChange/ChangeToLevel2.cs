@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeToLevel2 : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ChangeToLevel2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            
+            SceneManager.LoadScene(2);
         }
     }
 }
