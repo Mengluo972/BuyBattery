@@ -318,8 +318,14 @@ public class PmcPlayerController : MonoBehaviour
         //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
+
+    private bool _isHideRunning;
     private async UniTaskVoid PlayerHide()
     {
+        if(_isHideRunning) { return; }
+
+        _isHideRunning = true;
+
         //HideChange();
         gameObject.tag = "HiddenPlayer";
         _animator.Play("rig_player|idleToHide");
@@ -348,6 +354,8 @@ public class PmcPlayerController : MonoBehaviour
         _collider.enabled = true;
         //HideChange();
         gameObject.tag = "Player";
+
+        _isHideRunning = false;
 
     }
 
