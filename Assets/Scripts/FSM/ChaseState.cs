@@ -82,12 +82,7 @@ public class ChaseState : IState
 
     public void TriggerCheck()
     {
-        if (_parameter.TriggerListener.PlayerIsInvincible)
-        {
-            _parameter.alarmValue = 0;
-            _manager.TransitionState(StateType.EndingChase);
-            return;
-        }
+        
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;
