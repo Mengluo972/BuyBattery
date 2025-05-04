@@ -60,6 +60,9 @@ public class FindState : IState
             case EnemyAnimator.maneger:
                 _parameter.animator.Play("enemy_manager@walk");
                 break;
+            case EnemyAnimator.guard:
+                _parameter.animator.Play("enemy_guard@run");
+                break;
 
         }
     }

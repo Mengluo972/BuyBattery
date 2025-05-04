@@ -45,6 +45,9 @@ public class AttackState : IState
                 case EnemyAnimator.maneger:
                     _parameter.animator.Play("enemy_manager@catch1");
                     break;
+                case EnemyAnimator.guard:
+                    _parameter.animator.Play("enemy_guard@catch");
+                    break;
             }
             DeathEvent?.Invoke();
         }
