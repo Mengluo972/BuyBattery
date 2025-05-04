@@ -47,6 +47,7 @@ public class PmcPlayerController : MonoBehaviour
     private Transform _playerModel;
     private BoxCollider _collider;
     private Animator _animator;
+    private Rigidbody _rigidbody;
 
 
     [NonSerialized] public bool _inAction = false;
@@ -62,6 +63,7 @@ public class PmcPlayerController : MonoBehaviour
         _collider = gameObject.GetComponent<BoxCollider>();
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
 
         HeadBoxItem.SetActive(false);
         BigBoxItem.SetActive(false);
@@ -334,6 +336,7 @@ public class PmcPlayerController : MonoBehaviour
 
         IsMoveAble = false;
         _collider.enabled = false;
+        _rigidbody.useGravity = false;
 
         await UniTask.WaitUntil(() => {
             var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
@@ -351,7 +354,7 @@ public class PmcPlayerController : MonoBehaviour
             var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
             return stateInfo.normalizedTime >= 1.0f;
         });
-
+        _rigidbody.useGravity = true;
         IsMoveAble = true;
         _collider.enabled = true;
         //HideChange();
