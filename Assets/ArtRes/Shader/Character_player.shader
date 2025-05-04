@@ -37,12 +37,7 @@ Shader "Character/player"
 			#pragma	multi_compile_shadowcaster
 			#pragma vertex vert
 			
-		    
-            #pragma multi_compile_fwdbase
-			#pragma	multi_compile_shadowcaster
-
-            sampler2D _MainTex;
-			float4 _MainTex_ST;
+            sampler2D _MainTex;float4 _MainTex_ST;
             half3 _MainColor;
             float _Ambiel_K;
 			half3 _ShadowColor;
@@ -94,7 +89,7 @@ Shader "Character/player"
                 half3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
 				// 伪厚涂
 				 half halfLambert = dot(worldNormal, worldLightDir) * 0.5 + 0.5 ;
-				 half ramp = smoothstep(0, _ShadowSmooth, halfLambert - _ShadowRange);//-1 + atten
+				 half ramp = smoothstep(0, _ShadowSmooth, halfLambert - _ShadowRange) -1 + atten;
 				 half3 diffuse = lerp(_ShadowColor, _MainColor, ramp);
 				// diffuse *= mainTex;
 				fixed4 light = _LightColor0 * 0.5 + 0.5;
@@ -112,7 +107,7 @@ Shader "Character/player"
 			Blend One One//混合模式，表示该Pass计算的光照结果可以在帧缓存中与之前的光照结果进行叠加，否则会覆盖之前的光照结果
 			CGPROGRAM
 			#pragma fragment fragLight
-			#pragma multi_compile_fwdadd//
+			#pragma multi_compile_fwdadd
 			#pragma vertex vert
 
 			sampler2D _MainTex;
@@ -139,6 +134,7 @@ Shader "Character/player"
 				float3 color:TEXCOORD3;
 				//点光源需要的衰减
 				LIGHTING_COORDS(6, 7)
+				SHADOW_COORDS(4)
 			};
 			v2f vert(a2v v)
 			{
@@ -151,6 +147,7 @@ Shader "Character/player"
 				o.worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
 				o.color = v.color;
+				TRANSFER_SHADOW(o);
 				return o;
 			}
 			fixed4 fragLight(v2f i) :SV_Target
@@ -172,7 +169,6 @@ Shader "Character/player"
 				half ramp = smoothstep(0, _ShadowSmooth, halfdiff - _ShadowRange);
 				half3 diffuse = lerp(_ShadowColor, _MainColor, ramp);
 				fixed4 light = _LightColor0 * 0.5 + 0.5;
-
 
 				//漫反射
 				fixed3 Diff = light *(diffuse + (1 - diffuse)*_ShadowColor)*_DiffColor*_Diff_K;
@@ -203,7 +199,7 @@ Shader "Character/player"
 			}
 			ENDCG
 		}
-		// 即 此Pass将对象渲染为阴影投射器
+//		 即 此Pass将对象渲染为阴影投射器
         Pass
         {
             Tags{ "LightMode"="ShadowCaster"}
@@ -231,4 +227,5 @@ Shader "Character/player"
             ENDCG
         }
     }
+    FallBack "Specular"
 }

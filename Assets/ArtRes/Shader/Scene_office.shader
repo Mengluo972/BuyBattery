@@ -12,7 +12,12 @@ Shader "Scene/office"
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-
+		CGINCLUDE
+		#include "UnityCG.cginc"
+		#include "Lighting.cginc"
+		#include "AutoLight.cginc"
+		// #pragma vertex vert
+		ENDCG
         pass
         {
            Tags {"LightMode"="ForwardBase"}
@@ -22,10 +27,8 @@ Shader "Scene/office"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-			
-		    #include "UnityCG.cginc"
-		    #include "Lighting.cginc"
-            #include "AutoLight.cginc"
+            #pragma multi_compile_fwdbase
+			#pragma	multi_compile_shadowcaster
 
             sampler2D _MainTex; float4 _MainTex_ST;
             half3 _MainColor;

@@ -33,11 +33,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Ambiel_K: 0.02
+    - _Diff_K: 0.96
     - _OutlineWidth: 0.27
-    - _ShadowRange: 0.382
-    - _ShadowSmooth: 0.2
+    - _ShadowRange: 0.072
+    - _ShadowSmooth: 0.21
     m_Colors:
+    - _DiffColor: {r: 1, g: 1, b: 1, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutLineColor: {r: 0.4716981, g: 0.3123054, b: 0.235849, a: 1}
-    - _ShadowColor: {r: 0.8, g: 0.760125, b: 0.69803923, a: 1}
+    - _ShadowColor: {r: 0.8553459, g: 0.74258256, b: 0.56216127, a: 1}
   m_BuildTextureStacks: []

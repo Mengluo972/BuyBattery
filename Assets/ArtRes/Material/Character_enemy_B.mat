@@ -29,9 +29,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Ambiel_K: 0.02
     - _OutlineWidth: 0.18
-    - _ShadowRange: 0.382
+    - _ShadowRange: 0.072
+    - _ShadowSmooth: 0.21
     m_Colors:
     - _OutLineColor: {r: 0.085142955, g: 0.18279004, b: 0.2578616, a: 1}
-    - _ShadowColor: {r: 0.8689331, g: 0.91194963, b: 0.89085424, a: 1}
+    - _ShadowColor: {r: 0.5137255, g: 0.6303168, b: 0.6745098, a: 1}
   m_BuildTextureStacks: []
