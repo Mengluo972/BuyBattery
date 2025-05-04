@@ -37,7 +37,7 @@ public class Parameter//敌人信息
     [Header("警戒值增加速度")]public float alarmAccelerationSpeed;//警戒值增加速度
     [Header("警戒值减少速度")]public float alarmDecreaseSpeed;//警戒值减少速度
     [Header("警戒值最大值")]public float alarmMaxValue;//警戒值最大值
-    [Header("最大吸引距离（如果敌人为追逐型的人的话才生效）")]public float attractDistance;//最大吸引距离（如果敌人为追逐型的人的话才生效）
+    [Header("最大吸引距离（如果敌人为吸引型的人的话才生效）")]public float attractDistance;//最大吸引距离（如果敌人为追逐型的人的话才生效）
     [Header("追踪型敌人是否处于追踪状态")]public bool isChasing = false;//追踪型敌人是否处于追踪状态
 }
 
