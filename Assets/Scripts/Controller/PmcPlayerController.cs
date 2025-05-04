@@ -299,6 +299,8 @@ public class PmcPlayerController : MonoBehaviour
 
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
+        await UniTask.Delay((int)(100));
+
         SafeChange();
         //gameObject.tag = "Player";
     }
