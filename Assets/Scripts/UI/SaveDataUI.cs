@@ -9,6 +9,8 @@ public class SaveDataUI : MonoBehaviour
     public GameObject parentObject;
 
     public float waitTime;
+    private PropManager propManager;
+
 
     // Start is called before the first frame update
     void Start()
