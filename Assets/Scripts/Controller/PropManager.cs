@@ -20,7 +20,53 @@ public class PropManager : MonoBehaviour
     //关卡开始时读取存档
     void Start()
     {
+        string path = Application.persistentDataPath+"/"+CurrentSaveNum+".xml";
+        //读档
+        //存档不存在
+        if (!File.Exists(path))
+        {
+            Debug.Log("存档不存在!");
+            return;
+        }
 
+        if (CurrentSaveNum!=levelNum)
+        {
+            Debug.Log("疑似在跳转关卡前没有正确修改静态变量值");
+        }
+
+        using (StreamReader sr = new StreamReader(path))
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Save));
+            _saveData = serializer.Deserialize(sr) as Save;
+        }
+        //存档合规性检查
+        if (_saveData.PropState.Count!=_saveData.PropName.Count)
+        {
+            Debug.Log("存档信息出错!道具状态和道具数量不匹配");
+            Debug.Log($"道具状态数量为:{_saveData.PropState.Count},道具名称数量为:{_saveData.PropName.Count}");
+            return;
+        }
+        //判空，如果道具列表为空，那么说明该关卡是第一次进入
+        if(_saveData.PropState.Count == 0 || _saveData.PropName.Count == 0)
+        {
+            for (int i = 0; i < propList.Count; i++)
+            {
+                _propListInfo.Add(propList[i].name, i);
+                propList[i].gameObject.SetActive(true);
+                _saveData.PropState.Add(propList[i]);
+                _saveData.PropName.Add(propList[i].name);
+            }
+            _saveData.PlayerPos = player.position;
+            SaveData(CurrentSaveNum, _saveData);
+            return;
+        }
+        
+        player.position = _saveData.PlayerPos;
+        for (int i = 0; i < _saveData.PropState.Count; i++)
+        {
+            propList[i].SetActive(_saveData.PropState[i]);
+        }
+        
 
         // string path = Application.streamingAssetsPath + "/" + levelNum + ".xml";
         // //读档
@@ -158,7 +204,13 @@ public class PropManager : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// 查找数据信息，有三个向外传参，分别是关卡序号，被逮次数，游戏总时长
+    /// </summary>
+    /// <param name="saveNum">存档序号</param>
+    /// <param name="levelNum">关卡序号</param>
+    /// <param name="caughtTime">被逮次数</param>
+    /// <param name="gameTime">游戏总时长</param>
     public static void ReadData(int saveNum, out int levelNum, out int caughtTime, out float gameTime)
     {
         string path = Application.persistentDataPath + "/" + saveNum + ".xml";
@@ -178,6 +230,25 @@ public class PropManager : MonoBehaviour
             levelNum = saveData.LevelNum;
             caughtTime = saveData.CaughtTime;
             gameTime = saveData.GameTime;
+        }
+    }
+    /// <summary>
+    /// 如果你看到了这行字，说明你大概调用错了方法
+    /// </summary>
+    /// <param name="saveNum"></param>
+    /// <param name="saveData"></param>
+    public static void SaveData(int saveNum,Save saveData)
+    {
+        if (saveData == null)
+        {
+            Debug.Log("存档数据为空");
+            return;
+        }
+
+        using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/" + saveNum + ".xml"))
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Save));
+            xmlSerializer.Serialize(writer, saveData);
         }
     }
     
