@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171757172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0058394703, y: 0.928538, z: -0.014618818, w: 0.3709035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1647,6 +1647,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0200ac73a0b6c3c46aee43a4591a3999, type: 3}
+--- !u!114 &1243487159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+  m_PrefabInstance: {fileID: 7237173218342507515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf0e8de5ad2c954982cf2990e71f588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1309846950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1980,6 +1991,17 @@ Transform:
   - {fileID: 523700466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762923608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1549692899628190696, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+  m_PrefabInstance: {fileID: 7237173218342507515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c2569b52e4f9f43b752c691e9196c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1805485715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0200ac73a0b6c3c46aee43a4591a3999, type: 3}
@@ -2153,6 +2175,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
       objectReference: {fileID: 293005326}
+    - target: {fileID: 770289277762474620, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1164415661881979327, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].value
       value: 
@@ -2181,6 +2207,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[7].value
       value: 
       objectReference: {fileID: 293005326}
+    - target: {fileID: 1549692899628190696, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: uIManeger
+      value: 
+      objectReference: {fileID: 1243487159}
     - target: {fileID: 3468733960279821423, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_Name
       value: MainPanel
@@ -2265,6 +2295,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5201533600475097444, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1762923608}
+    - target: {fileID: 5201533600475097444, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartNewGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201533600475097444, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveDataUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5481653080865766931, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
@@ -2289,6 +2331,18 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
       objectReference: {fileID: 293005326}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: level1SceneName
+      value: LevelBox1OfficialVer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: level2SceneName
+      value: LevelBox2OfficialVer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: level3SceneName
+      value: LevelBox3OfficialVer
+      objectReference: {fileID: 0}
     - target: {fileID: 8174558472258656184, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

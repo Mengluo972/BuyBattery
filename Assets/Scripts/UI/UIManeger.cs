@@ -14,9 +14,13 @@ public class UIManeger : MonoBehaviour
     public static event Action youDie;
 
     private bool isEasterEgg;//标记彩蛋是否触发
-    private bool InBack;
+    [NonSerialized] public bool InBack;
     private bool paused;
-    [SerializeField] private GameObject mainMenu;
+    [NonSerialized] public int nowLevel = 0;
+    [NonSerialized] public float nowGameTime;
+    [NonSerialized] public int nowSaveData;
+
+    public GameObject mainMenu;
     private GameObject[] saveData;
     private GameObject saveDataAni;
     private GameObject[] settings;
@@ -34,6 +38,9 @@ public class UIManeger : MonoBehaviour
     [Header("输入跳转场景名")]
     public string gameSceneName;
     public string mainMenuSceneName;
+    public string level1SceneName;
+    public string level2SceneName;
+    public string level3SceneName;
     [Header("输入UI显示时间")]
     public float saveTipsTime;
     public float EasterEggTime;
@@ -86,6 +93,7 @@ public class UIManeger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !deathMenu.activeSelf && !BG.activeSelf) { Pause(); }
         if (Input.GetKeyDown(deathKey)){Dead();}
+        nowGameTime += Time.deltaTime;
     }
 
     private void FindGameObject()
@@ -118,7 +126,9 @@ public class UIManeger : MonoBehaviour
 
     public void StartGame()
     {
+        InBack=true;
         mainMenu.SetActive(false);
+        nowLevel = 1;
         StartCoroutine(LoadScene(gameSceneName));
     }
 
@@ -193,7 +203,15 @@ public class UIManeger : MonoBehaviour
 
         await UniTask.Delay((int)(setTime * 1000));
 
-        mainMenu.SetActive(BG.activeSelf);
+        if (nowLevel == 0)
+        {
+            mainMenu.SetActive(true);
+        }
+        else
+        {
+            mainMenu.SetActive(false);
+        }
+
         tagetGO[1].SetActive(false);
         
     }
@@ -215,12 +233,21 @@ public class UIManeger : MonoBehaviour
 
             yield return StartCoroutine(FakeLoad(slider, 0.2f, 0.7f, 1f));
         }
+        else
+        {
+            deathMenu.SetActive(false);
+            stopMenu.SetActive(false);
+            oldBG.SetActive(true);
+        }
 
         Debug.Log("表锅开始加载了喔");
+        
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;
 
+        
         float persent = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+        
         while (persent < 1f)
         {
             persent = Mathf.Clamp01(asyncLoad.progress / 0.9f);
@@ -232,6 +259,7 @@ public class UIManeger : MonoBehaviour
         asyncLoad.allowSceneActivation = true;
         loading[0].SetActive(false);
         loading[1].SetActive(false);
+        oldBG.SetActive(false);
         BG.SetActive(false);
         
     }
@@ -247,6 +275,24 @@ public class UIManeger : MonoBehaviour
             yield return null;
         }
         slider.value = endValue;
+    }
+
+    public void LoadLevelScene(int levelNum)
+    {
+        switch (levelNum)
+        {
+            case 1:
+                StartCoroutine(LoadScene(level1SceneName));
+                break;
+            case 2:
+                StartCoroutine(LoadScene(level2SceneName));
+                break;
+            case 3:
+                StartCoroutine(LoadScene(level3SceneName));
+                break;
+
+        }
+
     }
 
 
