@@ -30,6 +30,7 @@ public class PmcPlayerController : MonoBehaviour
 
     [Header("保护相关")]
     [SerializeField] private float safeSpeed;
+    [SerializeField] private float protectTime;
 
     [Header("平滑转向相关")]
     [SerializeField] private float smoothSpeed;
@@ -299,7 +300,12 @@ public class PmcPlayerController : MonoBehaviour
 
         //gameObject.tag = "HiddenPlayer";
         // gameObject.tag = "InvinciblePlayer";
-        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
+        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey))||IsSafe==false);
+
+        if (!IsSafe)
+        {
+            return;
+        }
 
         await UniTask.Delay((int)(100));
 
@@ -374,6 +380,17 @@ public class PmcPlayerController : MonoBehaviour
     public void PlayerDead()
     {
         _animator.Play("rig_player|scared");
+    }
+
+    public async UniTaskVoid PlayerProtect()
+    {
+        gameObject.tag = "InvinciblePlayer";
+        SafeChange();
+
+        await UniTask.Delay((int)(1000*protectTime));
+
+        gameObject.tag = "Player";
+
     }
 
 }
