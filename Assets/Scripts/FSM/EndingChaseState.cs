@@ -46,6 +46,11 @@ public class EndingChaseState : IState
 
     public void TriggerCheck()
     {
+        if (_parameter.TriggerListener.PlayerIsInvincible)
+        {
+            _parameter.alarmValue = 0;
+            return;
+        }
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;

@@ -8,6 +8,7 @@ TagManager:
   - PlayerTrigger
   - HiddenPlayer
   - Door
+  - InvinciblePlayer
   layers:
   - Default
   - TransparentFX
