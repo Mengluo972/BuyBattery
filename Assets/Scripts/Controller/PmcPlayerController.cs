@@ -298,7 +298,7 @@ public class PmcPlayerController : MonoBehaviour
         _inAction = true;
 
         //gameObject.tag = "HiddenPlayer";
-
+        // gameObject.tag = "InvinciblePlayer";
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
         await UniTask.Delay((int)(100));
