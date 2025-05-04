@@ -4053,6 +4053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_colleague3
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 2f10974cf864bfa4fb01076db868ff99, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d3c8ecc34992c3d4dbc24382f76153bf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -6979,6 +6983,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_guard5
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 040da27119fe0894f9c405728caab205, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15611,6 +15619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1b998761d505ba940a58c785f0cb2e7a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6dfa151076d48db419ecb9b1eaa0ec7c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23467,6 +23479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_intern1
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 5cf411ec8814eb94c8d749645e9998e0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bbb0f9454fa1df24cbcb4d150d57edb5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37771,7 +37787,7 @@ MonoBehaviour:
   parameter:
     enemyState: 0
     enemyType: 4
-    enemyAnimator: 0
+    enemyAnimator: 5
     moveSpeed: 5
     chaseSpeed: 6
     partrolPoints:
@@ -43240,7 +43256,7 @@ MonoBehaviour:
   parameter:
     enemyState: 0
     enemyType: 0
-    enemyAnimator: 0
+    enemyAnimator: 3
     moveSpeed: 5
     chaseSpeed: 8
     partrolPoints:
@@ -48939,7 +48955,7 @@ MonoBehaviour:
   parameter:
     enemyState: 0
     enemyType: 0
-    enemyAnimator: 0
+    enemyAnimator: 1
     moveSpeed: 5
     chaseSpeed: 8
     partrolPoints:
@@ -49209,6 +49225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_intern6
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 5cf411ec8814eb94c8d749645e9998e0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bbb0f9454fa1df24cbcb4d150d57edb5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -54383,6 +54403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_guard4
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 040da27119fe0894f9c405728caab205, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -54436,7 +54460,7 @@ MonoBehaviour:
   parameter:
     enemyState: 0
     enemyType: 4
-    enemyAnimator: 0
+    enemyAnimator: 5
     moveSpeed: 5
     chaseSpeed: 6
     partrolPoints:
@@ -79466,6 +79490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_colleague2
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 2f10974cf864bfa4fb01076db868ff99, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d3c8ecc34992c3d4dbc24382f76153bf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80293,7 +80321,7 @@ MonoBehaviour:
   parameter:
     enemyState: 0
     enemyType: 0
-    enemyAnimator: 0
+    enemyAnimator: 1
     moveSpeed: 5
     chaseSpeed: 8
     partrolPoints:

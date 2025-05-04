@@ -57,7 +57,9 @@ public class FlipState : IState
                         case EnemyAnimator.maneger:
                             _parameter.animator.Play("enemy_manager@idle");
                             break;
-
+                        case EnemyAnimator.guard:
+                            _parameter.animator.Play("enemy_guard@Idle");
+                            break;
                     }
                 }
 
