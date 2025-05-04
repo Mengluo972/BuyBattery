@@ -68,7 +68,7 @@ public enum EnemyAnimator
     cat,
     boss,
     maneger,
-
+    guard,
 }
 
 public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有一个FSM组件，且需要有一个具有collider触发器的子物体
