@@ -39,6 +39,10 @@ public class TrackBackState : IState
 
     public void TriggerCheck()
     {
+        if (_parameter.TriggerListener.PlayerIsInvincible)
+        {
+            return;
+        }
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;
