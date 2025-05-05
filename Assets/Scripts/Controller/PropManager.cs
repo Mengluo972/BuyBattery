@@ -185,7 +185,7 @@ public class PropManager : MonoBehaviour
     // }
     void Update()
     {
-
+        // gameTime += Time.deltaTime;
     }
 
     /// <summary>
@@ -281,6 +281,7 @@ public class PropManager : MonoBehaviour
         _saveData.PropName.Clear();
         _saveData.GameTime = gameTime;
         _saveData.CaughtTime = caughtTime;
+        _saveData.PlayerPos = player.position;
         for (int i = 0; i < propList.Count; i++)
         {
             _saveData.PropState.Add(propList[i].activeSelf);

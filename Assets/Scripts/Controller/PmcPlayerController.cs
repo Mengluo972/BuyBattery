@@ -380,7 +380,7 @@ public class PmcPlayerController : MonoBehaviour
 
     public void PlayerDead()
     {
-        _animator.Play("rig_player|scared");
+        // _animator.Play("rig_player|scared");
     }
 
     public async UniTaskVoid PlayerProtect()

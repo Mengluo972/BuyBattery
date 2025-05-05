@@ -49,6 +49,8 @@ public class AttackState : IState
                     _parameter.animator.Play("enemy_guard@catch");
                     break;
             }
+
+            PropManager.caughtTime++;
             DeathEvent?.Invoke();
         }
         
