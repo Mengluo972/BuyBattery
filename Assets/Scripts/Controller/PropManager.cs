@@ -32,6 +32,7 @@ public class PropManager : MonoBehaviour
         if (CurrentSaveNum!=levelNum)
         {
             Debug.Log("疑似在跳转关卡前没有正确修改静态变量值");
+            return;
         }
 
         using (StreamReader sr = new StreamReader(path))
