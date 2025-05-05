@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public class AttackState : IState
@@ -30,6 +31,7 @@ public class AttackState : IState
         }
         else
         {
+            _parameter.propManager.PlusCaughtTime();
             Debug.Log("you dead");
             switch (_parameter.enemyAnimator)
             {
