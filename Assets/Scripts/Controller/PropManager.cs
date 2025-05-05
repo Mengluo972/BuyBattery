@@ -253,6 +253,17 @@ public class PropManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 咖啡机调用
+    /// </summary>
+    public void SaveGame()
+    {
+        for (int i = 0; i < propList.Count; i++)
+        {
+            
+        }
+    }
+    
 }
 public class Save
 {

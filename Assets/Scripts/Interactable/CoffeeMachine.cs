@@ -14,6 +14,7 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
     public void TriggerAction()
     {
         CoffeeSave?.Invoke();
+        
     }
 
     public void inTriggerAnimation(bool b)
