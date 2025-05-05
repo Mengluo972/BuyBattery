@@ -12,7 +12,7 @@ public class PropManager : MonoBehaviour
 {
     [Header("当前关卡序号（从1开始）")] public int levelNum;
     private Dictionary<string, int> _propListInfo = new();
-    [Header("当前场景中的道具，请勿随意中间插入或者打乱顺序")] public List<GameObject> propList;
+    [Header("当前场景中的道具，请勿随意中间插入或者打乱顺序")] public List<GameObject> propList = new();
     [Header("玩家")] public Transform player;
     private Save _saveData;
     [Header("当前存档序号，打开某个存档时要更改")]public static int CurrentSaveNum;
@@ -22,6 +22,7 @@ public class PropManager : MonoBehaviour
     //关卡开始时读取存档
     void Start()
     {
+        _propListInfo.Clear();
         string path = Application.persistentDataPath+"/"+CurrentSaveNum+".xml";
         //读档
         //存档不存在
@@ -52,6 +53,7 @@ public class PropManager : MonoBehaviour
                 _saveData.PropState.Add(propList[i]);
                 _saveData.PropName.Add(propList[i].name);
             }
+            _saveData.LevelNum = levelNum;
             _saveData.PlayerPos = player.position;
             SaveData(CurrentSaveNum, _saveData);
             return;
