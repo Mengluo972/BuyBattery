@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: coffee
-    second: {fileID: 2100000, guid: 04253ea8f59c29c4ca2e9df7c3781b91, type: 2}
+    second: {fileID: 2100000, guid: 95508614177df634a9391c6813b09ddc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: iron
-    second: {fileID: 2100000, guid: b586cf85c8394e047b4e9b4be5452983, type: 2}
+    second: {fileID: 2100000, guid: 9151c68583d4f1b4b9ded69b8a88ca5b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: iron1
-    second: {fileID: 2100000, guid: 63ff447235f569445a433fb028cebc8b, type: 2}
+    second: {fileID: 2100000, guid: 3dbc260da8a96ce4db3715ed2108319a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: iron2
-    second: {fileID: 2100000, guid: d7da42d2fbd135344a5a0052f476e215, type: 2}
+    second: {fileID: 2100000, guid: a69e8c5fa93f68942ac0964a7284fdab, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

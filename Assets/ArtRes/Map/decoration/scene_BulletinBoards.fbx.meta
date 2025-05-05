@@ -3,7 +3,17 @@ guid: ab4f26f1e5794d04a926a94267c8fdea
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BBBoard
+    second: {fileID: 2100000, guid: 1157338b7139a284bb41259d2b8a2f04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BBFarme
+    second: {fileID: 2100000, guid: a69e8c5fa93f68942ac0964a7284fdab, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
