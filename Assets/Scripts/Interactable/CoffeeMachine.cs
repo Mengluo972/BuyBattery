@@ -9,12 +9,13 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
 {
     public static event Action CoffeeSave;
     private bool inTrigger;
+    public PropManager propManager;
 
 
     public void TriggerAction()
     {
         CoffeeSave?.Invoke();
-        
+        propManager.SaveGame();
     }
 
     public void inTriggerAnimation(bool b)

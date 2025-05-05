@@ -15,7 +15,9 @@ public class PropManager : MonoBehaviour
     [Header("当前场景中的道具，请勿随意中间插入或者打乱顺序")] public List<GameObject> propList;
     [Header("玩家")] public Transform player;
     private Save _saveData;
-    public static int CurrentSaveNum;
+    [Header("当前存档序号，打开某个存档时要更改")]public static int CurrentSaveNum;
+    [Header("游戏时长，可全局访问，退出到主菜单式记得清空")]public static float gameTime;
+    [Header("被逮次数，可全局访问，退出到主菜单时记得清空")]public static int caughtTime;
 
     //关卡开始时读取存档
     void Start()
@@ -29,16 +31,30 @@ public class PropManager : MonoBehaviour
             return;
         }
 
-        if (CurrentSaveNum!=levelNum)
-        {
-            Debug.Log("疑似在跳转关卡前没有正确修改静态变量值");
-            return;
-        }
+        // if (CurrentSaveNum!=levelNum)
+        // {
+        //     Debug.Log("疑似在跳转关卡前没有正确修改静态变量值");
+        //     return;
+        // }
 
         using (StreamReader sr = new StreamReader(path))
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Save));
             _saveData = serializer.Deserialize(sr) as Save;
+        }
+        //玩家进入新的一关
+        if (_saveData.LevelNum != levelNum)
+        {
+            for (int i = 0; i < propList.Count; i++)
+            {
+                _propListInfo.Add(propList[i].name, i);
+                propList[i].gameObject.SetActive(true);
+                _saveData.PropState.Add(propList[i]);
+                _saveData.PropName.Add(propList[i].name);
+            }
+            _saveData.PlayerPos = player.position;
+            SaveData(CurrentSaveNum, _saveData);
+            return;
         }
         //存档合规性检查
         if (_saveData.PropState.Count!=_saveData.PropName.Count)
@@ -258,9 +274,21 @@ public class PropManager : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
+        _saveData.LevelNum = levelNum;
+        _saveData.PropState.Clear();
+        _saveData.PropName.Clear();
+        _saveData.GameTime = gameTime;
+        _saveData.CaughtTime = caughtTime;
         for (int i = 0; i < propList.Count; i++)
         {
-            
+            _saveData.PropState.Add(propList[i].activeSelf);
+            _saveData.PropName.Add(propList[i].name);
+        }
+
+        using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/" + CurrentSaveNum + ".xml"))
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Save));
+            xmlSerializer.Serialize(writer, _saveData);
         }
     }
     
