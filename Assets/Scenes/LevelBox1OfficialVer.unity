@@ -12207,6 +12207,7 @@ MonoBehaviour:
     - {fileID: 542153385}
     - {fileID: 289336794}
     - {fileID: 63261974}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -37792,6 +37793,7 @@ MonoBehaviour:
     chaseSpeed: 6
     partrolPoints:
     - {fileID: 1460845132}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -43261,6 +43263,7 @@ MonoBehaviour:
     chaseSpeed: 8
     partrolPoints:
     - {fileID: 535509756}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -48963,6 +48966,7 @@ MonoBehaviour:
     - {fileID: 1827253823}
     - {fileID: 220043749}
     - {fileID: 1055531454}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -54465,6 +54469,7 @@ MonoBehaviour:
     chaseSpeed: 6
     partrolPoints:
     - {fileID: 95471410}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -56313,6 +56318,56 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1490995334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490995336}
+  - component: {fileID: 1490995335}
+  m_Layer: 0
+  m_Name: PropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1490995335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490995334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ff1371d7cd6964cad5656d1c4b3904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNum: 0
+  propList:
+  - {fileID: 256769611}
+  - {fileID: 209115216}
+  - {fileID: 531949010}
+  player: {fileID: 515548077}
+--- !u!4 &1490995336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490995334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.244589, y: 5.2386665, z: 9.940281}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1494629397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79559,6 +79614,7 @@ MonoBehaviour:
     - {fileID: 1922185345}
     - {fileID: 1671454132}
     - {fileID: 1199643186}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -80330,6 +80386,7 @@ MonoBehaviour:
     - {fileID: 56762750}
     - {fileID: 1058485296}
     - {fileID: 56762750}
+    propManager: {fileID: 1490995335}
     playerTarget: {fileID: 515548077}
     flipTime: 1
     flipWaitTimeBefore: 3
@@ -81304,3 +81361,4 @@ SceneRoots:
   - {fileID: 1706692880}
   - {fileID: 459266411}
   - {fileID: 1342878471}
+  - {fileID: 1490995336}
