@@ -98,6 +98,7 @@ public class SaveDataUI : MonoBehaviour
         loadButton.onClick.RemoveAllListeners();
         loadButton.onClick.AddListener(() =>
         {
+            PropManager.CurrentSaveNum = saveNum;
             uIManeger.LoadLevelScene(loadLevel);
             uIManeger.nowGameTime = gametime;
             uIManeger.nowSaveData = saveNum;
