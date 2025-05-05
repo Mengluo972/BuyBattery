@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
@@ -23,7 +24,8 @@ public class PropManager : MonoBehaviour
     void Start()
     {
         _propListInfo.Clear();
-        string path = Application.persistentDataPath+"/"+CurrentSaveNum+".xml";
+        // player = GameObject.FindGameObjectWithTag("Player").transform;
+        string path = Application.persistentDataPath + "/" + CurrentSaveNum + ".xml";
         //读档
         //存档不存在
         if (!File.Exists(path))
@@ -43,9 +45,11 @@ public class PropManager : MonoBehaviour
             XmlSerializer serializer = new XmlSerializer(typeof(Save));
             _saveData = serializer.Deserialize(sr) as Save;
         }
+
         //玩家进入新的一关
         if (_saveData.LevelNum != levelNum)
         {
+            Debug.Log("玩家进入了新的一关");
             for (int i = 0; i < propList.Count; i++)
             {
                 _propListInfo.Add(propList[i].name, i);
@@ -53,21 +57,25 @@ public class PropManager : MonoBehaviour
                 _saveData.PropState.Add(propList[i]);
                 _saveData.PropName.Add(propList[i].name);
             }
+
             _saveData.LevelNum = levelNum;
             _saveData.PlayerPos = player.position;
             SaveData(CurrentSaveNum, _saveData);
             return;
         }
+
         //存档合规性检查
-        if (_saveData.PropState.Count!=_saveData.PropName.Count)
+        if (_saveData.PropState.Count != _saveData.PropName.Count)
         {
             Debug.Log("存档信息出错!道具状态和道具数量不匹配");
             Debug.Log($"道具状态数量为:{_saveData.PropState.Count},道具名称数量为:{_saveData.PropName.Count}");
             return;
         }
+
         //判空，如果道具列表为空，那么说明该关卡是第一次进入
-        if(_saveData.PropState.Count == 0 || _saveData.PropName.Count == 0)
+        if (_saveData.PropState.Count == 0 || _saveData.PropName.Count == 0)
         {
+            Debug.Log($"第一次进入第{levelNum}关");
             for (int i = 0; i < propList.Count; i++)
             {
                 _propListInfo.Add(propList[i].name, i);
@@ -75,114 +83,32 @@ public class PropManager : MonoBehaviour
                 _saveData.PropState.Add(propList[i]);
                 _saveData.PropName.Add(propList[i].name);
             }
+
             _saveData.PlayerPos = player.position;
             SaveData(CurrentSaveNum, _saveData);
             return;
         }
         
+        CharacterController ctr =player.GetComponent<CharacterController>();
+        ctr.enabled = false;
         player.position = _saveData.PlayerPos;
+        ctr.enabled = true;
         for (int i = 0; i < _saveData.PropState.Count; i++)
         {
             propList[i].SetActive(_saveData.PropState[i]);
+            _propListInfo.Add(propList[i].name, i);
         }
-        
 
-        // string path = Application.streamingAssetsPath + "/" + levelNum + ".xml";
-        // //读档
-        // //存档不存在
-        // if (!File.Exists(path))
-        // {
-        //     //无存档，所有道具激活
-        //     foreach (var go in propList)
-        //     {
-        //         go.SetActive(true);
-        //     }
-        //     Save saveData = new Save();
-        //     
-        //     for (int i = 0; i < propList.Count; i++)
-        //     {
-        //         saveData.PropState.Add(propList[i].activeInHierarchy);
-        //         saveData.PropName.Add(propList[i].name);
-        //         _propListInfo.Add(propList[i].name, i);
-        //     }
-        //     saveData.PlayerPos = player.position;
-        //     _saveData = saveData;
-        //     return;
-        // }
-        //
-        // //存档存在
-        // using (StreamReader sr = new StreamReader(path))
-        // {
-        //     XmlSerializer xmlSerializer = new XmlSerializer(typeof(Save));
-        //     _saveData = xmlSerializer.Deserialize(sr) as Save;
-        // }
-        //
-        // if (_saveData.PropState.Count!=_saveData.PropName.Count)
-        // {
-        //     print("道具状态和道具名称数量不匹配");
-        //     return;
-        // }
-        // _propListInfo.Clear();
-        // for (int i = 0; i < _saveData.PropState.Count; i++)
-        // {
-        //     propList[i].SetActive(_saveData.PropState[i]);
-        //     _propListInfo.Add(_saveData.PropName[i], i);
-        // }
+
     }
 
-    // public void ReadData()
-    // {
-    //     string path = Application.streamingAssetsPath + "/" + levelNum + ".xml";
-    //     if (!File.Exists(path))
-    //     {
-    //         //无存档，所有道具激活
-    //         Save saveData = new();
-    //         foreach (var go in propList)
-    //         {
-    //             go.SetActive(true);
-    //             saveData.PropState.Add(go.activeInHierarchy);
-    //             saveData.PropName.Add(go.name);
-    //             _propListInfo.Add(go.name, propList.IndexOf(go));
-    //         }
-    //         saveData.PlayerPos = player.position;
-    //         _saveData = saveData;
-    //         return;
-    //     }
-    //     //存档存在
-    //     using (StreamReader sr = new StreamReader(path))
-    //     {
-    //         XmlSerializer xmlSerializer = new XmlSerializer(typeof(Save));
-    //         _saveData = xmlSerializer.Deserialize(sr) as Save;
-    //     }
-    //
-    //     if (_saveData.PropState.Count!=_saveData.PropName.Count)
-    //     {
-    //         print("道具状态和道具名称数量不匹配");
-    //         return;
-    //     }
-    //     player.position = _saveData.PlayerPos;
-    //     for (int i = 0; i < _saveData.PropState.Count; i++)
-    //     {
-    //         propList[i].SetActive(_saveData.PropState[i]);
-    //     }
-    // }
-    //
-    // public void SaveData()
-    // {
-    //     string path = Application.streamingAssetsPath + "/" + levelNum + ".xml";
-    //     _saveData.PropState.Clear();
-    //     _saveData.PropName.Clear();
-    //     _saveData.LevelNum = levelNum;
-    //     _saveData.PlayerPos = player.position;
-    //     foreach (var go in propList)
-    //     {
-    //         _saveData.PropState.Add(go.activeInHierarchy);
-    //         _saveData.PropName.Add(go.name);
-    //     }
-    //     using StreamWriter sw = new StreamWriter(path);
-    //     XmlSerializer xmlSerializer = new XmlSerializer(typeof(Save)); 
-    //     xmlSerializer.Serialize(sw, _saveData);
-    // }
+    private IEnumerator ChangePos()
+    {
+        yield return new WaitForSeconds(2.1f);
+        player.position = _saveData.PlayerPos;
+        Debug.Log($"更改后player.position={player.position}");
+    }
+
     void Update()
     {
         // gameTime += Time.deltaTime;
