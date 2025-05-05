@@ -144,6 +144,7 @@ public class PmcPlayerController : MonoBehaviour
 
         }
 
+        move += Vector3.down*Time.deltaTime*4;
         cc.Move(move);
     }
 
