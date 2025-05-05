@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LockedDoor : MonoBehaviour,IDoorControl
 {
-    public int DoorNumber;
+    private int DoorNumber=0;
     public GameObject DoorCollider;
     public bool isLocked=true;
     public Animator ani;
