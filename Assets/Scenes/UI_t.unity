@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171757172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.0058394703, y: 0.928538, z: -0.014618818, w: 0.3709035}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2211,6 +2211,10 @@ PrefabInstance:
       propertyPath: uIManeger
       value: 
       objectReference: {fileID: 1243487159}
+    - target: {fileID: 2629316416756442779, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_text
+      value: "\u8BFB\u53D6\u5B58\u6863\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 3468733960279821423, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_Name
       value: MainPanel
@@ -2307,6 +2311,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SaveDataUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5268188028987394018, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5481653080865766931, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
@@ -2343,6 +2351,14 @@ PrefabInstance:
       propertyPath: level3SceneName
       value: LevelBox3OfficialVer
       objectReference: {fileID: 0}
+    - target: {fileID: 6426202622392613113, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeathLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661319277463921218, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174558472258656184, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -2370,6 +2386,14 @@ PrefabInstance:
     - target: {fileID: 8939501237254469438, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143892310775510788, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 105.88342
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143892310775510788, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15.647705
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
