@@ -27,6 +27,7 @@ public class Parameter//敌人信息
     [NonSerialized]public Vector3 LastPatrolPoint;
     [NonSerialized]public EnemyController EnemyController;
     [NonSerialized]public NavMeshAgent NavMeshAgent;
+    [Header("场景中的道具管理器")]public PropManager propManager;
     [Header("玩家角色")]public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
     // public float chaseDistance;//进入找人状态的检测距离
     

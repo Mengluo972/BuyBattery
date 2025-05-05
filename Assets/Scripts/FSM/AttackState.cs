@@ -50,7 +50,7 @@ public class AttackState : IState
                     break;
             }
 
-            PropManager.caughtTime++;
+            // PropManager.caughtTime++;
             DeathEvent?.Invoke();
         }
         

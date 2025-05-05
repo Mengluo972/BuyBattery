@@ -220,6 +220,21 @@ public class PropManager : MonoBehaviour
             xmlSerializer.Serialize(writer, _saveData);
         }
     }
+
+    public void PlusCaughtTime()
+    {
+        caughtTime++;
+        string path = Application.persistentDataPath + "/" + CurrentSaveNum + ".xml";
+        _saveData.CaughtTime = caughtTime;
+        _saveData.GameTime = gameTime;
+        using (StreamWriter writer = new StreamWriter(path))
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Save));
+            xmlSerializer.Serialize(writer, _saveData);
+        }
+    }
+
+    
     
 }
 public class Save
