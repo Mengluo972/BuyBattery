@@ -82,7 +82,7 @@ public class SaveDataUI : MonoBehaviour
         GameObject SDUI = Instantiate(SaveDataPrefab, parentObject.transform);
         SDUI.name = $"SaveData{n}";
 
-        SDUI.transform.Find("saveTitle").GetComponent<TMP_Text>().text = $"存档{n}";
+        SDUI.transform.Find("saveTitle").GetComponent<TMP_Text>().text = $"存档{n+1}";
         SDUI.transform.Find("saveDescribe").GetComponent<TMP_Text>().text = $"关卡{levelNum}" + "     " + $"被抓捕次数{caughtTime}";
 
         int gameSec = (int)(gameTime % 60);
@@ -98,6 +98,7 @@ public class SaveDataUI : MonoBehaviour
         loadButton.onClick.RemoveAllListeners();
         loadButton.onClick.AddListener(() =>
         {
+            PropManager.CurrentSaveNum = saveNum;
             uIManeger.LoadLevelScene(loadLevel);
             uIManeger.nowGameTime = gametime;
             uIManeger.nowSaveData = saveNum;
