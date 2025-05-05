@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: ef8513807374b3a44a56d32d420fb81e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DitherScreenShader: {fileID: 4800000, guid: a0d3f3efb00ab6f4eafe659325158a89, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

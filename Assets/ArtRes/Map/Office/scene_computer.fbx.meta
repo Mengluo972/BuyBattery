@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: lighting
+    second: {fileID: 2100000, guid: 7af21b658938806438a03d92f5f6042d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: screen
     second: {fileID: 2100000, guid: 7af21b658938806438a03d92f5f6042d, type: 2}
   materials:

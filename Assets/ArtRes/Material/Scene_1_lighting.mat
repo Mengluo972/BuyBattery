@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scene_blueScreen
+  m_Name: Scene_1_lighting
   m_Shader: {fileID: 4800000, guid: 5bd8529aceb3841478900f17e77f4629, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -22,9 +22,14 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e9011425d7d64f94ebc0919a03e7d174, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _LightingPower: 1.05
     m_Colors:
     - _MainColor: {r: 0, g: 0.75491333, b: 2.6701567, a: 1}
   m_BuildTextureStacks: []
