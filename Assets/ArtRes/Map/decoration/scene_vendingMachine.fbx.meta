@@ -3,7 +3,37 @@ guid: 759dd81a44020614a8659219b9032e14
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VMout
+    second: {fileID: 2100000, guid: 5be3cf7c2aa2efb4faa54dab1cbe8373, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glasses
+    second: {fileID: 2100000, guid: 84b5e5553bda8044b9a3438ad4a3c14d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron0
+    second: {fileID: 2100000, guid: 3dbc260da8a96ce4db3715ed2108319a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron1
+    second: {fileID: 2100000, guid: 541441621fb341443a06f8982de7f8e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron2
+    second: {fileID: 2100000, guid: abc18c349bfbfa14a96058330d435cfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lighting
+    second: {fileID: 2100000, guid: 7af21b658938806438a03d92f5f6042d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

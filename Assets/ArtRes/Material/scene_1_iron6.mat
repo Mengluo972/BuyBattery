@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: scene_1_iron6
+  m_Shader: {fileID: 4800000, guid: 81c5fbe0b1d460a419e78150e49da291, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _IsHLight_ON
+  m_InvalidKeywords:
+  - _ISHLIGHT_ON
+  - _TOGGLE1_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Ambiel_K: 2.07
+    - _Diff_K: 2.39
+    - _HLight_K: 0.0003
+    - _IsHLight: 1
+    - _ShadowSmooth: 0.139
+    - _ShadowThreshold: -0.81
+    - _Toggle: 1
+    - _Toggle1: 1
+    m_Colors:
+    - _Color: {r: 0.47862023, g: 0.5241743, b: 0.55345905, a: 1}
+    - _Diff_Color: {r: 0.20748782, g: 0.2269695, b: 0.24528301, a: 1}
+    - _ShadowColor: {r: 0.25364897, g: 0.2756764, b: 0.2830189, a: 1}
+    - _Specular_Color: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 1}
+  m_BuildTextureStacks: []
