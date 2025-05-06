@@ -11,8 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 92f4bf63966c39f47b22043fc164c42f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _IsHLight_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -25,27 +24,27 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 523fa73c0588cfc4ba1c2909b6a45581, type: 3}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambiel_K: 1
-    - _Diff_K: 1
-    - _HLight_K: 1
+    - _Ambiel_K: 2.61
+    - _Diff_K: 1.29
+    - _HLight_K: 0
     - _OutlineWidth: 0.81
     - _ShadowRange: 0.573
     - _ShadowRange1: 0.532
     - _ShadowRange2: 0.176
-    - _ShadowSmooth: 0.2
-    - _ShadowThreshold: 0.2
-    - _Toggle: 1
+    - _ShadowSmooth: 0.703
+    - _ShadowThreshold: -0.94
+    - _Toggle: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.34701943, g: 0.38993704, b: 0.38316056, a: 1}
     - _Diff_Color: {r: 1, g: 1, b: 1, a: 1}
     - _MainColor: {r: 0.4128396, g: 0.61635214, b: 0.5107564, a: 1}
     - _OutLineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _ShadowColor: {r: 0.74213827, g: 0.74213827, b: 0.74213827, a: 1}
+    - _ShadowColor: {r: 0.17513146, g: 0.30570254, b: 0.34591186, a: 1}
     - _ShadowColor1: {r: 0.388335, g: 0.5345911, b: 0.51797104, a: 1}
     - _ShadowColor2: {r: 0.5413749, g: 0.5849056, b: 0.45431346, a: 1}
     - _Specular_Color: {r: 1, g: 1, b: 1, a: 1}
