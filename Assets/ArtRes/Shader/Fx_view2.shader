@@ -20,6 +20,7 @@ Shader "Fx/view2" {
                 "LightMode"="ForwardBase"
             }
             Blend SrcAlpha OneMinusSrcAlpha      // 修改混合方式
+            Cull Off
             
             CGPROGRAM
             #pragma vertex vert
