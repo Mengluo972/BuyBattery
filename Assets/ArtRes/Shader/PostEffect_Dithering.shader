@@ -77,7 +77,7 @@ Shader "PostEffect/Dithering"
 				fixed grayscale = dot(mainCol, lum);
 				fixed finalTex = saturate(find_closest_gray(x, y, grayscale));
             	fixed3 finalCol = mainCol * finalTex;
-            	finalCol = lerp(mainCol, finalCol * mainCol + mainCol * _PixelPower,finalTex);//+ mainCol * 0.2;// 校色
+            	finalCol = lerp(mainCol, finalCol * mainCol + mainCol * _PixelPower + mainCol * 0.2,finalTex);//+ mainCol * 0.2;// 校色
             	// finalCol = lerp(finalCol * mainCol , mainCol,finalTex);//+ mainCol * 0.2;// 校色
                 return float4(finalCol,1);
             }

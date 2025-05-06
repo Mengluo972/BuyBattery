@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: scene_1_clockIn
+  m_Shader: {fileID: 4800000, guid: 81c5fbe0b1d460a419e78150e49da291, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _IsHLight_ON
+  m_InvalidKeywords:
+  - _ISHLIGHT_ON
+  - _TOGGLE1_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Ambiel_K: 1.2
+    - _Diff_K: 1.08
+    - _HLight_K: 0.0001
+    - _IsHLight: 1
+    - _ShadowSmooth: 0.57
+    - _ShadowThreshold: -0.55
+    - _Toggle: 1
+    - _Toggle1: 1
+    m_Colors:
+    - _Color: {r: 0.7871127, g: 0.840706, b: 0.84276724, a: 1}
+    - _Diff_Color: {r: 0.63522005, g: 0.63522005, b: 0.63522005, a: 1}
+    - _ShadowColor: {r: 0.66460973, g: 0.74529487, b: 0.7798742, a: 1}
+    - _Specular_Color: {r: 0.51572317, g: 0.51572317, b: 0.51572317, a: 1}
+  m_BuildTextureStacks: []

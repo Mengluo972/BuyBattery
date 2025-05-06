@@ -3,7 +3,22 @@ guid: e80337d9b146f7449a9653e2959d734d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monitor_01.001
+    second: {fileID: 2100000, guid: 72c655e1f44455a4ea02a5f89bd2caae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monitor_01_Decals.001
+    second: {fileID: 2100000, guid: ff95e6a1d872ca846981508789a9861d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: printer Buttons Black
+    second: {fileID: 2100000, guid: 9151c68583d4f1b4b9ded69b8a88ca5b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

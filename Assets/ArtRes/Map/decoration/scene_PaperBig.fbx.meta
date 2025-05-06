@@ -3,7 +3,17 @@ guid: e96226bf1c60af642946ac0c640bda55
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Big_Wallpaper
+    second: {fileID: 2100000, guid: 541441621fb341443a06f8982de7f8e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tape
+    second: {fileID: 2100000, guid: f1800604d027a6841a6b947d735e0d69, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

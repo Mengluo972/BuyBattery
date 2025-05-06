@@ -3,7 +3,37 @@ guid: 0be7c6ae144df9144b3994c61ec0fc1d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CTcatroom
+    second: {fileID: 2100000, guid: f1800604d027a6841a6b947d735e0d69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CTcustion
+    second: {fileID: 2100000, guid: c55b131eee59ce04fb909d8daba62f45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CThangpole
+    second: {fileID: 2100000, guid: 8ad614558c44dac43b52afcf6923f0b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CTplaytfoms
+    second: {fileID: 2100000, guid: c29d6d15ca63ed84c90bb7bd526323a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CTpole
+    second: {fileID: 2100000, guid: 8ad614558c44dac43b52afcf6923f0b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: net
+    second: {fileID: 2100000, guid: f1800604d027a6841a6b947d735e0d69, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
