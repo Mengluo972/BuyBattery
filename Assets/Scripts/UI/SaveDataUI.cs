@@ -98,6 +98,7 @@ public class SaveDataUI : MonoBehaviour
         loadButton.onClick.RemoveAllListeners();
         loadButton.onClick.AddListener(() =>
         {
+            SoundManager.Instance.PlaySFX("", 2, 6);
             PropManager.CurrentSaveNum = saveNum;
             uIManeger.LoadLevelScene(loadLevel);
             uIManeger.nowGameTime = gametime;
@@ -111,7 +112,7 @@ public class SaveDataUI : MonoBehaviour
     {
         Button loadButton = SDUI.GetComponentInChildren<Button>();
         loadButton.onClick.RemoveAllListeners();
-        loadButton.onClick.AddListener(() => { PropManager.CreateNewData(saveNum);uIManeger.StartGame(); });
+        loadButton.onClick.AddListener(() => { PropManager.CreateNewData(saveNum);uIManeger.StartGame(); SoundManager.Instance.PlaySFX("", 2, 6); });
     }
 
     public async void ShowSaveDatas()

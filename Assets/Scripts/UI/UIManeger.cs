@@ -15,6 +15,7 @@ public class UIManeger : MonoBehaviour
 
     private bool isEasterEgg;//标记彩蛋是否触发
     [NonSerialized] public bool InBack;
+    [NonSerialized] public bool InGame;
     private bool paused;
     [NonSerialized] public int nowLevel = 0;
     [NonSerialized] public float nowGameTime;
@@ -112,21 +113,25 @@ public class UIManeger : MonoBehaviour
     public void OpenSaveData()
     {
         WaitForBack(saveData,MTSD);
+        SoundManager.Instance.PlaySFX("", 2, 6);
     }
 
     public void OpenSetting()
     {
         WaitForBack(settings,MTS);
+        SoundManager.Instance.PlaySFX("", 2, 6);
     }
 
     public void DeathLoad()
     {
         OpenDeathLoad();
+        SoundManager.Instance.PlaySFX("", 2, 6);
     }
 
     public void StartGame()
     {
-        InBack=true;
+        SoundManager.Instance.PlaySFX("", 2, 6);
+        InBack =true;
         mainMenu.SetActive(false);
         nowLevel = 1;
         StartCoroutine(LoadScene(gameSceneName));
@@ -134,6 +139,7 @@ public class UIManeger : MonoBehaviour
 
     public void Pause()
     {
+        SoundManager.Instance.PlaySFX("", 2, 6);
         Debug.Log("先等一下，我问你个事");
         Time.timeScale = Convert.ToInt32(paused);
         paused = !paused;
@@ -148,6 +154,7 @@ public class UIManeger : MonoBehaviour
 
     public void BackMainMenu()
     {
+        SoundManager.Instance.PlaySFX("", 2, 6);
         deathMenu.SetActive(false);
         stopMenu.SetActive(false);
         oldBG.SetActive(true);
@@ -157,6 +164,7 @@ public class UIManeger : MonoBehaviour
 
     public void Restart()
     {
+        SoundManager.Instance.PlaySFX("", 2, 6);
         deathMenu.SetActive(false);
         stopMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -165,12 +173,13 @@ public class UIManeger : MonoBehaviour
 
     private async UniTaskVoid OpenDeathLoad()
     {
+        SoundManager.Instance.PlaySFX("", 2, 6);
         InBack = false;
         saveData[0].SetActive(true);
 
         Button backButton = saveData[0].transform.Find("BackBTN").GetComponent<Button>();
         backButton.onClick.RemoveAllListeners();
-        backButton.onClick.AddListener(() => { InBack = true; });
+        backButton.onClick.AddListener(() => { InBack = true; SoundManager.Instance.PlaySFX("", 2, 6); });
 
         await UniTask.WaitUntil(() => InBack || Input.GetKeyDown(KeyCode.Escape));
 
@@ -190,7 +199,7 @@ public class UIManeger : MonoBehaviour
         
         Button backButton = tagetGO[0].transform.Find("BackBTN").GetComponent<Button>();
         backButton.onClick.RemoveAllListeners();
-        backButton.onClick.AddListener(() => { InBack = true; });
+        backButton.onClick.AddListener(() => { InBack = true; SoundManager.Instance.PlaySFX("", 2, 6); });
 
         await UniTask.WaitUntil(() => InBack || Input.GetKeyDown(KeyCode.Escape));
 
@@ -219,6 +228,8 @@ public class UIManeger : MonoBehaviour
 
     IEnumerator LoadScene(string sceneName)
     {
+        InGame = true;
+
         Time.timeScale = 1f;
         if (BG.activeSelf)
         {
@@ -322,5 +333,19 @@ public class UIManeger : MonoBehaviour
         Debug.Log("表锅彩蛋冇了喔");
 
     }
+
+    public async UniTaskVoid PlayMainMenuSound()
+    {
+        SoundManager.Instance.PlayBGM(SoundType.Main);
+        InGame=false;
+
+        await UniTask.WaitUntil(() => (InGame));
+
+
+
+        await UniTask.Delay(1000);
+
+    }
+
 
 }
