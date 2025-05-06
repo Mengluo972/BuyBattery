@@ -57,7 +57,9 @@ public class FlipState : IState
                         case EnemyAnimator.maneger:
                             _parameter.animator.Play("enemy_manager@idle");
                             break;
-
+                        case EnemyAnimator.guard:
+                            _parameter.animator.Play("enemy_guard@Idle");
+                            break;
                     }
                 }
 
@@ -163,6 +165,10 @@ public class FlipState : IState
 
     public void TriggerCheck()
     {
+        if (_parameter.TriggerListener.PlayerIsInvincible)
+        {
+            return;
+        }
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;

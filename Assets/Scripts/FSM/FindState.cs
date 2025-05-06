@@ -60,6 +60,9 @@ public class FindState : IState
             case EnemyAnimator.maneger:
                 _parameter.animator.Play("enemy_manager@walk");
                 break;
+            case EnemyAnimator.guard:
+                _parameter.animator.Play("enemy_guard@run");
+                break;
 
         }
     }
@@ -135,6 +138,12 @@ public class FindState : IState
 
     public void TriggerCheck()
     {
+        if (_parameter.TriggerListener.PlayerIsInvincible)
+        {
+            _parameter.alarmValue = 0;
+            _manager.TransitionState(StateType.EndingChase);
+            return;
+        }
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;

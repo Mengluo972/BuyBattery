@@ -27,6 +27,7 @@ public class Parameter//敌人信息
     [NonSerialized]public Vector3 LastPatrolPoint;
     [NonSerialized]public EnemyController EnemyController;
     [NonSerialized]public NavMeshAgent NavMeshAgent;
+    [Header("场景中的道具管理器")]public PropManager propManager;
     [Header("玩家角色")]public Transform playerTarget;//可被识别为玩家的物体，这里建议手拖，减少性能消耗
     // public float chaseDistance;//进入找人状态的检测距离
     
@@ -68,7 +69,7 @@ public enum EnemyAnimator
     cat,
     boss,
     maneger,
-
+    guard,
 }
 
 public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有一个FSM组件，且需要有一个具有collider触发器的子物体
@@ -157,7 +158,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
                 break;
         }
         ani.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(p);
-        Debug.Log(p);
+        // Debug.Log(p);
     }
 
 }

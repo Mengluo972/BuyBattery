@@ -30,6 +30,7 @@ public class PmcPlayerController : MonoBehaviour
 
     [Header("保护相关")]
     [SerializeField] private float safeSpeed;
+    [SerializeField] private float protectTime;
 
     [Header("平滑转向相关")]
     [SerializeField] private float smoothSpeed;
@@ -47,6 +48,7 @@ public class PmcPlayerController : MonoBehaviour
     private Transform _playerModel;
     private BoxCollider _collider;
     private Animator _animator;
+    private Rigidbody _rigidbody;
 
 
     [NonSerialized] public bool _inAction = false;
@@ -62,6 +64,7 @@ public class PmcPlayerController : MonoBehaviour
         _collider = gameObject.GetComponent<BoxCollider>();
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
 
         HeadBoxItem.SetActive(false);
         BigBoxItem.SetActive(false);
@@ -141,6 +144,7 @@ public class PmcPlayerController : MonoBehaviour
 
         }
 
+        move += Vector3.down*Time.deltaTime*4;
         cc.Move(move);
     }
 
@@ -296,8 +300,15 @@ public class PmcPlayerController : MonoBehaviour
         _inAction = true;
 
         //gameObject.tag = "HiddenPlayer";
+        // gameObject.tag = "InvinciblePlayer";
+        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey))||IsSafe==false);
 
-        await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
+        if (!IsSafe)
+        {
+            return;
+        }
+
+        await UniTask.Delay((int)(100));
 
         SafeChange();
         //gameObject.tag = "Player";
@@ -318,14 +329,21 @@ public class PmcPlayerController : MonoBehaviour
         //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
 
+
+    private bool _isHideRunning;
     private async UniTaskVoid PlayerHide()
     {
+        if(_isHideRunning) { return; }
+
+        _isHideRunning = true;
+
         //HideChange();
         gameObject.tag = "HiddenPlayer";
         _animator.Play("rig_player|idleToHide");
 
         IsMoveAble = false;
         _collider.enabled = false;
+        _rigidbody.useGravity = false;
 
         await UniTask.WaitUntil(() => {
             var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
@@ -343,11 +361,13 @@ public class PmcPlayerController : MonoBehaviour
             var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
             return stateInfo.normalizedTime >= 1.0f;
         });
-
+        _rigidbody.useGravity = true;
         IsMoveAble = true;
         _collider.enabled = true;
         //HideChange();
         gameObject.tag = "Player";
+
+        _isHideRunning = false;
 
     }
 
@@ -360,7 +380,18 @@ public class PmcPlayerController : MonoBehaviour
 
     public void PlayerDead()
     {
-        _animator.Play("rig_player|scared");
+        // _animator.Play("rig_player|scared");
+    }
+
+    public async UniTaskVoid PlayerProtect()
+    {
+        gameObject.tag = "InvinciblePlayer";
+        SafeChange();
+
+        await UniTask.Delay((int)(1000*protectTime));
+
+        gameObject.tag = "Player";
+
     }
 
 }

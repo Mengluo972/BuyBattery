@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class ChangeToLevel2 : MonoBehaviour ,IInteractable
 {
     // private BoxCollider boxCollider;
+    private UIManeger uIManeger;
+    public int tagetLevel=2;
 
     private void Start()
     {
-        // boxCollider = GetComponent<BoxCollider>();
+        uIManeger=GameObject.Find("MainPanel").GetComponent<UIManeger>();
     }
 
     // private void OnTriggerStay(Collider other)
@@ -20,10 +22,7 @@ public class ChangeToLevel2 : MonoBehaviour ,IInteractable
 
     public void TriggerAction()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SceneManager.LoadScene(2);
-        }
+        uIManeger.LoadLevelScene(tagetLevel);
     }
 
     public void inTriggerAnimation(bool b)

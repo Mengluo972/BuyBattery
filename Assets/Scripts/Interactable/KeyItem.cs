@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour, IInteractable
 {
-    public int keyNumber;
+    private int keyNumber=0;//‘› ±≤ª∆Ù”√
     public static event Action<int> DoorUnLock;
 
     public void inTriggerAnimation(bool b)

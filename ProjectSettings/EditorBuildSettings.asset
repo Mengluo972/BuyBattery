@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelBox2OfficialVer.unity
     guid: 5741b470b31f6924dafa74f27d149141
+  - enabled: 1
+    path: Assets/Scenes/LevelBox3OfficialVer.unity
+    guid: 3bfb5826406913b40be8e983978b50a2
   m_configObjects: {}

@@ -8,6 +8,7 @@ public class SafeItem : MonoBehaviour,IInteractable
 {
     public static event Action PlayerSafe;
     private bool inTrigger;
+    // public Transform player;
 
 
     public void TriggerAction()
@@ -28,9 +29,9 @@ public class SafeItem : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         Debug.Log("握握手，握握双手");
-
+        
         await UniTask.WaitUntil(() => !inTrigger);
-
+        
         Debug.Log("牢石耐击术");
 
     }

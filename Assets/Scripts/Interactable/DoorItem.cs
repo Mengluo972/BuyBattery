@@ -32,7 +32,7 @@ public class DoorItem : MonoBehaviour,IDoorControl
 
         Debug.Log("表锅我关门了喔");
         ani.Play("doorGlassBone|doorGlass_close");
-        box.isTrigger = false;
+        // box.isTrigger = false;
 
     }
 
