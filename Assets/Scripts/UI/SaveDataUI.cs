@@ -92,7 +92,7 @@ public class SaveDataUI : MonoBehaviour
         return SDUI;
     }
 
-    public void ButtonAddLoad(GameObject SDUI, int saveNum,int loadLevel,float gametime)
+    public void ButtonAddLoad(GameObject SDUI, int saveNum,int caughtTime, int levelNum,float gametime)
     {
         Button loadButton = SDUI.GetComponentInChildren<Button>();
         loadButton.onClick.RemoveAllListeners();
@@ -100,10 +100,11 @@ public class SaveDataUI : MonoBehaviour
         {
             SoundManager.Instance.PlaySFX("", 2, 6);
             PropManager.CurrentSaveNum = saveNum;
-            uIManeger.LoadLevelScene(loadLevel);
+            uIManeger.LoadLevelScene(levelNum);
             uIManeger.nowGameTime = gametime;
             uIManeger.nowSaveData = saveNum;
-            uIManeger.nowLevel = loadLevel;
+            uIManeger.nowLevel = levelNum;
+            uIManeger.nowCaughtTime = caughtTime;
             uIManeger.InBack = true;
         });
     }
@@ -146,7 +147,7 @@ public class SaveDataUI : MonoBehaviour
             }
             else
             {
-                ButtonAddLoad(SDUI, n, levelNum, gameTime);
+                ButtonAddLoad(SDUI, n, caughtTime,levelNum, gameTime);
             }
 
             n++;

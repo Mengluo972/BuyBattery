@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
+using TMPro;
 using UnityEngine.UI;
 
 public class UIManeger : MonoBehaviour
@@ -17,6 +18,7 @@ public class UIManeger : MonoBehaviour
     [NonSerialized] public bool InBack;
     [NonSerialized] public bool InGame;
     private bool paused;
+    [NonSerialized] public int nowCaughtTime;
     [NonSerialized] public int nowLevel = 0;
     [NonSerialized] public float nowGameTime;
     [NonSerialized] public int nowSaveData;
@@ -28,7 +30,7 @@ public class UIManeger : MonoBehaviour
     private GameObject settingsAni;
     private GameObject[] loading;
     private GameObject loadingAni;
-    private GameObject playerWin;
+    private GameObject SuccessPanel;
     private GameObject deathMenu;
     private GameObject stopMenu;
     private GameObject saveTip;
@@ -109,6 +111,7 @@ public class UIManeger : MonoBehaviour
         saveTip = transform.Find("SaveTips").gameObject;
         BG = transform.Find("UI_BuyButtery_BG").gameObject;
         oldBG = transform.Find("BG").gameObject;
+        SuccessPanel = transform.Find("SuccessPanel").gameObject;
     }
 
     public void OpenSaveData()
@@ -155,12 +158,24 @@ public class UIManeger : MonoBehaviour
 
     public void PlayerWin()
     {
+        Time.timeScale = 0;
+        oldBG.SetActive(true);
+        SuccessPanel.SetActive(true);
+
+        int gameSec = (int)(nowGameTime % 60);
+        int gameMin = (int)(nowGameTime / 60);
+        SuccessPanel.transform.Find("gameTime").GetComponent<TMP_Text>().text = gameMin + "m" + gameSec + "s";
+
+        SuccessPanel.transform.Find("catchAmount").GetComponent<TMP_Text>().text = $"{nowCaughtTime}";
+
+        SuccessPanel.transform.Find("FuckMoneyAmount").GetComponent<TMP_Text>().text = "";//此处应输入纸钞获取量
 
     }
 
     public void BackMainMenu()
     {
         SoundManager.Instance.PlaySFX("", 2, 6);
+        SuccessPanel.SetActive(false);
         deathMenu.SetActive(false);
         stopMenu.SetActive(false);
         oldBG.SetActive(true);
