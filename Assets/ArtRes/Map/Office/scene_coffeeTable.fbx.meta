@@ -8,22 +8,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cloth
-    second: {fileID: 2100000, guid: 465d0328f6a5fba499df22bf9976030e, type: 2}
+    second: {fileID: 2100000, guid: 8ad614558c44dac43b52afcf6923f0b9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: iron
-    second: {fileID: 2100000, guid: b586cf85c8394e047b4e9b4be5452983, type: 2}
+    second: {fileID: 2100000, guid: 4aff723580270094f98baf69941b5a34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron1
+    second: {fileID: 2100000, guid: 657d9a0705f1fad479fe79704ec3fb1e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wood
-    second: {fileID: 2100000, guid: fbb377986b3b256488307a4a8a4da646, type: 2}
+    second: {fileID: 2100000, guid: 8ad614558c44dac43b52afcf6923f0b9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wood2
-    second: {fileID: 2100000, guid: 6b6fd43aab20b234b9d80366ccc15aa9, type: 2}
+    second: {fileID: 2100000, guid: c29d6d15ca63ed84c90bb7bd526323a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood3
+    second: {fileID: 2100000, guid: 140fb75e0373ff442a46522d4ed6b473, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
