@@ -28,6 +28,7 @@ public class UIManeger : MonoBehaviour
     private GameObject settingsAni;
     private GameObject[] loading;
     private GameObject loadingAni;
+    private GameObject playerWin;
     private GameObject deathMenu;
     private GameObject stopMenu;
     private GameObject saveTip;
@@ -150,6 +151,11 @@ public class UIManeger : MonoBehaviour
     {
         deathMenu.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void PlayerWin()
+    {
+
     }
 
     public void BackMainMenu()
