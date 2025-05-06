@@ -3,7 +3,52 @@ guid: 662c9438b2ab2a740a4658ca63f85913
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark-floor
+    second: {fileID: 2100000, guid: 9151c68583d4f1b4b9ded69b8a88ca5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevatorFarme
+    second: {fileID: 2100000, guid: 9151c68583d4f1b4b9ded69b8a88ca5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guide
+    second: {fileID: 2100000, guid: 9151c68583d4f1b4b9ded69b8a88ca5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light
+    second: {fileID: 2100000, guid: c55b131eee59ce04fb909d8daba62f45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 3dbc260da8a96ce4db3715ed2108319a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal-buttons
+    second: {fileID: 2100000, guid: 74d252af00831f74aac0205ce2586969, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal-flat
+    second: {fileID: 2100000, guid: 657d9a0705f1fad479fe79704ec3fb1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_elevator.jpg
+    second: {fileID: 2100000, guid: a69e8c5fa93f68942ac0964a7284fdab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sweethome3d_window_mirror
+    second: {fileID: 2100000, guid: abc18c349bfbfa14a96058330d435cfd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
