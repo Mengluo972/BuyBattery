@@ -14,6 +14,7 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
+        StartCoroutine(PlaySound());
         CoffeeSave?.Invoke();
         propManager.SaveGame();
     }
@@ -35,6 +36,15 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
 
         Debug.Log("人好，咖啡机坏。");
 
+    }
+
+    private IEnumerator PlaySound()
+    {
+        Debug.Log("成功进入PlaySound交互方法");
+        SoundManager.Instance.PlaySFX("coffeeMachine",1,7);
+        Debug.Log("音效调用完成");
+        yield return new WaitForSeconds(2);
+        SoundManager.Instance.StopSFX();
     }
 
     // Start is called before the first frame update
