@@ -157,7 +157,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
                 p = "Assets/ArtRes/Character/animator/Maneger.controller";
                 break;
         }
-        ani.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(p);
+        // ani.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(p);
         // Debug.Log(p);
     }
 
