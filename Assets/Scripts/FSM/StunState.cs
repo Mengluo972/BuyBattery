@@ -19,10 +19,6 @@ public class StunState : IState
         _parameter = manager.parameter;
         _rayCastTest = manager.RayCastTest;
         _navMeshAgent = manager.parameter.NavMeshAgent;
-        // if(!manager.parameter.playerTarget.TryGetComponent(out _playerController))
-        // {
-        //     Debug.LogError($"没有找到玩家控制器,可能是{_manager.gameObject.name}没有绑定PlayerTarget");
-        // }
         _playerController = manager.parameter.playerTarget.GetComponent<PmcPlayerController>();
     }
     public void OnEnter()
@@ -42,11 +38,11 @@ public class StunState : IState
             return;
         }
         //这里可能会隐藏一个bug，玩家在敌人面前，但是玩家与敌人之间有障碍物
-        if (!_rayCastTest.IsPlayerDetected)
-        {
-            _manager.TransitionState(StateType.Find);
-            return;
-        }
+        // if (!_rayCastTest.IsPlayerDetected)
+        // {
+        //     _manager.TransitionState(StateType.Find);
+        //     return;
+        // }
 
         _parameter.alarmValue-= _parameter.alarmDecreaseSpeed*Time.deltaTime;
         _manager.transform.LookAt(_parameter.playerTarget);
