@@ -17,8 +17,8 @@ public class SoundManager
     private static SoundManager _instance;
     private static Dictionary<SoundType, AudioClip> bgms;
     private static Dictionary<string, AudioClip> sfxs;
-    private AudioSource _audioBGM;
-    private AudioSource _audioSFX;
+    private static AudioSource _audioBGM;
+    private static AudioSource _audioSFX;
     public static SoundManager Instance
     {
         get
@@ -28,6 +28,8 @@ public class SoundManager
                 _instance = new SoundManager();
                 bgms = new Dictionary<SoundType, AudioClip>();
                 sfxs = new Dictionary<string, AudioClip>();
+                _audioBGM = GameObject.Find("BGMPlayer").GetComponent<AudioSource>();
+                _audioSFX = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
                 bgms.Add(SoundType.Fail, Resources.Load<AudioClip>(soundPath + "Fail"));
                 bgms.Add(SoundType.Success, Resources.Load<AudioClip>(soundPath + "Success"));
                 bgms.Add(SoundType.FU, Resources.Load<AudioClip>(soundPath + "FU"));
@@ -87,8 +89,24 @@ public class SoundManager
     //防止外部调用构造
     private SoundManager(){}
 
+    private void SourceCheck()
+    {
+        if (_audioSFX == null)
+        {
+            GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("PlayerObj/SFXPlayer"));
+            _audioSFX = go.GetComponent<AudioSource>();
+        }
+
+        if (_audioBGM == null)
+        {
+            GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("PlayerObj/BGMPlayer"));
+            _audioBGM = go.GetComponent<AudioSource>();
+        }
+    }
+
     public void PlayBGM(SoundType type)
     {
+        SourceCheck();
         if (!bgms.TryGetValue(type,out AudioClip clip))
         {
             Debug.Log($"{type}音效播放失败");
@@ -100,11 +118,13 @@ public class SoundManager
 
     public void StopBGM()
     {
+        SourceCheck();
         _audioBGM.Stop();
     }
 
     public void SetBGMLoop(bool isLoop)
     {
+        SourceCheck();
         _audioBGM.loop = isLoop;
     }
     /// <summary>
@@ -113,6 +133,7 @@ public class SoundManager
     /// <param name="name">直接输入音效的文件名</param>
     public void PlaySFX(string name)
     {
+        SourceCheck();
         if (!sfxs.TryGetValue(name, out AudioClip clip))
         {
             Debug.Log($"{name}音效播放失败");
@@ -129,6 +150,7 @@ public class SoundManager
     /// <param name="maxIndex">最多拥有的数量</param>
     public void PlaySFX(string name,int type,int maxIndex)
     {
+        SourceCheck();
         Debug.Log("进入音效播放方法");
         string SFXName = "";
         switch (type)
@@ -155,6 +177,7 @@ public class SoundManager
 
     public void StopSFX()
     {
+        SourceCheck();
         _audioSFX.Stop();
     }
 }
