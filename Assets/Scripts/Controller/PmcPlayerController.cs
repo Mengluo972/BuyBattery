@@ -75,7 +75,7 @@ public class PmcPlayerController : MonoBehaviour
     {
         DisguiseItem.PlayerDisguise += () => PlayerDisguise();
         HideItem.PlayerHide += () => PlayerHide();
-        AttackState.DeathEvent += () => PlayerDead();
+        //AttackState.DeathEvent += () => PlayerDead();
         SafeItem.PlayerSafe += () => PlayerSafe();
     }
 
@@ -83,7 +83,7 @@ public class PmcPlayerController : MonoBehaviour
     {
         DisguiseItem.PlayerDisguise -= () => PlayerDisguise();
         HideItem.PlayerHide -= () => PlayerHide();
-        AttackState.DeathEvent -= () => PlayerDead();
+        //AttackState.DeathEvent -= () => PlayerDead();
         SafeItem.PlayerSafe -= () => PlayerSafe();
     }
 

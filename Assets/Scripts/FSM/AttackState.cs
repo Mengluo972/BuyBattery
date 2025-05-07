@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AttackState : IState
 {
-    public static event Action DeathEvent;
+    public static event Action<EnemyAnimator> DeathEvent;
 
     private FSM _manager;
     private Parameter _parameter;
@@ -53,7 +53,7 @@ public class AttackState : IState
             }
 
             // PropManager.caughtTime++;
-            DeathEvent?.Invoke();
+            DeathEvent?.Invoke(_parameter.enemyAnimator);
         }
         
     }

@@ -52,7 +52,6 @@ public class UIManeger : MonoBehaviour
     public float MTSD;
     public float MTNG;
 
-
     private static GameObject instance;
 
     // Start is called before the first frame update
@@ -96,7 +95,7 @@ public class UIManeger : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !deathMenu.activeSelf && !BG.activeSelf) { Pause(); }
-        if (Input.GetKeyDown(deathKey)){Dead();}
+        if (Input.GetKeyDown(deathKey)){Dead(EnemyAnimator.colleague);}
         nowGameTime += Time.deltaTime;
     }
 
@@ -152,10 +151,43 @@ public class UIManeger : MonoBehaviour
         stopMenu.SetActive(paused);
     }
 
-    public void Dead()
+    public void Dead(EnemyAnimator aniType)
     {
         deathMenu.SetActive(true);
+        ChangeDeadUI(aniType);
         Time.timeScale = 0;
+    }
+
+    private void ChangeDeadUI(EnemyAnimator aniType)
+    {
+        string uIText = deathMenu.transform.Find("describe").gameObject.GetComponent<TMP_Text>().text;
+        Sprite uISprite = deathMenu.transform.Find("Image").gameObject.GetComponent<Image>().sprite;
+        switch (aniType)
+        {
+            case EnemyAnimator.boss:
+                uIText = deadUISet.bossText;
+                uISprite = deadUISet.bossSprite;
+                break;
+            case EnemyAnimator.colleague:
+                uIText = deadUISet.colleagueText;
+                uISprite = deadUISet.colleagueSprite;
+                break;
+            case EnemyAnimator.maneger:
+                uIText = deadUISet.manegerText;
+                uISprite = deadUISet.manegerSprite;
+                break;
+            case EnemyAnimator.intern:
+                uIText = deadUISet.internText;
+                uISprite = deadUISet.internSprite;
+                break;
+            case EnemyAnimator.guard:
+                uIText = deadUISet.guardText;
+                uISprite = deadUISet.guardSprite;
+                break;
+
+        }
+        
+        
     }
 
     public void PlayerWin()
@@ -379,6 +411,21 @@ public class UIManeger : MonoBehaviour
         SoundManager.Instance.StopBGM();
 
     }
+
+    public class DeadUISet
+    {
+        public Sprite bossSprite;
+        public string bossText;
+        public Sprite manegerSprite;
+        public string manegerText;
+        public Sprite colleagueSprite;
+        public string colleagueText;
+        public Sprite internSprite;
+        public string internText;
+        public Sprite guardSprite;
+        public string guardText;
+    }
+    public DeadUISet deadUISet;
 
 
 }
