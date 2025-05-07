@@ -27,6 +27,7 @@ public class Obstacle : MonoBehaviour,IInteractable
     {
         if (!_isMoving)
         {
+            SoundManager.Instance.PlaySFX("screen",1,6);
             StartCoroutine(MoveToTarget());
         }
     }

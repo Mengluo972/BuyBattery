@@ -13,6 +13,7 @@ public class DisguiseItem : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
+        SoundManager.Instance.PlaySFX("headBox_long",1,4);
         PlayerDisguise?.Invoke();
         gameObject.SetActive(false);
     }

@@ -20,6 +20,7 @@ public class PrinterMachine : MonoBehaviour,IInteractable
             print("打印机已在吸引中");
             return;
         }
+        SoundManager.Instance.PlaySFX("SFX_Props_printer");
         StartCoroutine(AttractEnemiesInRange());
     }
 

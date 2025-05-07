@@ -12,6 +12,7 @@ public class HideItem : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
+        SoundManager.Instance.PlaySFX("trashCan",1,6);
         PlayerHide?.Invoke();
     }
 

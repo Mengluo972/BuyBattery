@@ -27,6 +27,7 @@ public class DoorItem : MonoBehaviour,IDoorControl
         // box.isTrigger = true;
         Debug.Log("表锅我开门了喔");
         ani.Play("doorGlassBone|doorGlass_open");
+        SoundManager.Instance.PlaySFX("door",1,6);
 
         await UniTask.WaitUntil(() => !inTrigger);
 

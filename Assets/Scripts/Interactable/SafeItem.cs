@@ -13,6 +13,7 @@ public class SafeItem : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
+        SoundManager.Instance.PlaySFX("headBox_short",1,3);
         PlayerSafe?.Invoke();
         gameObject.SetActive(false);
     }
