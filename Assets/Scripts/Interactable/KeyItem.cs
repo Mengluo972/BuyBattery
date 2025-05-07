@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyItem : MonoBehaviour, IInteractable
 {
-    private int keyNumber=0;//ÔİÊ±²»ÆôÓÃ
+    private int keyNumber=0;//æš‚æ—¶ä¸å¯ç”¨
     public static event Action<int> DoorUnLock;
 
     public void inTriggerAnimation(bool b)
