@@ -51,6 +51,8 @@ public class UIManeger : MonoBehaviour
     public float MTS;
     public float MTSD;
     public float MTNG;
+    [Header("设置死亡画面")]
+    public DeadUISet deadUISet=new DeadUISet();
 
     private static GameObject instance;
 
@@ -412,6 +414,7 @@ public class UIManeger : MonoBehaviour
 
     }
 
+    [System.Serializable]
     public class DeadUISet
     {
         public Sprite bossSprite;
@@ -425,7 +428,7 @@ public class UIManeger : MonoBehaviour
         public Sprite guardSprite;
         public string guardText;
     }
-    public DeadUISet deadUISet;
+    
 
 
 }
