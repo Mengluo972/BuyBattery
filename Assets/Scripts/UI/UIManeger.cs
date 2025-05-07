@@ -138,6 +138,8 @@ public class UIManeger : MonoBehaviour
         InBack =true;
         mainMenu.SetActive(false);
         nowLevel = 1;
+        nowGameTime = 0;
+        nowCaughtTime = 0;
         StartCoroutine(LoadScene(gameSceneName));
     }
 
@@ -270,6 +272,16 @@ public class UIManeger : MonoBehaviour
             deathMenu.SetActive(false);
             stopMenu.SetActive(false);
             oldBG.SetActive(true);
+            if (sceneName != mainMenuSceneName)
+            {
+                loading[0].SetActive(true);
+                Slider slider = loading[0].GetComponentInChildren<Slider>();
+
+                yield return StartCoroutine(FakeLoad(slider, 0.4f, 0, 0.7f));//总时间，初始值和终值
+
+                yield return StartCoroutine(FakeLoad(slider, 0.2f, 0.7f, 1f));
+            }
+
         }
 
         Debug.Log("表锅开始加载了喔");
@@ -362,9 +374,9 @@ public class UIManeger : MonoBehaviour
 
         await UniTask.WaitUntil(() => (InGame));
 
+        await UniTask.Delay((int)(MTNG*1000));
 
-
-        await UniTask.Delay(1000);
+        SoundManager.Instance.StopBGM();
 
     }
 
