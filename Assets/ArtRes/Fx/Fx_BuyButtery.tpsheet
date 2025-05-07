@@ -4,7 +4,7 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:8ed93db738ab3bbdf39ee276a5102c84:c2e09ee45d167b4d3919bf374b97ff85:29b1025f8479deeaa8ce5ce278795fdd$
+# $TexturePacker:SmartUpdate:7857e803d09cd65f37c11fdd5142b545:0550e33329281be986b3873547760669:29b1025f8479deeaa8ce5ce278795fdd$
 #
 :format=40300
 :texture=Fx_BuyButtery.png
@@ -14,15 +14,16 @@
 :alphahandling=ClearTransparentPixels
 
 Fx_BuyButtery_Arrow;0;484;28;28; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Irritable0;104;445;66;67; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Irritable1;170;445;66;67; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Irritable2;236;445;66;67; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_noise0;0;202;115;208; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_noise1;278;148;79;262; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_noise2;115;150;163;260; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_save;356;410;105;102; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_shake0;84;447;20;65; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_shake1;330;435;26;77; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_shake2;302;440;28;72; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Square;28;484;28;28; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_vigilance;56;484;28;28; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable0;167;445;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable1;233;445;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable2;299;445;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise0;105;227;115;208; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise1;383;173;79;262; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise2;220;175;163;260; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_save;0;333;105;102; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake0;147;447;20;65; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake1;393;435;26;77; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake2;365;440;28;72; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_space;28;484;63;28; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Square;91;484;28;28; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_vigilance;119;484;28;28; 0.5;0.5; 0;0;0;0
