@@ -35,13 +35,13 @@ Material:
     - _Diff_K: 1.19
     - _HLight_K: 0.0001
     - _IsHLight: 1
-    - _ShadowSmooth: 0.196
-    - _ShadowThreshold: -1
+    - _ShadowSmooth: 0.532
+    - _ShadowThreshold: -0.45
     - _Toggle: 0
     - _Toggle1: 1
     m_Colors:
     - _Color: {r: 0.5031446, g: 0.4462474, b: 0.41928715, a: 1}
     - _Diff_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
-    - _ShadowColor: {r: 0.654902, g: 0.59368134, b: 0.5372549, a: 1}
+    - _ShadowColor: {r: 0.8238993, g: 0.77000904, b: 0.72285503, a: 1}
     - _Specular_Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

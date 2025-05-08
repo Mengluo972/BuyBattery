@@ -36,8 +36,8 @@ Material:
     - _Diff_K: 2.39
     - _HLight_K: 0.0003
     - _IsHLight: 1
-    - _ShadowSmooth: 0.139
-    - _ShadowThreshold: -0.81
+    - _ShadowSmooth: 0.068
+    - _ShadowThreshold: -0.4
     - _Toggle: 1
     - _Toggle1: 1
     m_Colors:

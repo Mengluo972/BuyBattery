@@ -37,7 +37,7 @@ Material:
     - _ShadowRange1: 0.704
     - _ShadowRange2: 0.316
     - _ShadowSmooth: 0.468
-    - _ShadowThreshold: -0.93
+    - _ShadowThreshold: -0.92
     - _Toggle: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
