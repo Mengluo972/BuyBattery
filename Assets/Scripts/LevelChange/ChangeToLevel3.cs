@@ -7,11 +7,13 @@ public class ChangeToLevel3 : MonoBehaviour,IInteractable
 {
     // private BoxCollider boxCollider;
     private UIManeger uIManeger;
+    private GameObject player;
     public int tagetLevel = 3;
 
     private void Start()
     {
         uIManeger = GameObject.Find("MainPanel").GetComponent<UIManeger>();
+        player=GameObject.Find("player").gameObject;
     }
 
     // private void OnTriggerStay(Collider other)
@@ -21,6 +23,7 @@ public class ChangeToLevel3 : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
+        player.tag = "HiddenPlayer";
         uIManeger.LoadLevelScene(tagetLevel);
     }
 
