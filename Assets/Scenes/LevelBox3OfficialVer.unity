@@ -56652,6 +56652,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 903e2f9d34bfaf64bb8a9f4e0e5acbad, type: 3}
   m_PrefabInstance: {fileID: 1527884507}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1535070994
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1662352608}
+    m_Modifications:
+    - target: {fileID: 1812503865609563940, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563945, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_Name
+      value: BuyBattery_save
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563945, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.106
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+--- !u!4 &1535070995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1812503865609563946, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+  m_PrefabInstance: {fileID: 1535070994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1535070996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1812503865609563945, guid: 1ae8e86dd98729747afafbd1a55fc18a, type: 3}
+  m_PrefabInstance: {fileID: 1535070994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1539127164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62783,6 +62858,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1535070995}
     - targetCorrespondingSourceObject: {fileID: 2149156805358640953, guid: 9e4046db7d8054e4398dbb242993571a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1297733386}
@@ -62845,6 +62923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeadBoxItem: {fileID: 1754519359}
   BigBoxItem: {fileID: 1297733385}
+  SaveParticle: {fileID: 1535070996}
   nomalSpeed: 4
   InterKey: 101
   coolDownTime: 2
