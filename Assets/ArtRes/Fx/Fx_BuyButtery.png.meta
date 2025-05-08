@@ -164,9 +164,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 226
-        y: 816
-        width: 115
-        height: 208
+        y: 760
+        width: 504
+        height: 264
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Fx_BuyButtery_noise1
       rect:
         serializedVersion: 2
-        x: 341
-        y: 762
-        width: 79
-        height: 262
+        x: 0
+        y: 496
+        width: 504
+        height: 264
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: Fx_BuyButtery_noise2
       rect:
         serializedVersion: 2
-        x: 420
-        y: 764
-        width: 163
-        height: 260
+        x: 504
+        y: 496
+        width: 504
+        height: 264
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,8 +226,8 @@ TextureImporter:
       name: Fx_BuyButtery_save
       rect:
         serializedVersion: 2
-        x: 583
-        y: 922
+        x: 0
+        y: 394
         width: 105
         height: 102
       alignment: 0
@@ -247,8 +247,8 @@ TextureImporter:
       name: Fx_BuyButtery_shake0
       rect:
         serializedVersion: 2
-        x: 688
-        y: 959
+        x: 105
+        y: 431
         width: 20
         height: 65
       alignment: 0
@@ -268,8 +268,8 @@ TextureImporter:
       name: Fx_BuyButtery_shake1
       rect:
         serializedVersion: 2
-        x: 708
-        y: 947
+        x: 125
+        y: 419
         width: 26
         height: 77
       alignment: 0
@@ -289,8 +289,8 @@ TextureImporter:
       name: Fx_BuyButtery_shake2
       rect:
         serializedVersion: 2
-        x: 734
-        y: 952
+        x: 151
+        y: 424
         width: 28
         height: 72
       alignment: 0
@@ -331,8 +331,8 @@ TextureImporter:
       name: Fx_BuyButtery_Square
       rect:
         serializedVersion: 2
-        x: 825
-        y: 996
+        x: 242
+        y: 468
         width: 28
         height: 28
       alignment: 0
@@ -352,8 +352,8 @@ TextureImporter:
       name: Fx_BuyButtery_vigilance
       rect:
         serializedVersion: 2
-        x: 853
-        y: 996
+        x: 270
+        y: 468
         width: 28
         height: 28
       alignment: 0
@@ -373,8 +373,8 @@ TextureImporter:
       name: Fx_BuyButtery_space
       rect:
         serializedVersion: 2
-        x: 762
-        y: 996
+        x: 179
+        y: 468
         width: 63
         height: 28
       alignment: 0
@@ -394,8 +394,8 @@ TextureImporter:
       name: UI_BuyButtery_DeathG
       rect:
         serializedVersion: 2
-        x: 0
-        y: 532
+        x: 298
+        y: 266
         width: 297
         height: 230
       alignment: 0
