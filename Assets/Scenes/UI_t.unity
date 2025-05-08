@@ -2862,6 +2862,10 @@ PrefabInstance:
       value: "\u9752\u6DA9\u76AE\u56CA\u88F9\u65E0\u5C3D\u6742\u52A1\uFF0C\u52A0\u73ED\u7EED\u8D39\u9501\u6B7B\u9003\u79BB\u8DEF"
       objectReference: {fileID: 0}
     - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: deadUISet.guardSprite
+      value: 
+      objectReference: {fileID: 1854911017, guid: d2f27c147c486194b96501dfbce71eba, type: 3}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: deadUISet.manegerText
       value: "\u50AC\u547D\u8FDE\u73AF\u5265\u5F00\u6467\u6B8B\u672F\uFF0C\u8FDB\u5EA6\u5200\u98CE\u903C\u9000\u6253\u5DE5\u4EBA"
       objectReference: {fileID: 0}
@@ -3009,11 +3013,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9143892310775510788, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.8834
+      value: 105.88342
       objectReference: {fileID: 0}
     - target: {fileID: 9143892310775510788, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.64765
+      value: -15.647705
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
