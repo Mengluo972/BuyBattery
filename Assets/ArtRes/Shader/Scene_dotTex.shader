@@ -96,6 +96,7 @@ Shader "Scene/dotTex"
             }
             ENDCG
         }
+        
     }
     FallBack "Diffuse"
     
