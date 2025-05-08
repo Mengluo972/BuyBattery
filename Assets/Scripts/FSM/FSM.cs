@@ -86,6 +86,7 @@ public class FSM : MonoBehaviour//每一个具有巡逻状态的敌人都会有�
         parameter.animator = GetComponent<Animator>();
         GetAnimation(parameter.animator);
         alertUI = transform.Find("enemy_question").gameObject;
+        // Debug.Log($"{gameObject.name}加载的警戒特效物体为:{alertUI}");
         _meshCollider = transform.GetChild(0).GetComponent<MeshCollider>();//疑似无用
         transform.GetChild(0).AddComponent<TriggerListener>();//触发器监听脚本的添加在这里完成，无需手动添加
         parameter.TriggerListener = transform.GetChild(0).GetComponent<TriggerListener>();

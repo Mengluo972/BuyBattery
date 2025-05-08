@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+
 /// <summary>
 /// 通用转向状态
 /// </summary>
@@ -12,8 +13,9 @@ public class FlipState : IState
     private Parameter _parameter;
     private float _timer;
     private RayCastTest _rayCastTest;
-    private int _flipWaitStage;//一共4阶段，值为0时等待第一段，值为1时开始转向，值为2时进行转向，值为3时等待第二段
+    private int _flipWaitStage; //一共4阶段，值为0时等待第一段，值为1时开始转向，值为2时进行转向，值为3时等待第二段
     private bool _isPlayed;
+
     public FlipState(FSM manager)
     {
         _manager = manager;
@@ -21,7 +23,7 @@ public class FlipState : IState
         _flipWaitStage = 0;
         _rayCastTest = manager.GetComponent<RayCastTest>();
     }
-    
+
     public void OnEnter()
     {
         _flipWaitStage = 0;
@@ -69,25 +71,26 @@ public class FlipState : IState
                     _timer = 0;
                     _flipWaitStage = 1;
                 }
+
                 break;
             case 1:
                 _flipWaitStage = 2;
                 //转向中播放行走动画，只能播放一次
                 //todo...
-                
+
                 _manager.transform
                     .DOLookAt(_parameter.partrolPoints[_parameter.PatrolIndex].position, _parameter.flipTime)
                     .OnComplete(() => _flipWaitStage = 3);
                 break;
-            case 2://该阶段只等待回调
+            case 2: //该阶段只等待回调
                 break;
             case 3:
                 //转向后播放静止动画，只能播放一次
                 //todo...
-                
-                
+
+
                 _timer += Time.deltaTime;
-                if (_timer>=_parameter.flipWaitTimeAfter)
+                if (_timer >= _parameter.flipWaitTimeAfter)
                 {
                     _timer = 0;
                     switch (_parameter.enemyType)
@@ -99,8 +102,8 @@ public class FlipState : IState
                             _manager.TransitionState(StateType.AttractivePatrol);
                             break;
                     }
-                    
                 }
+
                 break;
             default:
                 Debug.Log("FlipState中的_flipWaitStage值错误");
@@ -108,29 +111,35 @@ public class FlipState : IState
                 break;
         }
 
-        if (!_rayCastTest.IsPlayerDetected) return;//如果没有发现玩家，就不去执行增长警戒值的操作
-        if(_parameter.alarmValue>=_parameter.alarmMaxValue)
+        if (!_rayCastTest.IsPlayerDetected)
         {
+            if (_manager.alertUI.activeSelf)
+            {
+                _manager.alertUI.SetActive(false);
+            }
+
+            if (_parameter.alarmValue > 0f)
+            {
+                _parameter.alarmValue -= _parameter.alarmDecreaseSpeed * Time.deltaTime;
+            }
+            else if (_parameter.alarmValue < 0f)
+            {
+                _parameter.alarmValue = 0f;
+            }
+
+            return; //如果没有发现玩家，就不去执行增长警戒值的操作
+        }
+
+        if (_parameter.alarmValue >= _parameter.alarmMaxValue)
+        {
+            _manager.alertUI.SetActive(false);
             _parameter.LastPatrolPoint = _manager.transform.position;
             Debug.Log(_manager.gameObject.name + "发现玩家，进入追逐状态");
-            // if (_parameter.enemyType==EnemyType.AttractEnemy)
-            // {
-            //     Debug.Log("当前敌人为追逐型敌人，正在吸引周围的敌人前来追逐玩家");
-            //     List<FSM> list = _parameter.EnemyController.GetEnemies(_manager,_parameter.attractDistance);
-            //     foreach (var fsm in list)
-            //     {
-            //         fsm.parameter.alarmValue = fsm.parameter.alarmMaxValue;
-            //         fsm.TransitionState(StateType.Chase);
-            //     }
-            //
-            //     return;
-            // }
-
             switch (_parameter.enemyType)
             {
                 case EnemyType.AttractEnemy:
                     Debug.Log("当前敌人为追逐型敌人，正在吸引周围的敌人前来追逐玩家");
-                    List<FSM> list = _parameter.EnemyController.GetEnemies(_manager,_parameter.attractDistance);
+                    List<FSM> list = _parameter.EnemyController.GetEnemies(_manager, _parameter.attractDistance);
                     foreach (var fsm in list)
                     {
                         fsm.parameter.alarmValue = fsm.parameter.alarmMaxValue;
@@ -146,12 +155,20 @@ public class FlipState : IState
                     _manager.TransitionState(StateType.Chase);
                     break;
             }
+
             return;
         }
-        _parameter.alarmValue += _parameter.alarmAccelerationSpeed*Time.deltaTime;
+
+        _parameter.alarmValue += _parameter.alarmAccelerationSpeed * Time.deltaTime;
+        if (!_manager.alertUI.activeSelf)
+        {
+            Debug.Log($"{_manager.gameObject.name}显示警戒UI");
+            _manager.alertUI.SetActive(true);
+            _manager.alertUI.transform.DOShakePosition(0.8f, 0.2f, 10, 0);
+        }
     }
-    
-    public static Vector3 DirectionCaculate(Vector3 startPos,Vector3 endPos)
+
+    public static Vector3 DirectionCaculate(Vector3 startPos, Vector3 endPos)
     {
         Vector3 direction = endPos - startPos;
         return direction.normalized;
@@ -169,6 +186,7 @@ public class FlipState : IState
         {
             return;
         }
+
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;
