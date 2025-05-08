@@ -7,6 +7,7 @@ using UnityEngine;
 public class MoneyItem : MonoBehaviour,IInteractable
 {
     public static event Action GetMoney;
+    public GameObject banner;
 
     public void inTriggerAnimation(bool b)
     {
@@ -15,6 +16,7 @@ public class MoneyItem : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
+        banner.SetActive(false);
         GetMoney?.Invoke();
         gameObject.SetActive(false);
     }
