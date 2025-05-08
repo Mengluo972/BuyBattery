@@ -12,6 +12,7 @@ public class PmcPlayerController : MonoBehaviour
     [Header("拖入物体")]
     [SerializeField] private GameObject HeadBoxItem;
     [SerializeField] private GameObject BigBoxItem;
+    [SerializeField] private GameObject SaveParticle;
 
     [Header("速度设置")]
     [SerializeField] private float nomalSpeed;
@@ -77,6 +78,7 @@ public class PmcPlayerController : MonoBehaviour
         HideItem.PlayerHide += () => PlayerHide();
         //AttackState.DeathEvent += () => PlayerDead();
         SafeItem.PlayerSafe += () => PlayerSafe();
+        CoffeeMachine.CoffeeSave += ShowSaveParticle;
     }
 
     private void OnDisable()
@@ -85,6 +87,7 @@ public class PmcPlayerController : MonoBehaviour
         HideItem.PlayerHide -= () => PlayerHide();
         //AttackState.DeathEvent -= () => PlayerDead();
         SafeItem.PlayerSafe -= () => PlayerSafe();
+        CoffeeMachine.CoffeeSave -= ShowSaveParticle;
     }
 
     // Update is called once per frame
@@ -392,6 +395,12 @@ public class PmcPlayerController : MonoBehaviour
 
         gameObject.tag = "Player";
 
+    }
+
+    public void ShowSaveParticle()
+    {
+        SaveParticle.SetActive(false);
+        SaveParticle.SetActive(true);
     }
 
 }
