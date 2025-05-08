@@ -101,7 +101,7 @@ public class SaveDataUI : MonoBehaviour
             SoundManager.Instance.PlaySFX("", 2, 6);
             PropManager.CurrentSaveNum = saveNum;
             uIManeger.LoadLevelScene(levelNum);
-            uIManeger.nowGameTime = gametime;
+            UIManeger.nowGameTime = gametime;
             uIManeger.nowSaveData = saveNum;
             uIManeger.nowLevel = levelNum;
             uIManeger.nowCaughtTime = caughtTime;
