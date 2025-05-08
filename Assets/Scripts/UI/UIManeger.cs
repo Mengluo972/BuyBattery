@@ -45,6 +45,7 @@ public class UIManeger : MonoBehaviour
     public string level1SceneName;
     public string level2SceneName;
     public string level3SceneName;
+    public string level4SceneName;
     [Header("输入UI显示时间")]
     public float saveTipsTime;
     public float EasterEggTime;
@@ -372,6 +373,9 @@ public class UIManeger : MonoBehaviour
                 break;
             case 3:
                 StartCoroutine(LoadScene(level3SceneName));
+                break;
+            case 4:
+                StartCoroutine (LoadScene(level4SceneName));
                 break;
 
         }
