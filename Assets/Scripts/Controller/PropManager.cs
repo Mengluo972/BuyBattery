@@ -49,6 +49,8 @@ public class PropManager : MonoBehaviour
         //玩家进入新的一关
         if (_saveData.LevelNum != levelNum)
         {
+            _saveData.PropName.Clear();
+            _saveData.PropState.Clear();
             Debug.Log("玩家进入了新的一关");
             for (int i = 0; i < propList.Count; i++)
             {
@@ -76,6 +78,8 @@ public class PropManager : MonoBehaviour
         if (_saveData.PropState.Count == 0 || _saveData.PropName.Count == 0)
         {
             Debug.Log($"第一次进入第{levelNum}关");
+            _saveData.PropState.Clear();
+            _saveData.PropName.Clear();
             for (int i = 0; i < propList.Count; i++)
             {
                 _propListInfo.Add(propList[i].name, i);
@@ -205,9 +209,12 @@ public class PropManager : MonoBehaviour
         _saveData.LevelNum = levelNum;
         _saveData.PropState.Clear();
         _saveData.PropName.Clear();
+        gameTime = UIManeger.nowGameTime;
         _saveData.GameTime = gameTime;
         _saveData.CaughtTime = caughtTime;
         _saveData.PlayerPos = player.position;
+        _saveData.PropName.Clear();
+        _saveData.PropState.Clear();
         for (int i = 0; i < propList.Count; i++)
         {
             _saveData.PropState.Add(propList[i].activeSelf);
@@ -226,6 +233,7 @@ public class PropManager : MonoBehaviour
         caughtTime++;
         string path = Application.persistentDataPath + "/" + CurrentSaveNum + ".xml";
         _saveData.CaughtTime = caughtTime;
+        gameTime = UIManeger.nowGameTime;
         _saveData.GameTime = gameTime;
         using (StreamWriter writer = new StreamWriter(path))
         {

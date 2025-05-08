@@ -69,10 +69,15 @@ public class PartrolState : IState
                     _manager.TransitionState(StateType.Chase);
                     break;
             }
-            
             return;
         }
         _parameter.alarmValue += _parameter.alarmAccelerationSpeed*Time.deltaTime;
+        Debug.Log($"{_manager.gameObject.name}敌人警戒值增加");
+        if (!_manager.alertUI.activeSelf)
+        {
+            Debug.Log($"{_manager.gameObject.name}显示警戒UI");
+            _manager.alertUI.SetActive(true);
+        }
     }
 
     public void OnExit()

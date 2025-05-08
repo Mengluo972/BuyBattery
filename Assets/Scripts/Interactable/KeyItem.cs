@@ -10,7 +10,7 @@ public class KeyItem : MonoBehaviour, IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     public void TriggerAction()
