@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class PartrolState : IState
 {
     private FSM _manager;
     private Parameter _parameter;
     private RayCastTest _rayCastTest;
-    private Rigidbody _rigidbody;//默认FSM组件下手动挂载了Rigidbody组件
+    private Rigidbody _rigidbody; //默认FSM组件下手动挂载了Rigidbody组件
     private NavMeshAgent _navMeshAgent;
+
     public PartrolState(FSM manager)
     {
         _manager = manager;
@@ -18,8 +20,10 @@ public class PartrolState : IState
         _rigidbody = manager.GetComponent<Rigidbody>();
         _navMeshAgent = manager.parameter.NavMeshAgent;
     }
+
     public void OnEnter()
     {
+        Debug.Log($"{_manager.gameObject.name}OnEnter");
         _rayCastTest.IsPatrolTracing = true;
         _rayCastTest.IsChaseTracing = false;
         switch (_parameter.enemyAnimator)
@@ -44,20 +48,42 @@ public class PartrolState : IState
 
     public void OnUpdate()
     {
-        if(Vector3.Distance(_manager.transform.position,_parameter.partrolPoints[_parameter.PatrolIndex].position)<=_navMeshAgent.stoppingDistance)
+        if (Vector3.Distance(_manager.transform.position, _parameter.partrolPoints[_parameter.PatrolIndex].position) <=
+            _navMeshAgent.stoppingDistance)
         {
-            _parameter.PatrolIndex++;//一旦到达就立刻增加索引值，在转向状态中不再额外增加
-            if(_parameter.PatrolIndex>=_parameter.partrolPoints.Length)//越界检测
+            _parameter.PatrolIndex++; //一旦到达就立刻增加索引值，在转向状态中不再额外增加
+            if (_parameter.PatrolIndex >= _parameter.partrolPoints.Length) //越界检测
             {
                 _parameter.PatrolIndex = 0;
             }
+
             _manager.TransitionState(StateType.Flip);
             return;
         }
+
         _navMeshAgent.SetDestination(_parameter.partrolPoints[_parameter.PatrolIndex].position);
-        if (!_rayCastTest.IsPlayerDetected) return;//如果没有发现玩家，就不去执行增长警戒值的操作
-        if(_parameter.alarmValue>=_parameter.alarmMaxValue)
+        if (!_rayCastTest.IsPlayerDetected)
         {
+            if (_manager.alertUI.activeSelf)
+            {
+                _manager.alertUI.SetActive(false);
+            }
+            
+            if (_parameter.alarmValue > 0f)
+            {
+                _parameter.alarmValue -= _parameter.alarmDecreaseSpeed * Time.deltaTime;
+            }
+            else if (_parameter.alarmValue < 0f)
+            {
+                _parameter.alarmValue = 0f;
+            }
+            
+            return; //如果没有发现玩家，就不去执行增长警戒值的操作
+        }
+
+        if (_parameter.alarmValue >= _parameter.alarmMaxValue)
+        {
+            _manager.alertUI.SetActive(false);
             _parameter.LastPatrolPoint = _manager.transform.position;
             Debug.Log(_manager.gameObject.name + "发现玩家，进入追逐状态");
             switch (_parameter.enemyType)
@@ -69,14 +95,15 @@ public class PartrolState : IState
                     _manager.TransitionState(StateType.Chase);
                     break;
             }
+
             return;
         }
-        _parameter.alarmValue += _parameter.alarmAccelerationSpeed*Time.deltaTime;
-        Debug.Log($"{_manager.gameObject.name}敌人警戒值增加");
+
+        _parameter.alarmValue += _parameter.alarmAccelerationSpeed * Time.deltaTime;
         if (!_manager.alertUI.activeSelf)
         {
-            Debug.Log($"{_manager.gameObject.name}显示警戒UI");
             _manager.alertUI.SetActive(true);
+            _manager.alertUI.transform.DOShakePosition(0.8f, 0.2f, 10, 0);
         }
     }
 
@@ -89,8 +116,9 @@ public class PartrolState : IState
     {
         if (_parameter.TriggerListener.PlayerIsInvincible)
         {
-            return;    
+            return;
         }
+
         if (_parameter.TriggerListener.IsCaughtPlayer)
         {
             _parameter.alarmValue = 0;
