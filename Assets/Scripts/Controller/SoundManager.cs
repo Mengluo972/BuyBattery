@@ -159,7 +159,7 @@ public class SoundManager
                 SFXName = "SFX_Props_" +name+"_0";
                 break;
             case 2:
-                SFXName = "SFX_UI_" +name+"_0";
+                SFXName = "SFX_UI_" +name+"0";
                 break;
             // default:
             //     Debug.Log("音效类型错误");
@@ -168,7 +168,7 @@ public class SoundManager
         int index = Random.Range(1, maxIndex + 1);
         if (!sfxs.TryGetValue(SFXName+index, out AudioClip clip))
         {
-            Debug.Log($"{name}音效播放失败");
+            Debug.Log($"{SFXName+index}音效播放失败");
             return;
         }
         _audioSFX.clip = clip;
