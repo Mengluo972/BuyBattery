@@ -20,7 +20,7 @@ public class UIManeger : MonoBehaviour
     private bool paused;
     [NonSerialized] public int nowCaughtTime;
     [NonSerialized] public int nowLevel = 0;
-    [NonSerialized] public float nowGameTime;
+    [NonSerialized] public static float nowGameTime;
     [NonSerialized] public int nowSaveData;
 
     public GameObject mainMenu;
@@ -98,7 +98,12 @@ public class UIManeger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !deathMenu.activeSelf && !BG.activeSelf) { Pause(); }
         if (Input.GetKeyDown(deathKey)){Dead(EnemyAnimator.colleague);}
-        nowGameTime += Time.deltaTime;
+
+        if (Time.timeScale > 0)
+        {
+            nowGameTime += Time.deltaTime;
+        }
+        
     }
 
     private void FindGameObject()
