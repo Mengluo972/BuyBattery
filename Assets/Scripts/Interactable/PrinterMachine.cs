@@ -26,6 +26,8 @@ public class PrinterMachine : MonoBehaviour,IInteractable
 
     private IEnumerator AttractEnemiesInRange()
     {
+        PrinterNoise Particle = transform.GetChild(0).GetComponent<PrinterNoise>();
+        Particle.printerOn();
         _inAttract = true;
         List<FSM> list =  EnemyController.GetEnemies(transform.position,attractDistance);
         List<float> alarmDecreaseSpeeds = new List<float>();
@@ -50,6 +52,7 @@ public class PrinterMachine : MonoBehaviour,IInteractable
             enemy.parameter.playerTarget = _playerCache;
         }
         _inAttract = false;
+        Particle.printerOff();
     }
 
     public void inTriggerAnimation(bool b)

@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class PrinterNoise : MonoBehaviour,IDoorControl
 {
+    private GameObject Noise;
+    public bool isOpen;
+
     public void DoorClose()
     {
-        throw new System.NotImplementedException();
+        if (isOpen)
+        {
+            Noise.SetActive(false);
+        }
+        
     }
 
     public void DoorOpen()
     {
-        throw new System.NotImplementedException();
+        if (isOpen)
+        {
+            Noise.SetActive(true);
+        }
+        
     }
+
+    public void printerOn()
+    {
+        isOpen = true;
+        DoorOpen();
+    }
+
+    public void printerOff() { isOpen = false; DoorClose(); } 
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Noise = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
