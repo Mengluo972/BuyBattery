@@ -17,10 +17,14 @@ public class MoneyItem : MonoBehaviour,IInteractable
     public void TriggerAction()
     {
         banner.SetActive(false);
-        GetMoney?.Invoke();
+        
         gameObject.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+        GetMoney?.Invoke();
+    }
 
     // Start is called before the first frame update
     void Start()
