@@ -63,7 +63,7 @@ public class UIManeger : MonoBehaviour
         FindGameObject();
         paused = false;
         Cursor.lockState = CursorLockMode.None;
-
+        PlayMainMenuSound();
     }
 
     private void Awake()
