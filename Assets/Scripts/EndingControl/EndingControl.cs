@@ -11,17 +11,22 @@ public class EndingControl : MonoBehaviour
     void Start()
     {
         uIManeger=GameObject.Find("MainPanel").GetComponent<UIManeger>();
+        videoPlayer.Play();
     }
 
     void Update()
     {
-        if (videoPlayer.isPlaying == false)
+        // if (videoPlayer.isPlaying == false)
+        // {
+        //     if (isBacking==false)
+        //     {
+        //         uIManeger.BackMainMenu();
+        //         isBacking = true;
+        //     }
+        // }
+        if (videoPlayer.frame==(long)(videoPlayer.frameCount-1))
         {
-            if (isBacking==false)
-            {
-                uIManeger.BackMainMenu();
-                isBacking = true;
-            }
+            uIManeger.BackMainMenu();
         }
     }
 }

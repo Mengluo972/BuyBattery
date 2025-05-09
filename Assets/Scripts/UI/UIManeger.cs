@@ -234,6 +234,11 @@ public class UIManeger : MonoBehaviour
         //ceneManager.LoadScene(mainMenuSceneName);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void Restart()
     {
         SoundManager.Instance.PlaySFX("", 2, 6);
