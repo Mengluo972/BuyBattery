@@ -38543,8 +38543,8 @@ MonoBehaviour:
     enemyState: 0
     enemyType: 4
     enemyAnimator: 0
-    moveSpeed: 5
-    chaseSpeed: 6
+    moveSpeed: 3
+    chaseSpeed: 3
     partrolPoints:
     - {fileID: 1460845132}
     propManager: {fileID: 1490995335}
@@ -55636,8 +55636,8 @@ MonoBehaviour:
     enemyState: 0
     enemyType: 4
     enemyAnimator: 0
-    moveSpeed: 5
-    chaseSpeed: 6
+    moveSpeed: 3
+    chaseSpeed: 3
     partrolPoints:
     - {fileID: 95471410}
     propManager: {fileID: 1490995335}
