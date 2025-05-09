@@ -16,7 +16,7 @@ public class UIManeger : MonoBehaviour
 
     private bool isEasterEgg;//标记彩蛋是否触发
     [NonSerialized] public bool InBack;
-    [NonSerialized] public bool InGame;
+    [NonSerialized] public bool BGMStop;
     private bool paused;
     [NonSerialized] public int nowCaughtTime;
     [NonSerialized] public int nowLevel = 0;
@@ -161,11 +161,16 @@ public class UIManeger : MonoBehaviour
         stopMenu.SetActive(paused);
     }
 
-    public void Dead(EnemyAnimator aniType)
+    public async void Dead(EnemyAnimator aniType)
     {
         deathMenu.SetActive(true);
         ChangeDeadUI(aniType);
         Time.timeScale = 0;
+        SoundManager.Instance.PlayBGM(SoundType.Fail);
+
+        await UniTask.WaitUntil(() => BGMStop);
+
+        SoundManager.Instance.StopBGM();
     }
 
     private void ChangeDeadUI(EnemyAnimator aniType)
@@ -218,6 +223,8 @@ public class UIManeger : MonoBehaviour
 
     public void BackMainMenu()
     {
+        BGMStop = true;
+        BGMStop = false;
         SoundManager.Instance.PlaySFX("", 2, 6);
         SuccessPanel.SetActive(false);
         deathMenu.SetActive(false);
@@ -293,7 +300,8 @@ public class UIManeger : MonoBehaviour
 
     IEnumerator LoadScene(string sceneName)
     {
-        InGame = true;
+        BGMStop = true;
+        BGMStop = false;
 
         Time.timeScale = 1f;
         if (BG.activeSelf)
@@ -420,9 +428,9 @@ public class UIManeger : MonoBehaviour
     public async UniTaskVoid PlayMainMenuSound()
     {
         SoundManager.Instance.PlayBGM(SoundType.Main);
-        InGame=false;
+        BGMStop=false;
 
-        await UniTask.WaitUntil(() => (InGame));
+        await UniTask.WaitUntil(() => (BGMStop));
 
         await UniTask.Delay((int)(MTNG*1000));
 
