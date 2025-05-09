@@ -30,10 +30,10 @@ public class SoundManager
                 sfxs = new Dictionary<string, AudioClip>();
                 _audioBGM = GameObject.Find("BGMPlayer").GetComponent<AudioSource>();
                 _audioSFX = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
-                bgms.Add(SoundType.Fail, Resources.Load<AudioClip>(soundPath + "Fail"));
-                bgms.Add(SoundType.Success, Resources.Load<AudioClip>(soundPath + "Success"));
-                bgms.Add(SoundType.FU, Resources.Load<AudioClip>(soundPath + "FU"));
-                bgms.Add(SoundType.Main, Resources.Load<AudioClip>(soundPath + "Main"));
+                bgms.Add(SoundType.Fail, Resources.Load<AudioClip>(soundPath + bgmName+"Fail"));
+                bgms.Add(SoundType.Success, Resources.Load<AudioClip>(soundPath + bgmName+"Success"));
+                bgms.Add(SoundType.FU, Resources.Load<AudioClip>(soundPath +bgmName+ "FU"));
+                bgms.Add(SoundType.Main, Resources.Load<AudioClip>(soundPath +bgmName+ "Main"));
                 bgms.Add(SoundType.Stealth, Resources.Load<AudioClip>(soundPath + "Stealth"));
 
                 for (int i = 1; i <= 4; i++)
@@ -122,10 +122,27 @@ public class SoundManager
         _audioBGM.Stop();
     }
 
+    public void PauseBGM()
+    {
+        SourceCheck();
+        _audioBGM.Pause();
+    }
+
+    public void BeginBGM()
+    {
+        SourceCheck();
+        _audioBGM.UnPause();
+    }
+
     public void SetBGMLoop(bool isLoop)
     {
         SourceCheck();
         _audioBGM.loop = isLoop;
+    }
+
+    public bool GetBGMState()
+    {
+        return _audioBGM.isPlaying;
     }
     /// <summary>
     /// 播放音效

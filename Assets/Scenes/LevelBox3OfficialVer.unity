@@ -54249,6 +54249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: scene_banner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dba257370b87e89479ed0ae3b56a5cbc, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -54256,6 +54260,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dba257370b87e89479ed0ae3b56a5cbc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1432072086}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dba257370b87e89479ed0ae3b56a5cbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1432072087}
   m_SourcePrefab: {fileID: 100100000, guid: dba257370b87e89479ed0ae3b56a5cbc, type: 3}
 --- !u!1 &1432072085 stripped
 GameObject:
@@ -54281,8 +54288,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12, y: 1.4000001, z: 0.7937112}
-  m_Center: {x: 0, y: 0, z: -0.0064771213}
+  m_Size: {x: 12, y: 1.4000001, z: 0.9491425}
+  m_Center: {x: 0, y: 0, z: 0.07123845}
+--- !u!114 &1432072087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432072085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d3af439f987ec41a1b555a7c3d3eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagetLevel: 5
 --- !u!1001 &1434969653
 PrefabInstance:
   m_ObjectHideFlags: 0

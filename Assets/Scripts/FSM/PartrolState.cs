@@ -68,7 +68,11 @@ public class PartrolState : IState
             {
                 _manager.alertUI.SetActive(false);
             }
-            
+
+            // if (!SoundManager.Instance.GetBGMState())
+            // {
+            //     SoundManager.Instance.PlayBGM(SoundType.Stealth);
+            // }
             if (_parameter.alarmValue > 0f)
             {
                 _parameter.alarmValue -= _parameter.alarmDecreaseSpeed * Time.deltaTime;
@@ -100,6 +104,10 @@ public class PartrolState : IState
         }
 
         _parameter.alarmValue += _parameter.alarmAccelerationSpeed * Time.deltaTime;
+        // if (SoundManager.Instance.GetBGMState())
+        // {
+        //     SoundManager.Instance.StopBGM();
+        // }
         if (!_manager.alertUI.activeSelf)
         {
             _manager.alertUI.SetActive(true);

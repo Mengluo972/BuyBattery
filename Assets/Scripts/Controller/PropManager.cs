@@ -23,6 +23,8 @@ public class PropManager : MonoBehaviour
     //关卡开始时读取存档
     void Start()
     {
+        SoundManager.Instance.PlayBGM(SoundType.Stealth);
+        SoundManager.Instance.SetBGMLoop(true);
         _propListInfo.Clear();
         // player = GameObject.FindGameObjectWithTag("Player").transform;
         string path = Application.persistentDataPath + "/" + CurrentSaveNum + ".xml";
