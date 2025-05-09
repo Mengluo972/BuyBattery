@@ -23,7 +23,7 @@ public class PartrolState : IState
 
     public void OnEnter()
     {
-        Debug.Log($"{_manager.gameObject.name}OnEnter");
+        // Debug.Log($"{_manager.gameObject.name}OnEnter");
         _rayCastTest.IsPatrolTracing = true;
         _rayCastTest.IsChaseTracing = false;
         switch (_parameter.enemyAnimator)

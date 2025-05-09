@@ -101,6 +101,9 @@ public class FlipState : IState
                         case EnemyType.AttractEnemy:
                             _manager.TransitionState(StateType.AttractivePatrol);
                             break;
+                        case EnemyType.StunEnemy:
+                            _manager.TransitionState(StateType.Patrol);
+                            break;
                     }
                 }
 
