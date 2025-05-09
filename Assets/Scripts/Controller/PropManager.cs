@@ -92,7 +92,14 @@ public class PropManager : MonoBehaviour
             SaveData(CurrentSaveNum, _saveData);
             return;
         }
-        
+
+        if (levelNum==2)//第二关的钥匙道具特殊方法
+        {
+            if (!_saveData.PropState[4])
+            {
+                
+            }
+        }
         CharacterController ctr =player.GetComponent<CharacterController>();
         ctr.enabled = false;
         player.position = _saveData.PlayerPos;
