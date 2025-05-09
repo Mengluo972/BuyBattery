@@ -2846,6 +2846,14 @@ PrefabInstance:
       value: LevelBox4OfficialVer
       objectReference: {fileID: 0}
     - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: level5SceneName
+      value: NormalEnding
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: level6SceneName
+      value: FUEnding
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772708226493992853, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: deadUISet.bossText
       value: "\u53E3\u82E5\u60AC\u6CB3\u51C0\u753B\u997C\u865A\u6643\uFF0C\u52A0\u73ED\u7262\u7B3C\u5C01\u6B7B\u81EA\u7531\u7A97"
       objectReference: {fileID: 0}

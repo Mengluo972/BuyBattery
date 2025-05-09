@@ -112,6 +112,7 @@ public class SoundManager
             Debug.Log($"{type}音效播放失败");
             return;
         }
+        Debug.Log($"播放了{type}");
         _audioBGM.clip = clip;
         _audioBGM.Play();
     }
