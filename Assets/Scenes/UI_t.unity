@@ -2492,6 +2492,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
       objectReference: {fileID: 293005326}
+    - target: {fileID: 893815637484682753, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 964128299041454239, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2852,6 +2856,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -170.10994
       objectReference: {fileID: 0}
+    - target: {fileID: 5047664119641990880, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: fd365681c58e23e4eadd7907ad8aeb42, type: 2}
     - target: {fileID: 5342607305820767070, guid: 76013f29e90cbcb4baf056e541b94997, type: 3}
       propertyPath: m_IsActive
       value: 0
