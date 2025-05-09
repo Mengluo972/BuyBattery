@@ -22,7 +22,7 @@ public class PmcCameraController : MonoBehaviour
     public float startY = 45f;
     
     [Header("摄像机Y轴偏移")]
-    public float offsetY = 0f;
+    public float offsetY = 20f;
 
     private float currentX = -90f;  //水平角度
     private float currentY = 45f; //垂直角度
