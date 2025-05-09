@@ -22731,6 +22731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_guard5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
       propertyPath: m_Controller
       value: 
@@ -49113,6 +49117,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
       propertyPath: m_Name
       value: enemy_guard11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 0d948aa32183eee4896dfb9a54ee48f0, type: 3}
       propertyPath: m_Controller
@@ -76724,7 +76732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1928866039
 Transform:
   m_ObjectHideFlags: 0

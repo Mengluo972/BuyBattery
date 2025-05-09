@@ -34,7 +34,7 @@ public class SoundManager
                 bgms.Add(SoundType.Success, Resources.Load<AudioClip>(soundPath + bgmName+"Success"));
                 bgms.Add(SoundType.FU, Resources.Load<AudioClip>(soundPath +bgmName+ "FU"));
                 bgms.Add(SoundType.Main, Resources.Load<AudioClip>(soundPath +bgmName+ "Main"));
-                bgms.Add(SoundType.Stealth, Resources.Load<AudioClip>(soundPath + "Stealth"));
+                bgms.Add(SoundType.Stealth, Resources.Load<AudioClip>(soundPath +bgmName+ "Stealth"));
 
                 for (int i = 1; i <= 4; i++)
                 {
@@ -113,6 +113,7 @@ public class SoundManager
             return;
         }
         Debug.Log($"播放了{type}");
+        Debug.Log(clip.name);
         _audioBGM.clip = clip;
         _audioBGM.Play();
     }

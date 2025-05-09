@@ -52,11 +52,12 @@ public class LockedDoor : MonoBehaviour,IDoorControl
         inTrigger = true;
         Debug.Log("表锅我开门了喔");
         ani.Play("doorGlassBone|doorGlass_open");
-
+        SoundManager.Instance.PlaySFX("door",1,6);
         await UniTask.WaitUntil(() => !inTrigger);
 
         Debug.Log("表锅我关门了喔");
         ani.Play("doorGlassBone|doorGlass_close");
+        SoundManager.Instance.PlaySFX("doorClose",1,6);
 
     }
 
