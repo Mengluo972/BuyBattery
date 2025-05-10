@@ -32,6 +32,8 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         Debug.Log("咖啡机不错，摸摸。");
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 喝杯咖啡存个档吧 -");
 
         await UniTask.WaitUntil(() => !inTrigger);
 

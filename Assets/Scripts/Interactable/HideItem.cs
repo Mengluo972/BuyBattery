@@ -29,6 +29,8 @@ public class HideItem : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         Debug.Log("将军走此小道！");
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 好像可以先藏进去 -");
 
         await UniTask.WaitUntil(() => !inTrigger);
 

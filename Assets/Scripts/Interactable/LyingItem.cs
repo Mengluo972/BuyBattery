@@ -27,6 +27,8 @@ public class LyingItem : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         Debug.Log("唉你怎么似了");
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 好像可以先藏进去 -");
 
         await UniTask.WaitUntil(() => !inTrigger);
 

@@ -31,7 +31,7 @@ public class DisguiseItem : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         buttonTips.SetActive(true);
-        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+        ChangeTip.ChangePlayTips("- 盖在身上悄悄前进吧 -");
         Debug.Log("没词了，碰到伪装道具。");
 
         await UniTask.WaitUntil(() => !inTrigger);

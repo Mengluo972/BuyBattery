@@ -32,7 +32,7 @@ public class SafeItem : MonoBehaviour,IInteractable
         inTrigger = true;
         Debug.Log("握握手，握握双手");
         buttonTips.SetActive(true);
-        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+        ChangeTip.ChangePlayTips("- 戴上它可以伪装成同事 -");
 
         await UniTask.WaitUntil(() => !inTrigger);
         

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,11 +12,13 @@ public class Obstacle : MonoBehaviour,IInteractable
     private bool _isMoving = false;
     private int _place = 0;
     private BoxCollider _collider;
+    private GameObject buttonTips;
     
     void Start()
     {
         _collider = GetComponent<BoxCollider>();
         _collider.isTrigger = true;
+        buttonTips = transform.Find("ButtonTips").gameObject;
     }
 
     void Update()
@@ -56,6 +59,21 @@ public class Obstacle : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        
+        AnimateOn();
+        inTrigger = b;
+    }
+
+    private bool inTrigger;
+    private async UniTaskVoid AnimateOn()
+    {
+        inTrigger = true;
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 此处禁止通行！ -");
+
+        await UniTask.WaitUntil(() => !inTrigger);
+
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
+
     }
 }

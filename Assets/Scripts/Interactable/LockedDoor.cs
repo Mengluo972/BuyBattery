@@ -19,11 +19,19 @@ public class LockedDoor : MonoBehaviour,IDoorControl
             AnimateOn();
             
         }
+        else
+        {
+            ChangeTip.ChangePlayTips("- 锁上了，是需要门卡吗？ -");
+        }
     }
 
     public void DoorClose()
     {
         inTrigger = false;
+        if (isLocked)
+        {
+            ChangeTip.ChangePlayTips("");
+        }
     }
 
 

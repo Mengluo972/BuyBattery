@@ -74,7 +74,7 @@ public class PrinterMachine : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         buttonTips.SetActive(true);
-        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+        ChangeTip.ChangePlayTips("- 发出噪音把同事吸引过来 -");
 
         await UniTask.WaitUntil(() => !inTrigger);
 
