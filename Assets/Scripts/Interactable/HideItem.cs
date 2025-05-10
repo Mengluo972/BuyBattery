@@ -8,6 +8,7 @@ public class HideItem : MonoBehaviour,IInteractable
 {
     public static event Action PlayerHide;
     private bool inTrigger;
+    private GameObject buttonTips;
 
 
     public void TriggerAction()
@@ -32,6 +33,8 @@ public class HideItem : MonoBehaviour,IInteractable
         await UniTask.WaitUntil(() => !inTrigger);
 
         Debug.Log("陛下何故先降？");
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
 
     }
 
@@ -39,7 +42,7 @@ public class HideItem : MonoBehaviour,IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonTips = transform.Find("ButtonTips").gameObject;
     }
 
     // Update is called once per frame

@@ -8,6 +8,7 @@ public class SafeItem : MonoBehaviour,IInteractable
 {
     public static event Action PlayerSafe;
     private bool inTrigger;
+    private GameObject buttonTips;
     // public Transform player;
 
 
@@ -30,16 +31,20 @@ public class SafeItem : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         Debug.Log("握握手，握握双手");
-        
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+
         await UniTask.WaitUntil(() => !inTrigger);
         
         Debug.Log("牢石耐击术");
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
 
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonTips = transform.Find("ButtonTips").gameObject;
     }
 
     // Update is called once per frame

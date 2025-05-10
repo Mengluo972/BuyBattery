@@ -13,6 +13,7 @@ using UnityEngine.UI;
 public class UIManeger : MonoBehaviour
 {
     public static event Action youDie;
+    
 
     private bool isEasterEgg;//标记彩蛋是否触发
     [NonSerialized] public bool InBack;
@@ -36,6 +37,7 @@ public class UIManeger : MonoBehaviour
     private GameObject saveTip;
     private GameObject BG;//BG同时用于判断是否处于游戏中
     private GameObject oldBG;
+    public TMP_Text playTips;
     
     //[Header("拖入模型UI")]
     //public GameObject uIModel;
@@ -85,6 +87,7 @@ public class UIManeger : MonoBehaviour
         CoffeeMachine.CoffeeSave += () => ShowSaveTip();
         ShenMiLittleBook.EasterEgg += () => ShowEasterEgg();
         AttackState.DeathEvent += Dead;
+        ChangeTip.playTipsChange += CPT;
     }
 
     private void OnDisable()
@@ -92,6 +95,7 @@ public class UIManeger : MonoBehaviour
         CoffeeMachine.CoffeeSave -= () => ShowSaveTip();
         ShenMiLittleBook.EasterEgg -= () => ShowEasterEgg();
         AttackState.DeathEvent -= Dead;
+        ChangeTip.playTipsChange -= CPT;
     }
 
     [Header("紫砂键")]
@@ -121,6 +125,7 @@ public class UIManeger : MonoBehaviour
         BG = transform.Find("UI_BuyButtery_BG").gameObject;
         oldBG = transform.Find("BG").gameObject;
         SuccessPanel = transform.Find("SuccessPanel").gameObject;
+        playTips = transform.Find("PlayTips").gameObject.GetComponent<TMP_Text>();
     }
 
     public void OpenSaveData()
@@ -458,6 +463,22 @@ public class UIManeger : MonoBehaviour
         public string guardText;
     }
     
+    
 
+    public void CPT(string tips)
+    {
+        Debug.Log(tips);
+        playTips.text = tips;
+    }
 
+}
+
+public static class ChangeTip
+{
+    public static event Action<string> playTipsChange;
+
+    public static void ChangePlayTips(string tips)
+    {
+        playTipsChange?.Invoke(tips);
+    }
 }

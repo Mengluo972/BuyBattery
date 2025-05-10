@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class PrinterMachine : MonoBehaviour,IInteractable
@@ -12,6 +13,12 @@ public class PrinterMachine : MonoBehaviour,IInteractable
     
     private Transform _playerCache;
     private bool _inAttract;
+    private GameObject buttonTips;
+
+    public void Start()
+    {
+        buttonTips = transform.Find("ButtonTips").gameObject;
+    }
 
     public void TriggerAction()
     {
@@ -58,5 +65,22 @@ public class PrinterMachine : MonoBehaviour,IInteractable
     public void inTriggerAnimation(bool b)
     {
         print("进入打印机交互范围");
+        AnimateOn();
+        inTrigger = b;
     }
+
+    private bool inTrigger;
+    private async UniTaskVoid AnimateOn()
+    {
+        inTrigger = true;
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+
+        await UniTask.WaitUntil(() => !inTrigger);
+
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
+
+    }
+
 }

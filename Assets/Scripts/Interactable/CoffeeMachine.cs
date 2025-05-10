@@ -10,6 +10,7 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
     public static event Action CoffeeSave;
     private bool inTrigger;
     public PropManager propManager;
+    private GameObject buttonTips;
 
 
     public void TriggerAction()
@@ -35,6 +36,8 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
         await UniTask.WaitUntil(() => !inTrigger);
 
         Debug.Log("人好，咖啡机坏。");
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
 
     }
 
@@ -48,8 +51,8 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
     }
 
     // Start is called before the first frame update
-    //void Start()
-    //{}
+    void Start()
+    { buttonTips = transform.Find("ButtonTips").gameObject; }
 
     // Update is called once per frame
     //void Update(){}

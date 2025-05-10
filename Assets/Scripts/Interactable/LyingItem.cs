@@ -8,6 +8,7 @@ public class LyingItem : MonoBehaviour,IInteractable
     public bool inTrigger;
     public bool isTalking;
     public GameObject talkUI;
+    private GameObject buttonTips;
 
     public void TriggerAction()
     {
@@ -30,6 +31,8 @@ public class LyingItem : MonoBehaviour,IInteractable
         await UniTask.WaitUntil(() => !inTrigger);
 
         Debug.Log("³å´Ì£¬³å");
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
 
     }
 
@@ -50,7 +53,7 @@ public class LyingItem : MonoBehaviour,IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonTips = transform.Find("ButtonTips").gameObject;
     }
 
     // Update is called once per frame
