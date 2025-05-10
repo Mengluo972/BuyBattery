@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,11 +10,13 @@ public class ChangeToLevel3 : MonoBehaviour,IInteractable
     private UIManeger uIManeger;
     private GameObject player;
     public int tagetLevel = 3;
+    private GameObject buttonTips;
 
     private void Start()
     {
         uIManeger = GameObject.Find("MainPanel").GetComponent<UIManeger>();
         player=GameObject.Find("player").gameObject;
+        buttonTips = transform.Find("ButtonTips").gameObject;
     }
 
     // private void OnTriggerStay(Collider other)
@@ -29,6 +32,23 @@ public class ChangeToLevel3 : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
+        AnimateOn();
+        inTrigger = b;
+    }
+
+    private bool inTrigger;
+    private async UniTaskVoid AnimateOn()
+    {
+        inTrigger = true;
+        buttonTips.SetActive(true);
+        ChangeTip.ChangePlayTips("- 喝杯咖啡，迎接下一天吧 -");
+        Debug.Log("");
+
+        await UniTask.WaitUntil(() => !inTrigger);
+
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
+        Debug.Log("");
 
     }
 }
