@@ -31,8 +31,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambiel_K: 0.93
-    - _Diff_K: 2.12
+    - _Ambiel_K: 0.21
+    - _Diff_K: 1.82
     - _HLight_K: 0.0003
     - _IsHLight: 1
     - _ShadowSmooth: 0.358
