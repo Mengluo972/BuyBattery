@@ -41,7 +41,7 @@ Material:
     - _Toggle1: 1
     m_Colors:
     - _Color: {r: 0.52201253, g: 0.52201253, b: 0.52201253, a: 1}
-    - _Diff_Color: {r: 0.44841966, g: 0.49685526, b: 0.49685526, a: 1}
+    - _Diff_Color: {r: 0.52039075, g: 0.654088, b: 0.654088, a: 1}
     - _ShadowColor: {r: 0.6946916, g: 0.78616345, b: 0.7826453, a: 1}
     - _Specular_Color: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 1}
   m_BuildTextureStacks: []

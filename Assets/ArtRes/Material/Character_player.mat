@@ -29,12 +29,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambiel_K: -0.5
+    - _Ambiel_K: 0.08
     - _Diff_K: 1
     - _HLight_K: 0
     - _OutlineWidth: 0.67
-    - _ShadowRange: 0.072
-    - _ShadowSmooth: 0.21
+    - _ShadowRange: 0.163
+    - _ShadowSmooth: 0.304
     - _ShadowThreshold: -0.54
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -42,6 +42,6 @@ Material:
     - _Diff_Color: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutLineColor: {r: 0.26118422, g: 0.3234383, b: 0.38993704, a: 1}
-    - _ShadowColor: {r: 0.5324749, g: 0.62853634, b: 0.6855345, a: 1}
+    - _ShadowColor: {r: 0.728729, g: 0.8167914, b: 0.8679245, a: 1}
     - _Specular_Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

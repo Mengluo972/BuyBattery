@@ -94,7 +94,7 @@ Shader "Character/player"
 				// diffuse *= mainTex;
 				fixed4 light = _LightColor0 * 0.5 + 0.5;
 				//漫反射
-				fixed3 Diff = light * mainTex * (diffuse + (1 - diffuse)*_ShadowColor) * _DiffColor * _Diff_K;
+				fixed3 Diff = light * mainTex * (diffuse + (1 - diffuse) * _ShadowColor) * _DiffColor * _Diff_K;
 				col.rgb = Diff + Ambiel;
 			
                 return col;
