@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Turnstile
-    second: {fileID: 2100000, guid: a69e8c5fa93f68942ac0964a7284fdab, type: 2}
+    second: {fileID: 2100000, guid: 3dbc260da8a96ce4db3715ed2108319a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
