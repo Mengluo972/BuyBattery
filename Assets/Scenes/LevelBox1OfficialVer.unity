@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (5)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -11154,12 +11154,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.107755, y: 1.5966407, z: 1.1101624}
-  m_Center: {x: -0.00012817982, y: 0.83633715, z: 0.0013318661}
+  m_Size: {x: 1.6234907, y: 1.9750967, z: 1.4844013}
+  m_Center: {x: 0.09588647, y: 1.0255651, z: 0.18845141}
 --- !u!114 &231048464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13291,7 +13291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (3)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -36618,7 +36618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (1)
+      value: ButtonTips
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61083,7 +61083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (2)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -68209,7 +68209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DitherScreenShader: {fileID: 4800000, guid: a0d3f3efb00ab6f4eafe659325158a89, type: 3}
-  pixelScale: 2
+  pixelScale: 1
   ditherSize: 12
   cameraX: 24
   cameraY: 14
@@ -83227,7 +83227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (1)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -99798,8 +99798,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.107755, y: 1.5966407, z: 1.1101624}
-  m_Center: {x: -0.00012817982, y: 0.83633715, z: 0.0013318661}
+  m_Size: {x: 1.5323604, y: 2.117951, z: 1.4873866}
+  m_Center: {x: -0.21243095, y: 1.0969923, z: 0.18994403}
 --- !u!114 &2084901543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102654,7 +102654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (4)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive

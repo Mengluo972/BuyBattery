@@ -11,6 +11,7 @@ public class LockedDoor : MonoBehaviour,IDoorControl
     public bool isLocked=true;
     public Animator ani;
     private bool inTrigger;
+    public GameObject banner;
 
     public void DoorOpen()
     {
@@ -52,6 +53,10 @@ public class LockedDoor : MonoBehaviour,IDoorControl
         {
             isLocked = false;
             DoorCollider.SetActive(false);
+            if (banner != null)
+            {
+                banner.SetActive(false);
+            }
         }
     }
 

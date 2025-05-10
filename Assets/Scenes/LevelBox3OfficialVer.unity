@@ -22506,6 +22506,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a1915fed0e52f614abb11eb3475fe9e4, type: 3}
   m_PrefabInstance: {fileID: 616857938}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &616857940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a1915fed0e52f614abb11eb3475fe9e4, type: 3}
+  m_PrefabInstance: {fileID: 616857938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &621565096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80666,7 +80671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DitherScreenShader: {fileID: 4800000, guid: a0d3f3efb00ab6f4eafe659325158a89, type: 3}
-  pixelScale: 2
+  pixelScale: 1
   ditherSize: 12
   cameraX: 24
   cameraY: 14
@@ -86709,6 +86714,7 @@ MonoBehaviour:
   DoorCollider: {fileID: 0}
   isLocked: 1
   ani: {fileID: 0}
+  banner: {fileID: 616857940}
 --- !u!1001 &2124937948
 PrefabInstance:
   m_ObjectHideFlags: 0
