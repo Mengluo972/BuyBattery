@@ -1965,7 +1965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (10)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -7565,7 +7565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (4)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -27001,7 +27001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (3)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -36775,7 +36775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (5)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -41742,7 +41742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (7)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -46200,7 +46200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (2)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -51536,7 +51536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (8)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -66164,7 +66164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (1)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -66398,7 +66398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (6)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -76022,7 +76022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (9)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
@@ -86922,7 +86922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_Name
-      value: ButtonTips (11)
+      value: ButtonTips
       objectReference: {fileID: 0}
     - target: {fileID: 4454277066184727245, guid: 412c3790a278e7c44bacc42f658a0f71, type: 3}
       propertyPath: m_IsActive
