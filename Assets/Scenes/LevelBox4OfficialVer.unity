@@ -46998,7 +46998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1342878471
 Transform:
   m_ObjectHideFlags: 0
@@ -50951,6 +50951,7 @@ GameObject:
   - component: {fileID: 1445464696}
   - component: {fileID: 1445464695}
   - component: {fileID: 1445464698}
+  - component: {fileID: 1445464699}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -51053,6 +51054,24 @@ MonoBehaviour:
   startX: -90
   startY: 45
   offsetY: 2.8
+--- !u!114 &1445464699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445464694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8513807374b3a44a56d32d420fb81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DitherScreenShader: {fileID: 4800000, guid: a0d3f3efb00ab6f4eafe659325158a89, type: 3}
+  pixelScale: 1
+  ditherSize: 12
+  cameraX: 24
+  cameraY: 14
+  pixelPower: 0.38
 --- !u!1001 &1447584231
 PrefabInstance:
   m_ObjectHideFlags: 0
