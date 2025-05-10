@@ -4,7 +4,7 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:b56479a7f0d253b560ae9679c49e21dc:0ddede797f688366b20d12e70985d121:29b1025f8479deeaa8ce5ce278795fdd$
+# $TexturePacker:SmartUpdate:6fb735bf3655fe8ebf481e20e9f6fdc1:8107214b6497a43cb00a819d013f9bbe:29b1025f8479deeaa8ce5ce278795fdd$
 #
 :format=40300
 :texture=Fx_BuyButtery.png
@@ -13,18 +13,18 @@
 :borders=disabled
 :alphahandling=ClearTransparentPixels
 
-Fx_BuyButtery_Arrow;0;996;28;28; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Irritable0;28;957;66;67; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Irritable1;94;957;66;67; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Irritable2;160;957;66;67; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_noise0;226;760;504;264; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_noise1;0;496;504;264; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_noise2;504;496;504;264; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_save;0;394;105;102; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_shake0;105;431;20;65; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_shake1;125;419;26;77; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_shake2;151;424;28;72; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_space;179;468;63;28; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_Square;242;468;28;28; 0.5;0.5; 0;0;0;0
-Fx_BuyButtery_vigilance;270;468;28;28; 0.5;0.5; 0;0;0;0
-UI_BuyButtery_DeathG;298;266;297;230; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Arrow;4;992;28;28; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable0;36;953;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable1;106;953;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Irritable2;176;953;66;67; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise0;246;756;504;264; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise1;4;488;504;264; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_noise2;512;488;504;264; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_save;4;382;105;102; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake0;113;419;20;65; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake1;137;407;26;77; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_shake2;167;412;28;72; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_space;199;456;63;28; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_Square;266;456;28;28; 0.5;0.5; 0;0;0;0
+Fx_BuyButtery_vigilance;298;456;28;28; 0.5;0.5; 0;0;0;0
+UI_BuyButtery_DeathG;330;254;297;230; 0.5;0.5; 0;0;0;0
