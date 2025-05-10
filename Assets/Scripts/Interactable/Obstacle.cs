@@ -19,6 +19,7 @@ public class Obstacle : MonoBehaviour,IInteractable
         _collider = GetComponent<BoxCollider>();
         _collider.isTrigger = true;
         buttonTips = transform.Find("ButtonTips").gameObject;
+        buttonTips.SetActive(false);
     }
 
     void Update()

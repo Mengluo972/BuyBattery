@@ -18,6 +18,7 @@ public class PrinterMachine : MonoBehaviour,IInteractable
     public void Start()
     {
         buttonTips = transform.Find("ButtonTips").gameObject;
+        buttonTips.SetActive(false);
     }
 
     public void TriggerAction()

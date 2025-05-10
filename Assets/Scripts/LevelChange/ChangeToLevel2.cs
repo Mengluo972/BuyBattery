@@ -18,6 +18,7 @@ public class ChangeToLevel2 : MonoBehaviour ,IInteractable
         uIManeger=GameObject.Find("MainPanel").GetComponent<UIManeger>();
         player = GameObject.Find("player").gameObject;
         buttonTips = transform.Find("ButtonTips").gameObject;
+        buttonTips.SetActive(false);
     }
 
     // private void OnTriggerStay(Collider other)

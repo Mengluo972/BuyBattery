@@ -20,6 +20,7 @@ public class ChangeToLevel4 : MonoBehaviour,IInteractable
         player = GameObject.Find("player").gameObject;
         elevatorOn = false;
         buttonTips = transform.Find("ButtonTips").gameObject;
+        buttonTips.SetActive(false);
     }
 
     private void OnEnable()

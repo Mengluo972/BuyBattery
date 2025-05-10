@@ -54,7 +54,7 @@ public class CoffeeMachine : MonoBehaviour,IInteractable
 
     // Start is called before the first frame update
     void Start()
-    { buttonTips = transform.Find("ButtonTips").gameObject; }
+    { buttonTips = transform.Find("ButtonTips").gameObject; buttonTips.SetActive(false); }
 
     // Update is called once per frame
     //void Update(){}

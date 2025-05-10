@@ -48,6 +48,7 @@ public class KeyItem : MonoBehaviour, IInteractable
     void Start()
     {
         buttonTips = transform.Find("ButtonTips").gameObject;
+        buttonTips.SetActive(false);
     }
 
     // Update is called once per frame
