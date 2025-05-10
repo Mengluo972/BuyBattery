@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class ChangeToLevel4 : MonoBehaviour,IInteractable
@@ -8,7 +9,9 @@ public class ChangeToLevel4 : MonoBehaviour,IInteractable
     private GameObject player;
     public int tagetLevel = 4;
     private bool elevatorOn = false;
-    
+
+    private GameObject buttonTips;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,7 @@ public class ChangeToLevel4 : MonoBehaviour,IInteractable
         uIManeger = GameObject.Find("MainPanel").GetComponent<UIManeger>();
         player = GameObject.Find("player").gameObject;
         elevatorOn = false;
+        buttonTips = transform.Find("ButtonTips").gameObject;
     }
 
     private void OnEnable()
@@ -51,6 +55,28 @@ public class ChangeToLevel4 : MonoBehaviour,IInteractable
 
     public void inTriggerAnimation(bool b)
     {
-        //throw new System.NotImplementedException();
+        AnimateOn();
+        inTrigger = b;
+    }
+
+    private bool inTrigger;
+    private async UniTaskVoid AnimateOn()
+    {
+        inTrigger = true;
+        buttonTips.SetActive(true);
+        if (elevatorOn)
+        {
+            ChangeTip.ChangePlayTips("- 吼吼，竟然不逃跑，而是向我走来了吗 -");
+        }
+        else
+        {
+            ChangeTip.ChangePlayTips("- 通往老板办公室，我现在没有要去的必要。 -");
+        }
+
+        await UniTask.WaitUntil(() => !inTrigger);
+
+        buttonTips.SetActive(false);
+        ChangeTip.ChangePlayTips("");
+
     }
 }

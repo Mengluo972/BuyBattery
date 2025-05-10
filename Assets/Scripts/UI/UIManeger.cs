@@ -180,29 +180,29 @@ public class UIManeger : MonoBehaviour
 
     private void ChangeDeadUI(EnemyAnimator aniType)
     {
-        string uIText = deathMenu.transform.Find("describe").gameObject.GetComponent<TMP_Text>().text;
-        Sprite uISprite = deathMenu.transform.Find("Image").gameObject.GetComponent<Image>().sprite;
+        TMP_Text uIText = deathMenu.transform.Find("describe").gameObject.GetComponent<TMP_Text>();
+        Image uISprite = deathMenu.transform.Find("Image").gameObject.GetComponent<Image>();
         switch (aniType)
         {
             case EnemyAnimator.boss:
-                uIText = deadUISet.bossText;
-                uISprite = deadUISet.bossSprite;
+                uIText.text = deadUISet.bossText;
+                uISprite.sprite = deadUISet.bossSprite;
                 break;
             case EnemyAnimator.colleague:
-                uIText = deadUISet.colleagueText;
-                uISprite = deadUISet.colleagueSprite;
+                uIText.text = deadUISet.colleagueText;
+                uISprite.sprite = deadUISet.colleagueSprite;
                 break;
             case EnemyAnimator.maneger:
-                uIText = deadUISet.manegerText;
-                uISprite = deadUISet.manegerSprite;
+                uIText.text = deadUISet.manegerText;
+                uISprite.sprite = deadUISet.manegerSprite;
                 break;
             case EnemyAnimator.intern:
-                uIText = deadUISet.internText;
-                uISprite = deadUISet.internSprite;
+                uIText.text = deadUISet.internText;
+                uISprite.sprite = deadUISet.internSprite;
                 break;
             case EnemyAnimator.guard:
-                uIText = deadUISet.guardText;
-                uISprite = deadUISet.guardSprite;
+                uIText.text = deadUISet.guardText;
+                uISprite.sprite = deadUISet.guardSprite;
                 break;
 
         }

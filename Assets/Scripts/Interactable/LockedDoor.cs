@@ -21,7 +21,7 @@ public class LockedDoor : MonoBehaviour,IDoorControl
         }
         else
         {
-            ChangeTip.ChangePlayTips("- 锁上了，是需要门卡吗？ -");
+            ChangeTip.ChangePlayTips("- 不能从这一侧打开 -");
         }
     }
 

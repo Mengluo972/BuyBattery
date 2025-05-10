@@ -115,12 +115,12 @@ public class PmcPlayerController : MonoBehaviour
             _inAction = false;
             if (_isRunning)
             {
-                ani = "rig_player|walk";
+                ani = "rig_player|slide";
                 //_animator.Play("rig_player|walk");
             }
             else
             {
-                ani = "rig_player|slide";
+                ani = "rig_player|walk";
                 //_animator.Play("rig_player|slide");
             }
             _animator.Play(ani);
@@ -353,11 +353,11 @@ public class PmcPlayerController : MonoBehaviour
             return stateInfo.normalizedTime >= 1.0f;
         });
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
         _animator.Play("rig_player|hideToIdle");
 
         await UniTask.WaitUntil(() => {

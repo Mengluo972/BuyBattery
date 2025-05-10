@@ -21,7 +21,7 @@ public class KeyItem : MonoBehaviour, IInteractable
     {
         inTrigger = true;
         buttonTips.SetActive(true);
-        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+        ChangeTip.ChangePlayTips("- 门卡，可以打开上锁的门 -");
         Debug.Log("碰到钥匙");
 
         await UniTask.WaitUntil(() => !inTrigger);

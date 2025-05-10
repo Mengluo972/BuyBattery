@@ -22,7 +22,7 @@ public class MoneyItem : MonoBehaviour,IInteractable
     {
         inTrigger = true;
         buttonTips.SetActive(true);
-        ChangeTip.ChangePlayTips("- 交互后一段时间内隐身 -");
+        ChangeTip.ChangePlayTips("- 老板给我扣的工资 -");
         Debug.Log("是钱");
 
         await UniTask.WaitUntil(() => !inTrigger);
@@ -38,6 +38,18 @@ public class MoneyItem : MonoBehaviour,IInteractable
         banner.SetActive(false);
         
         gameObject.SetActive(false);
+    }
+
+    private async UniTaskVoid ElevatorOnTips()
+    {
+        await UniTask.Delay(200);
+
+        ChangeTip.ChangePlayTips("- 干完这票我就辞职 -");
+
+        await UniTask.Delay(5000);
+
+        ChangeTip.ChangePlayTips("");
+
     }
 
     private void OnDisable()
