@@ -353,11 +353,11 @@ public class PmcPlayerController : MonoBehaviour
             return stateInfo.normalizedTime >= 1.0f;
         });
 
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
         await UniTask.WaitUntil(() => (Input.GetKeyDown(InterKey)));
 
-        //gameObject.SetActive(true);
+        gameObject.SetActive(true);
         _animator.Play("rig_player|hideToIdle");
 
         await UniTask.WaitUntil(() => {
